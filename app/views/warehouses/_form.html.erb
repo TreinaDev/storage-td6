@@ -1,0 +1,16 @@
+<% if warehouse.errors.any? %>
+  <p>Foram encontrados <%= warehouse.errors.count %> erro(s):</p>
+  <ul>
+    <% warehouse.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: warehouse do |f| %>
+<%= f.label :name, 'Nome'  %>
+<%= f.text_field :name %>
+<%= f.label :code, 'Código' %>
+<%= f.text_field :code %>
+<%= f.submit 'Salvar' %>
+<% end %>
