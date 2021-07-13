@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :warehouse do
-    code { "MyString" }
-    name { "MyString" }
+    code { "code" }
+    sequence(:name) { |n| "Galpão #{n}" }
   end
 end
