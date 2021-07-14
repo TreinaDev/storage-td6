@@ -3,6 +3,7 @@ pt-BR:
   suppliers:
     create:
       success: 'Fornecedor criado!'
+      fail: 'Não foi possível cadastrar o fornecedor'
   activerecord:
     models:
       supplier:

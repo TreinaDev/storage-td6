@@ -14,7 +14,11 @@ class SuppliersController < ApplicationController
   def create
     @supplier = Supplier.new(supplier_params)
     if @supplier.save
-      redirect_to @supplier, notice: t('.success')
+      flash[:notice] = t('.success')
+      redirect_to @supplier
+    else
+      flash[:notice] = t('.fail')
+      render :new
     end
   end
 
