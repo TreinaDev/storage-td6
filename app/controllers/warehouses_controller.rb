@@ -6,7 +6,7 @@ class WarehousesController < ApplicationController
   def create
     @warehouse = Warehouse.new(warehouse_params)
     if @warehouse.save
-      redirect_to warehouse_path(@warehouse), notice: 'Cadastrado com sucesso'
+      redirect_to warehouse_path(@warehouse), notice: t('.success')
     else
       render :new
     end
@@ -17,8 +17,8 @@ class WarehousesController < ApplicationController
   end
 
   private
+
   def warehouse_params
     params.require(:warehouse).permit(:name, :code)
   end
-
 end
