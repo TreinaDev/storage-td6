@@ -1,0 +1,15 @@
+---
+pt-BR:
+  suppliers:
+    create:
+      success: 'Fornecedor criado!'
+  activerecord:
+    models:
+      supplier:
+        one: 'Fornecedor'
+        other: 'Fornecedores'
+    attributes:
+      supplier:
+        cnpj: 'CNPJ'
+        name: 'Razão Social'
+        trade_name: 'Nome Fantasia'

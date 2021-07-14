@@ -1,0 +1,9 @@
+<%= form_with model: supplier do |form| %>
+  <%= form.label :cnpj %>
+  <%= form.text_field :cnpj %>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.label :trade_name %>
+  <%= form.text_field :trade_name %>
+  <%= form.submit %>
+<% end %>
