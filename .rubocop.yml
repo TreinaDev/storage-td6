@@ -13,7 +13,6 @@ AllCops:
    - 'script/**/*'
    - 'spec/rails_helper.rb'
    - 'vendor/**/*'
-   - 'spec/**/*'
 
 Style/FrozenStringLiteralComment:
   Enabled: false
