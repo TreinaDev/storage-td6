@@ -17,7 +17,6 @@ describe 'User Register a Supplier' do
   end
 
   it 'cannot be blank' do
-
     visit suppliers_path
     click_on 'Registrar Fornecedor'
     click_on 'Criar Fornecedor'
@@ -25,5 +24,4 @@ describe 'User Register a Supplier' do
     expect(page).to have_content('não pode ficar em branco', count: 3)
     expect(page).to have_content('Não foi possível cadastrar o fornecedor')
   end
-
 end
