@@ -1,0 +1,18 @@
+<%= form_with model: user do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :cpf %>
+    <%= f.text_field :cpf %>
+
+    <%= f.label :registration_code %>
+    <%= f.text_field :registration_code %>
+
+    <%= f.label :warehouse %>
+    <%= f.collection_select :warehouse, warehouses, :id, :name, {}, {} %>
+
+    <%= f.submit 'Criar Usuário' %>
+<% end %>

@@ -1,0 +1,21 @@
+---
+pt-BR:
+  users:
+    index:
+  activerecord:
+    models:
+      user:
+        one: Usuário
+        other: Usuários
+    attributes:
+      user:
+        password: Senha
+        password_confirmation: Confirmação de Senha
+        name: Nome
+        email: Email
+        cpf: CPF
+        registration_code: Matrícula
+        warehouse: Galpão de origem
+      user/role:
+        admin: Administrador
+        user: Funcionário
