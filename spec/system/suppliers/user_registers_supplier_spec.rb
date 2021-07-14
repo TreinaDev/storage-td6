@@ -24,4 +24,16 @@ describe 'User Register a Supplier' do
     expect(page).to have_content('não pode ficar em branco', count: 3)
     expect(page).to have_content('Não foi possível cadastrar o fornecedor')
   end
+
+  it 'cnpj have uniqueness' do
+    create(:supplier, cnpj: '41.617.980/0001-53')
+
+    visit suppliers_path
+    click_on 'Registrar Fornecedor'
+    fill_in 'CNPJ', with: '41.617.980/0001-53'
+    click_on 'Criar Fornecedor'
+
+    expect(page).to have_content('já está em uso')
+    expect(page).to have_content('Não foi possível cadastrar o fornecedor')
+  end
 end
