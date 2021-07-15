@@ -4,6 +4,7 @@ pt-BR:
     domain_not_allowed: domínio não permitido
     index:
       new_user: Criar novo usuário
+      no_warehouse: Sem galpão
     new:
       title: Novo Usuário
       back: Voltar

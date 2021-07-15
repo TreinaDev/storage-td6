@@ -2,6 +2,7 @@ class UsersController < AuthenticationController
   before_action :user_admin, only: %i[new create]
 
   def index
+    @users = User.all
   end
 
   def new

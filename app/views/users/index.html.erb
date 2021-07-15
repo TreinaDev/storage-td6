@@ -1,1 +1,13 @@
 <%= link_to t('.new_user'), new_user_path %>
+
+<% @users.each do |user| %>
+  <div>
+    <p><%= user.name %></p>
+    <p><%= user.registration_code %></p>
+    <% if user.warehouse %>
+      <p><%= user.warehouse.name %></p>
+    <% else %>
+      <p><%= t('.no_warehouse') %></p>
+    <% end %>
+  </div>
+<% end %>

@@ -61,6 +61,5 @@ describe User do
     it { should_not validate_presence_of(:warehouse) }
   end
 
-  # TODO: Colocar i18n
   # TODO: Refatorar usando !let
 end
