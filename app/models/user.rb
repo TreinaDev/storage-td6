@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :registerable, :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
+
   belongs_to :warehouse, optional: true
 
   validates :name, :role, :registration_code, :cpf, presence: true
@@ -9,12 +13,14 @@ class User < ApplicationRecord
   validates :cpf, cpf: true
   validate :domain_check
 
-  enum role: [:user, :admin]
-  before_validation :set_default_password
+  enum role: { user: 0, admin: 1 }
+  before_validation :set_default_password, on: :create
 
   private
+
   def domain_check
     return unless email
+
     errors.add(:email, I18n.t('users.domain_not_allowed')) unless email.end_with?('@mercadores.com.br')
   end
 
@@ -22,8 +28,4 @@ class User < ApplicationRecord
     self.password = cpf
     self.password_confirmation = cpf
   end
-
-  # Include default devise modules. Others available are:
-  # :registerable, :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :recoverable, :rememberable, :validatable
 end

@@ -5,7 +5,8 @@ describe 'Admin creates user' do
     warehouse = create(:warehouse, name: 'Galpão Santa Maria')
     admin = create(:user, role: 'admin')
     create(:user, name: 'Fulano', registration_code: '123457', email: 'fulano@mercadores.com.br', warehouse: warehouse)
-    create(:user, name: 'Ciclano', registration_code: '012345', email: 'ciclano@mercadores.com.br', warehouse: warehouse)
+    create(:user, name: 'Ciclano', registration_code: '012345', email: 'ciclano@mercadores.com.br',
+                  warehouse: warehouse)
     login_as admin
 
     visit users_path

@@ -1,5 +1,5 @@
 class UsersController < AuthenticationController
-  before_action :user_admin, only: %i[new create]
+  before_action :authorize_admin!, only: %i[new create]
 
   def index
     @users = User.all
@@ -21,6 +21,7 @@ class UsersController < AuthenticationController
   end
 
   private
+
   def user_params
     params.require(:user).permit :name, :email, :cpf, :registration_code, :warehouse_id
   end

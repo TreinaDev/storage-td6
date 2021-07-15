@@ -16,7 +16,7 @@ describe User do
     end
 
     context 'enum' do
-      it { should define_enum_for(:role).with_values([:user, :admin]) }
+      it { should define_enum_for(:role).with_values(%i[user admin]) }
     end
 
     context 'cpf' do

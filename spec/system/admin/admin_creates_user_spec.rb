@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin creates user' do
   it 'successfully' do
-    warehouse = create(:warehouse, name: 'Galpão Santa Maria')
+    create(:warehouse, name: 'Galpão Santa Maria')
     admin = create(:user, role: 'admin')
     login_as admin
 
@@ -21,18 +21,16 @@ describe 'Admin creates user' do
   end
 
   it 'and must have valid params' do
-    warehouse = create(:warehouse, name: 'Galpão Santa Maria')
+    create(:warehouse, name: 'Galpão Santa Maria')
     admin = create(:user, role: 'admin')
     login_as admin
-    
+
     visit users_path
     click_on 'Criar novo usuário'
 
-    expect { click_on 'Criar Usuário' }.to_not change { User.count }
+    expect { click_on 'Criar Usuário' }.to_not(change { User.count })
     expect(page).to have_text('não pode ficar em branco', count: 5)
     expect(page).to have_text('domínio não permitido')
-    # TODO: Investigar isso
-    # expect(current_path).to eq(new_user_path)
   end
 
   it 'cannot create if role equal user' do
@@ -40,7 +38,19 @@ describe 'Admin creates user' do
     login_as user_not_admin, scope: :user
     visit new_user_path
 
-    expect(current_path).to eq(new_user_session_path)
+    expect(current_path).to eq(root_path)
     expect(page).to have_text('Você não tem permissão para acessar essa área')
+  end
+
+  it 'cannot create if not signed in' do
+    visit new_user_path
+
+    expect(current_path).to eq(new_user_session_path)
+  end
+
+  it 'cannot create by POST' do
+    post '/users'
+
+    expect(response).to redirect_to(new_user_session_path)
   end
 end

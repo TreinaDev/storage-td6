@@ -8,5 +8,5 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 
 Rails.start()
-/Turbolinks.start()
+//Turbolinks.start()
 ActiveStorage.start()

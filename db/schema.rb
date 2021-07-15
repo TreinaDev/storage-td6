@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_14_203225) do
+ActiveRecord::Schema.define(version: 2021_07_15_201602) do
 
   create_table "items", force: :cascade do |t|
     t.string "code"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2021_07_14_203225) do
     t.string "name"
     t.string "registration_code"
     t.integer "warehouse_id"
+    t.index ["cpf"], name: "index_users_on_cpf", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["warehouse_id"], name: "index_users_on_warehouse_id"
