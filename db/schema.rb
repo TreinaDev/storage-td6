@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_14_203225) do
+ActiveRecord::Schema.define(version: 2021_07_15_205441) do
 
   create_table "items", force: :cascade do |t|
     t.string "code"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_07_14_203225) do
     t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
     t.index ["product_id"], name: "index_items_on_product_id"
     t.index ["supplier_id"], name: "index_items_on_supplier_id"
   end
