@@ -1,7 +1,14 @@
 ---
 pt-BR:
   users:
+    domain_not_allowed: domínio não permitido
     index:
+      new_user: Criar novo usuário
+    new:
+      title: Novo Usuário
+      back: Voltar
+    create:
+      success: Usuário criado com sucesso
   activerecord:
     models:
       user:
@@ -15,7 +22,7 @@ pt-BR:
         email: Email
         cpf: CPF
         registration_code: Matrícula
-        warehouse: Galpão de origem
+        warehouse_id: Galpão de origem
       user/role:
         admin: Administrador
         user: Funcionário

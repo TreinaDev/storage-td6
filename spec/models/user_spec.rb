@@ -34,6 +34,14 @@ describe User do
       it { should_not allow_value('exemplo@mercadoes.com.br').for(:email) }
       it { should_not allow_value('exemplo@mercadores.com').for(:email) }
     end
+
+    context 'password' do
+      it 'password must be equal cpf' do
+        warehouse = create(:warehouse)
+        user = create(:user, cpf: CPF.generate, warehouse: warehouse)
+        expect(user.password).to eq(user.cpf)
+      end
+    end
   end
 
   context 'on create' do

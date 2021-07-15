@@ -10,15 +10,20 @@ class User < ApplicationRecord
   validate :domain_check
 
   enum role: [:user, :admin]
+  before_validation :set_default_password
 
   private
   def domain_check
     return unless email
-    errors.add(:email, 'domínio não permitido') unless email.end_with?('@mercadores.com.br')
+    errors.add(:email, I18n.t('users.domain_not_allowed')) unless email.end_with?('@mercadores.com.br')
+  end
+
+  def set_default_password
+    self.password = cpf
+    self.password_confirmation = cpf
   end
 
   # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  # :registerable, :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :recoverable, :rememberable, :validatable
 end
