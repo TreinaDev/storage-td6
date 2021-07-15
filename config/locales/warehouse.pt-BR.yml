@@ -1,0 +1,17 @@
+---
+pt-BR:
+  warehouses:
+    new:
+      title: 'Novo Galpão'
+    update:
+      title: 'Atualizar Galpão'
+      success: 'Galpão atualizado com sucesso'
+    create:
+      success: 'Galpão cadastrado com sucesso'
+  activerecord:
+    models:
+      warehouse: 'Galpão'
+    attributes:
+      warehouse:
+        name: 'Nome'
+        code: 'Código'
