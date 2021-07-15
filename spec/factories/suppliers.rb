@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :supplier do
-    cnpj { '41.617.980/0001-53' }
+    cnpj { CNPJ.generate(true) }
     name { 'Codeplay SA' }
     trade_name { 'CodePlay' }
   end

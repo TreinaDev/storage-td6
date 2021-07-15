@@ -3,7 +3,7 @@
     <p><h4>Nenhum Fornecedor Cadastrado</h4></p>
 <% else %>
   <% @suppliers.each do |supplier| %>
-    <p>Razão Social <%= supplier.name %></p>
+    <p>Razão Social <%= link_to supplier.name, supplier_path(supplier) %></p>
     <p>Nome Fantasia <%= supplier.trade_name %></p>
     <p>CNPJ <%= supplier.cnpj %></p>
   <% end %>

@@ -1,6 +1,8 @@
 ---
 pt-BR:
   suppliers:
+    new:
+      title: 'Cadastrar Fornecedor'
     create:
       success: 'Fornecedor criado!'
       fail: 'Não foi possível cadastrar o fornecedor'
