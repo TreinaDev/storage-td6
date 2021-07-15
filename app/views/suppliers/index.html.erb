@@ -1,1 +1,14 @@
+<h1>Fornecedores</h1>
+<% if @suppliers.empty? %>
+    <p><h4>Nenhum Fornecedor Cadastrado</h4></p>
+<% else %>
+  <% @suppliers.each do |supplier| %>
+    <p>Razão Social <%= supplier.name %></p>
+    <p>Nome Fantasia <%= supplier.trade_name %></p>
+    <p>CNPJ <%= supplier.cnpj %></p>
+  <% end %>
+<% end %>
+
 <%= link_to 'Registrar Fornecedor', new_supplier_path %>
+
+<%= link_to 'Voltar', root_path %>
