@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_14_203225) do
+ActiveRecord::Schema.define(version: 2021_07_16_200312) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "name"
+    t.integer "number"
+    t.string "district"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.string "addressable_type", null: false
+    t.integer "addressable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+  end
 
   create_table "items", force: :cascade do |t|
     t.string "code"
@@ -47,6 +61,8 @@ ActiveRecord::Schema.define(version: 2021_07_14_203225) do
     t.string "cpf"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "registration_code"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

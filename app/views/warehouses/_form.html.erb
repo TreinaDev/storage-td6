@@ -12,5 +12,19 @@
 <%= f.text_field :name %>
 <%= f.label :code%>
 <%= f.text_field :code %>
+<%= fields_for :address do |a| %>
+  <%= a.label :name %>
+  <%= a.text_field :name %>
+  <%= a.label :number %>
+  <%= a.text_field :number %>
+  <%= a.label :district %>
+  <%= a.text_field :district %>
+  <%= a.label :city %>
+  <%= a.text_field :city %>
+  <%= a.label :state %>
+  <%= a.text_field :state %>
+  <%= a.label :zip_code %>
+  <%= a.text_field :zip_code %>
+<% end %>
 <%= f.submit%>
 <% end %>

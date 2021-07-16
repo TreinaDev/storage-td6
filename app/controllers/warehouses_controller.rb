@@ -5,6 +5,7 @@ class WarehousesController < ApplicationController
 
   def create
     @warehouse = Warehouse.new(warehouse_params)
+    @warehouse.addresses.new(address_params)
     if @warehouse.save
       redirect_to warehouse_path(@warehouse), notice: t('.success')
     else
@@ -17,8 +18,11 @@ class WarehousesController < ApplicationController
   end
 
   private
-
   def warehouse_params
     params.require(:warehouse).permit(:name, :code)
+  end
+
+  def address_params
+    params.require(:address).permit(:name, :number, :district, :city, :state, :zip_code)
   end
 end

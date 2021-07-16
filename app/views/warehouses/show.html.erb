@@ -1,6 +1,13 @@
 <p>Nome:</p>
 <%= @warehouse.name %>
-<p>Código: </p>
-<%= @warehouse.code%>
-
+<p>Código:</p>
+<%= @warehouse.code %>
+<p>Endereço:<p>
+    <% @warehouse.addresses.each do |address| %>
+        <div>
+            <%= address.name %>, <%= address.number %>. <%= address.district %><br>
+            <%= address.city %>, <%= address.state %><br>
+            <%= address.zip_code %>
+        </div><br>
+    <% end %>
 <%= link_to 'Voltar', root_path%>
