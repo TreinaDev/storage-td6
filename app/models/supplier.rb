@@ -3,7 +3,7 @@ class Supplier < ApplicationRecord
   validates :cnpj, uniqueness: true
 
   def set_active
-    active? ? self.active = false : self.active = true
+    self.active = !(self.active)
     save
   end
 end
