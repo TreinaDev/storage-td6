@@ -2,7 +2,7 @@ class Supplier < ApplicationRecord
   validates :name, :cnpj, :trade_name, presence: true
   validates :cnpj, uniqueness: true
 
-  def set_active
+  def switch_allowance
     self.active = !(self.active)
     save
   end

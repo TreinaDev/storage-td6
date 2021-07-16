@@ -23,7 +23,7 @@ class SuppliersController < ApplicationController
   end
 
   def change_active
-    @supplier.set_active
+    @supplier.switch_allowance
     redirect_to @supplier, notice: t('.success')
   end
 
