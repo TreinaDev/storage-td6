@@ -2,4 +2,10 @@
 <p> <%= @supplier.name %> </p>
 <p> <%= @supplier.trade_name %> </p>
 <p> <%= @supplier.cnpj %> </p>
+<p> <%= @supplier.active? ? 'Ativado' : 'Bloqueado' %> </p>
+<% if @supplier.active? %>
+  <p><%= link_to 'Desativar Fornecedor', change_active_supplier_path, method: :put %></p>
+<% else %>
+  <p><%= link_to 'Ativar Fornecedor', change_active_supplier_path, method: :put %></p>
+<% end %>
 <p><%= link_to 'Voltar', suppliers_path %></p>

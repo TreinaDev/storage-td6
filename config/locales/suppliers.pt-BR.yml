@@ -6,6 +6,8 @@ pt-BR:
     create:
       success: 'Fornecedor criado!'
       fail: 'Não foi possível cadastrar o fornecedor'
+    change_active:
+      success: 'Fornecedor alterado com sucesso!'
   activerecord:
     models:
       supplier:
