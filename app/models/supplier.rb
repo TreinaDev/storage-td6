@@ -3,7 +3,7 @@ class Supplier < ApplicationRecord
   validates :cnpj, uniqueness: true
 
   def switch_allowance
-    self.active = !(self.active)
+    self.active = !active
     save
   end
 end
