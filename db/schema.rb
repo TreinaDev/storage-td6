@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_07_16_011016) do
+=======
+ActiveRecord::Schema.define(version: 2021_07_15_201602) do
+>>>>>>> b6135c4e7b70f5245d4253e50e96832fa83c76fc
 
   create_table "items", force: :cascade do |t|
     t.string "code"
@@ -45,12 +49,17 @@ ActiveRecord::Schema.define(version: 2021_07_16_011016) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer "role"
+    t.integer "role", default: 0
     t.string "cpf"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.string "registration_code"
+    t.integer "warehouse_id"
+    t.index ["cpf"], name: "index_users_on_cpf", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["warehouse_id"], name: "index_users_on_warehouse_id"
   end
 
   create_table "warehouses", force: :cascade do |t|
@@ -63,4 +72,5 @@ ActiveRecord::Schema.define(version: 2021_07_16_011016) do
 
   add_foreign_key "items", "products"
   add_foreign_key "items", "suppliers"
+  add_foreign_key "users", "warehouses"
 end
