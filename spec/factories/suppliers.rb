@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :supplier do
-    cnpj { 'MyString' }
-    name { 'MyString' }
-    trade_name { 'MyString' }
+    cnpj { CNPJ.generate(true) }
+    name { 'Codeplay SA' }
+    trade_name { 'CodePlay' }
   end
 end
