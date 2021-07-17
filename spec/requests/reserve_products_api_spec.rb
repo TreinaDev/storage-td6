@@ -22,5 +22,39 @@ describe 'Reserve API' do
       expect(response.body).to include(product.sku)
       expect(response.body).to include('reserved')
     end
+
+    it 'should not found product unregistered' do
+      post '/api/v1/reserve', params: {
+        reserve: {
+          sku: 'AIXRP128',
+          transportadora: 'Transportadora 1',
+          request_number: 125,
+          warehouse: 'Galpão 1'
+        }
+      }
+
+      expect(response).to have_http_status(404)
+      expect(response.content_type).to include('application/json')
+      expect(response.body).to include('Produto não encontrado')
+    end
+
+    it 'should not found unregistered warehouse' do
+      product = create(:product, sku: 'AIXRP128')
+      supplier = create(:supplier)
+      create(:item, code: 'code000001', invoice: 'nf0001', supplier: supplier, product: product)
+
+      post '/api/v1/reserve', params: {
+        reserve: {
+          sku: 'AIXRP128',
+          transportadora: 'Transportadora 1',
+          request_number: 125,
+          warehouse: 'Galpão 1'
+        }
+      }
+
+      expect(response).to have_http_status(404)
+      expect(response.content_type).to include('application/json')
+      expect(response.body).to include('Galpão não encontrado')
+    end
   end
 end
