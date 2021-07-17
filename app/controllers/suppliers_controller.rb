@@ -1,4 +1,4 @@
-class SuppliersController < ApplicationController
+class SuppliersController < AuthenticationController
   before_action :set_supplier, only: %i[show change_active]
 
   def index

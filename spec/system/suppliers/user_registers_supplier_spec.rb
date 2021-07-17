@@ -2,6 +2,10 @@ require 'rails_helper'
 
 describe 'User Register a Supplier' do
   it 'success' do
+    warehouse = create(:warehouse)
+    user = create(:user, warehouse: warehouse)
+
+    login_as user
     visit suppliers_path
     click_on 'Registrar Fornecedor'
     fill_in 'Razão Social', with: 'Codeplay SA'
@@ -17,6 +21,10 @@ describe 'User Register a Supplier' do
   end
 
   it 'cannot be blank' do
+    warehouse = create(:warehouse)
+    user = create(:user, warehouse: warehouse)
+
+    login_as user
     visit suppliers_path
     click_on 'Registrar Fornecedor'
     click_on 'Criar Fornecedor'
@@ -26,6 +34,10 @@ describe 'User Register a Supplier' do
   end
 
   it 'cnpj have uniqueness' do
+    warehouse = create(:warehouse)
+    user = create(:user, warehouse: warehouse)
+
+    login_as user
     create(:supplier, cnpj: '41.617.980/0001-53')
 
     visit suppliers_path
@@ -40,8 +52,11 @@ describe 'User Register a Supplier' do
   end
 
   it 'cnpj must be valid' do
+    warehouse = create(:warehouse)
+    user = create(:user, warehouse: warehouse)
     create(:supplier, cnpj: '41.617.980/0001-53')
 
+    login_as user
     visit suppliers_path
     click_on 'Registrar Fornecedor'
     fill_in 'Razão Social', with: 'Codeplay SA'
@@ -54,8 +69,11 @@ describe 'User Register a Supplier' do
   end
 
   it 'cnpj must be valid' do
+    warehouse = create(:warehouse)
+    user = create(:user, warehouse: warehouse)
     create(:supplier, cnpj: '41.617.980/0001-53')
 
+    login_as user
     visit suppliers_path
     click_on 'Registrar Fornecedor'
     fill_in 'Razão Social', with: 'Codeplay SA'
