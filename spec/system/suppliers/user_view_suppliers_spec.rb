@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe 'User View Suppliers' do
   it 'success' do
-    warehouse = create(:warehouse)
-    user = create(:user, warehouse: warehouse)
     create(:supplier, name: 'Codeplay S.A.',
                       trade_name: 'Codeplay Vendas',
                       cnpj: '42.122.917/9093-10',
@@ -14,7 +12,7 @@ describe 'User View Suppliers' do
                       cnpj: '82.810.502/2387-18',
                       active: true)
 
-    login_as user
+    login_as_user
     visit root_path
     click_on 'Fornecedores'
 
@@ -29,10 +27,7 @@ describe 'User View Suppliers' do
   end
 
   it 'and there is none' do
-    warehouse = create(:warehouse)
-    user = create(:user, warehouse: warehouse)
-
-    login_as user
+    login_as_user
     visit root_path
     click_on 'Fornecedores'
 
@@ -42,14 +37,12 @@ describe 'User View Suppliers' do
   end
 
   it 'and see details from supplier' do
-    warehouse = create(:warehouse)
-    user = create(:user, warehouse: warehouse)
     supplier = create(:supplier, name: 'Codeplay S.A.',
                                  trade_name: 'Codeplay Vendas',
                                  cnpj: '42.122.917/9093-10',
                                  active: true)
 
-    login_as user
+    login_as_user
     visit root_path
     click_on 'Fornecedores'
     click_on 'Codeplay S.A.'
@@ -63,14 +56,12 @@ describe 'User View Suppliers' do
   end
 
   it 'and see details from a blocked supplier' do
-    warehouse = create(:warehouse)
-    user = create(:user, warehouse: warehouse)
     supplier = create(:supplier, name: 'Codeplay S.A.',
                                  trade_name: 'Codeplay Vendas',
                                  cnpj: '42.122.917/9093-10',
                                  active: false)
 
-    login_as user
+    login_as_user
     visit root_path
     click_on 'Fornecedores'
     click_on 'Codeplay S.A.'
