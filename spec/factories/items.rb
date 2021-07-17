@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :item do
-    code { 'MyString' }
+    sequence(:code) { |n| "aeio00000#{n}" }
     invoice { 'MyString' }
-    supplier { nil }
-    product { nil }
+    supplier
+    product
   end
 end
