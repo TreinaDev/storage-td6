@@ -4,4 +4,5 @@ Rails.application.routes.draw do
 
   resources :suppliers, only: %i[index new create show]
   resources :warehouses, only: %i[new show create]
+  resources :users, only: %i[index new create]
 end
