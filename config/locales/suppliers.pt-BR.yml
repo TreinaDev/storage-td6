@@ -1,6 +1,6 @@
 ---
 pt-BR:
-  invalid_message: deve ser válido
+  invalid_message: 'deve ser válido'
   suppliers:
     new:
       title: 'Cadastrar Fornecedor'

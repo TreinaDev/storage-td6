@@ -24,7 +24,8 @@ class SuppliersController < ApplicationController
 
   def change_active
     @supplier.switch_allowance
-    redirect_to @supplier, notice: t('.success')
+    flash[:notice] = t('.success')
+    redirect_to @supplier
   end
 
   private
