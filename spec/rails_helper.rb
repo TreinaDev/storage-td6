@@ -49,11 +49,3 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.example_status_persistence_file_path = 'rspec.txt'
 end
-
-private
-
-private
-
-def parsed_body
-  JSON.parse(response.body)
-end
