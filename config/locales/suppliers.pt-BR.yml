@@ -1,0 +1,21 @@
+---
+pt-BR:
+  invalid_message: 'deve ser válido'
+  suppliers:
+    new:
+      title: 'Cadastrar Fornecedor'
+    create:
+      success: 'Fornecedor criado!'
+      fail: 'Não foi possível cadastrar o fornecedor'
+    change_active:
+      success: 'Fornecedor alterado com sucesso!'
+  activerecord:
+    models:
+      supplier:
+        one: 'Fornecedor'
+        other: 'Fornecedores'
+    attributes:
+      supplier:
+        cnpj: 'CNPJ'
+        name: 'Razão Social'
+        trade_name: 'Nome Fantasia'
