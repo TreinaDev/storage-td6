@@ -30,6 +30,8 @@ describe 'User Register a Supplier' do
 
     visit suppliers_path
     click_on 'Registrar Fornecedor'
+    fill_in 'Razão Social', with: 'Codeplay SA'
+    fill_in 'Nome Fantasia', with: 'CodePlay'
     fill_in 'CNPJ', with: '41.617.980/0001-53'
     click_on 'Criar Fornecedor'
 

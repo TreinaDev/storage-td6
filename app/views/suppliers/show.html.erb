@@ -1,8 +1,19 @@
 <h1>Fornecedor</h1>
-<p> <%= @supplier.name %> </p>
-<p> <%= @supplier.trade_name %> </p>
-<p> <%= @supplier.cnpj %> </p>
-<p> <%= @supplier.active? ? 'Ativado' : 'Bloqueado' %> </p>
+<ul>
+  <li>
+  <p> Razão Social: <%= @supplier.name %> </p>
+  </li>
+  <li>
+  <p> Nome Fantasia: <%= @supplier.trade_name %> </p>
+  </li>
+  <li>
+  <p> CNPJ: <%= @supplier.cnpj %> </p>
+  </li>
+  <li>
+  <p> Situação: <%= @supplier.active? ? 'Ativado' : 'Bloqueado' %> </p>
+  </li>
+</ul>
+
 <% if @supplier.active? %>
   <p><%= link_to 'Desativar Fornecedor', change_active_supplier_path, method: :put %></p>
 <% else %>
