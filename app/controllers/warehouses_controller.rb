@@ -1,4 +1,6 @@
-class WarehousesController < ApplicationController
+class WarehousesController < AuthenticationController
+  before_action :authorize_admin!, only: %i[new create]
+
   def new
     @warehouse = Warehouse.new
   end
