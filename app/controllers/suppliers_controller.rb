@@ -1,11 +1,11 @@
 class SuppliersController < ApplicationController
+  before_action :set_supplier, only: %i[show change_active]
+
   def index
     @suppliers = Supplier.all
   end
 
-  def show
-    @supplier = Supplier.find(params[:id])
-  end
+  def show; end
 
   def new
     @supplier = Supplier.new
@@ -22,9 +22,19 @@ class SuppliersController < ApplicationController
     end
   end
 
+  def change_active
+    @supplier.switch_allowance
+    flash[:notice] = t('.success')
+    redirect_to @supplier
+  end
+
   private
 
   def supplier_params
     params.require(:supplier).permit(:name, :cnpj, :trade_name)
+  end
+
+  def set_supplier
+    @supplier = Supplier.find(params[:id])
   end
 end

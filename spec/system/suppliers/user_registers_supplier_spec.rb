@@ -30,10 +30,40 @@ describe 'User Register a Supplier' do
 
     visit suppliers_path
     click_on 'Registrar Fornecedor'
+    fill_in 'Razão Social', with: 'Codeplay SA'
+    fill_in 'Nome Fantasia', with: 'CodePlay'
     fill_in 'CNPJ', with: '41.617.980/0001-53'
     click_on 'Criar Fornecedor'
 
     expect(page).to have_content('já está em uso')
+    expect(page).to have_content('Não foi possível cadastrar o fornecedor')
+  end
+
+  it 'cnpj must be valid' do
+    create(:supplier, cnpj: '41.617.980/0001-53')
+
+    visit suppliers_path
+    click_on 'Registrar Fornecedor'
+    fill_in 'Razão Social', with: 'Codeplay SA'
+    fill_in 'Nome Fantasia', with: 'CodePlay'
+    fill_in 'CNPJ', with: 'fasdfasdfasdf'
+    click_on 'Criar Fornecedor'
+
+    expect(page).to have_content('deve ser válido')
+    expect(page).to have_content('Não foi possível cadastrar o fornecedor')
+  end
+
+  it 'cnpj must be valid' do
+    create(:supplier, cnpj: '41.617.980/0001-53')
+
+    visit suppliers_path
+    click_on 'Registrar Fornecedor'
+    fill_in 'Razão Social', with: 'Codeplay SA'
+    fill_in 'Nome Fantasia', with: 'CodePlay'
+    fill_in 'CNPJ', with: '41.343.980/0001-53'
+    click_on 'Criar Fornecedor'
+
+    expect(page).to have_content('deve ser válido')
     expect(page).to have_content('Não foi possível cadastrar o fornecedor')
   end
 end
