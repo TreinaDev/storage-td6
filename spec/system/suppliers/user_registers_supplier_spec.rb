@@ -84,4 +84,11 @@ describe 'User Register a Supplier' do
     expect(page).to have_content('deve ser válido')
     expect(page).to have_content('Não foi possível cadastrar o fornecedor')
   end
+
+  it 'must be logged in to register a supplier through route' do
+    visit new_supplier_path
+
+    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se.')
+  end
 end

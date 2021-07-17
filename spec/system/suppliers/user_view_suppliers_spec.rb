@@ -82,4 +82,20 @@ describe 'User View Suppliers' do
     expect(page).to have_content('Bloqueado')
     expect(page).to have_link('Voltar', href: suppliers_path)
   end
+
+  it 'must be logged in to view suppliers through route' do
+    visit suppliers_path
+
+    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se.')
+  end
+
+  it 'must be logged in to view details from a supplier through route' do
+    supplier = create(:supplier)
+
+    visit supplier_path(supplier)
+
+    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se.')
+  end
 end
