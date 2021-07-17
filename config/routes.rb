@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :suppliers, only: %i[index new create show] do
-    put :change_active, on: :member
+    post :change_active, on: :member
   end
 
   resources :warehouses, only: %i[new show create]
