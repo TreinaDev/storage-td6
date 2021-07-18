@@ -1,3 +1,12 @@
-<h1>Fornecedores</h1>
+<% if @products.empty? %>
+  <h3>Nenhum Produto Cadastrado</h3>
+<% else %>
+  <h1><%= t('.title') %></h1>
+<% end %>
 
 <%= link_to 'Cadastrar Produto', new_product_path %>
+<%= link_to 'Voltar', root_path %>
+
+<%= @products.each do |product| %>
+  <h4>SKU: <%= link_to product.sku, product_path(product) %></h4>
+<% end %>

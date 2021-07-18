@@ -8,6 +8,8 @@ pt-BR:
       fail: 'Não foi possível cadastrar o Produto'
     show:
       title: 'Produto'
+    index:
+      title: 'Produtos'
   activerecord:
     models:
       product:
