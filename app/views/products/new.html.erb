@@ -1,0 +1,17 @@
+<% if @product.errors.any? %>
+  <p>Foram encontrados <%= @product.errors.count %> erro(s):</p>
+  <ul>
+    <% @product.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<h1><%= t('.title') %></h1>
+
+<%= form_with model: @product do |form| %>
+  <p> <%= form.label :sku %> </p>
+  <p> <%= form.text_field :sku %> </p>
+
+  <p> <%= form.submit %> </p>
+<% end %>

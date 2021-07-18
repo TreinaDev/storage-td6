@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_011016) do
+ActiveRecord::Schema.define(version: 2021_07_18_013459) do
 
   create_table "items", force: :cascade do |t|
     t.string "code"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_07_16_011016) do
     t.string "sku"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["sku"], name: "index_products_on_sku", unique: true
   end
 
   create_table "suppliers", force: :cascade do |t|
