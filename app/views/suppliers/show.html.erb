@@ -12,6 +12,17 @@
   <li>
   <p> Situação: <%= @supplier.active? ? 'Ativado' : 'Bloqueado' %> </p>
   </li>
+  <li>
+  <p>Endereço:<p>
+    <% @supplier.addresses.each do |address| %>
+        <div>
+            <%= address.name %>, <%= address.number %>. <%= address.district %><br>
+            <%= address.city %>, <%= address.state %><br>
+            <%= address.zip_code %>
+            <%= address.latitude %> , <%= address.longitude %>
+        </div><br>
+    <% end %>
+  </li>
 </ul>
 
 <% if @supplier.active? %>

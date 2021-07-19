@@ -4,5 +4,5 @@ class Warehouse < ApplicationRecord
     validates :code, uniqueness: true, length: { is: 4 }
   end
 
-  has_many :addresses, as: :addressable
+  has_many :addresses, as: :addressable, dependent: :destroy
 end

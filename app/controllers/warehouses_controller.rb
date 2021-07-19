@@ -18,6 +18,7 @@ class WarehousesController < ApplicationController
   end
 
   private
+
   def warehouse_params
     params.require(:warehouse).permit(:name, :code)
   end

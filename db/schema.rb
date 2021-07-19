@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_16_200312) do
+ActiveRecord::Schema.define(version: 2021_07_19_213416) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2021_07_16_200312) do
     t.integer "addressable_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "latitude"
+    t.decimal "longitude"
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
   end
 

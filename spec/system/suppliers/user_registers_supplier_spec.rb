@@ -7,12 +7,26 @@ describe 'User Register a Supplier' do
     fill_in 'Razão Social', with: 'Codeplay SA'
     fill_in 'Nome Fantasia', with: 'CodePlay'
     fill_in 'CNPJ', with: '41.617.980/0001-53'
+    fill_in 'Endereço', with: 'Alameda Santos'
+    fill_in 'Número', with: '1293'
+    fill_in 'Bairro', with: 'Jardim Paulista'
+    fill_in 'Cidade', with: 'São Paulo'
+    fill_in 'Estado', with: 'SP'
+    fill_in 'CEP', with: '01419002'
     click_on 'Criar Fornecedor'
 
     expect(page).to have_content('Fornecedor criado!')
     expect(page).to have_content('Codeplay SA')
     expect(page).to have_content('CodePlay')
     expect(page).to have_content('41.617.980/0001-53')
+    expect(page).to have_content('Alameda Santos')
+    expect(page).to have_content('1293')
+    expect(page).to have_content('Jardim Paulista')
+    expect(page).to have_content('São Paulo')
+    expect(page).to have_content('SP')
+    expect(page).to have_content('01419002')
+    expect(page).to have_content('-23.5672582')
+    expect(page).to have_content('-46.651529')
     expect(page).to have_link('Voltar', href: suppliers_path)
   end
 
@@ -21,7 +35,7 @@ describe 'User Register a Supplier' do
     click_on 'Registrar Fornecedor'
     click_on 'Criar Fornecedor'
 
-    expect(page).to have_content('não pode ficar em branco', count: 3)
+    expect(page).to have_content('não pode ficar em branco', count: 8)
     expect(page).to have_content('Não foi possível cadastrar o fornecedor')
   end
 

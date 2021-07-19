@@ -4,6 +4,11 @@
     <% supplier.errors.full_messages.each do |error| %>
       <li><%= error %></li>
     <% end %>
+    <% supplier.addresses.each do |address| %>
+        <% address.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+    <% end %>
   </ul>
 <% end %>
 
@@ -14,5 +19,19 @@
   <%= form.text_field :name %>
   <%= form.label :trade_name %>
   <%= form.text_field :trade_name %>
+  <%= fields_for :address do |address_form| %>
+    <%= address_form.label :name, Address.human_attribute_name("name") %>
+    <%= address_form.text_field :name %>
+    <%= address_form.label :number, Address.human_attribute_name("number") %>
+    <%= address_form.text_field :number %>
+    <%= address_form.label :district, Address.human_attribute_name("district") %>
+    <%= address_form.text_field :district %>
+    <%= address_form.label :city, Address.human_attribute_name("city")  %>
+    <%= address_form.text_field :city %>
+    <%= address_form.label :state, Address.human_attribute_name("state")  %>
+    <%= address_form.text_field :state %>
+    <%= address_form.label :zip_code, Address.human_attribute_name("zip_code")  %>
+    <%= address_form.text_field :zip_code %>
+  <% end %>
   <%= form.submit %>
 <% end %>
