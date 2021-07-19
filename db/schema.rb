@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_225242) do
+ActiveRecord::Schema.define(version: 2021_07_19_231331) do
 
   create_table "items", force: :cascade do |t|
     t.string "code"
-    t.string "invoice"
     t.integer "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sku"
+    t.integer "product_entry_id", null: false
+    t.string "warehouse_belongs_to"
+    t.index ["product_entry_id"], name: "index_items_on_product_entry_id"
+    t.index ["sku"], name: "index_items_on_sku", unique: true
     t.index ["supplier_id"], name: "index_items_on_supplier_id"
   end
 
@@ -71,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_07_19_225242) do
     t.index ["code"], name: "index_warehouses_on_code", unique: true
   end
 
+  add_foreign_key "items", "product_entries"
   add_foreign_key "items", "suppliers"
   add_foreign_key "product_entries", "suppliers"
   add_foreign_key "product_entries", "warehouses"
