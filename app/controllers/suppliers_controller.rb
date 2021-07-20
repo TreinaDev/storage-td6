@@ -13,6 +13,7 @@ class SuppliersController < AuthenticationController
 
   def create
     @supplier = Supplier.new(supplier_params)
+    @supplier.addresses.new(address_params)
     if @supplier.save
       flash[:notice] = t('.success')
       redirect_to @supplier
@@ -36,5 +37,9 @@ class SuppliersController < AuthenticationController
 
   def set_supplier
     @supplier = Supplier.find(params[:id])
+  end
+
+  def address_params
+    params.require(:address).permit(:name, :number, :district, :city, :state, :zip_code)
   end
 end

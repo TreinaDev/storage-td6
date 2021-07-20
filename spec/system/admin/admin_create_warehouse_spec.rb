@@ -7,11 +7,26 @@ describe 'Admin should create Warehouse' do
 
     fill_in 'Código', with: 'aeio'
     fill_in 'Nome', with: 'Galpão 1'
+    fill_in 'Endereço', with: 'Alameda Santos'
+    fill_in 'Número', with: '1293'
+    fill_in 'Bairro', with: 'Jardim Paulista'
+    fill_in 'Cidade', with: 'São Paulo'
+    fill_in 'Estado', with: 'SP'
+    fill_in 'CEP', with: '01419002'
+
     click_on 'Criar Galpão'
 
     expect(page).to have_content('Galpão 1')
     expect(page).to have_content('aeio')
     expect(page).to have_content('Galpão cadastrado com sucesso')
+    expect(page).to have_content('Alameda Santos')
+    expect(page).to have_content('1293')
+    expect(page).to have_content('Jardim Paulista')
+    expect(page).to have_content('São Paulo')
+    expect(page).to have_content('SP')
+    expect(page).to have_content('01419002')
+    expect(page).to have_content('-23.5672582')
+    expect(page).to have_content('-46.651529')
   end
 
   it 'code must be unique' do
@@ -46,7 +61,7 @@ describe 'Admin should create Warehouse' do
     click_on 'Criar Galpão'
 
     expect(page).to have_content('Novo Galpão')
-    expect(page).to have_content('não pode ficar em branco', count: 2)
+    expect(page).to have_content('não pode ficar em branco', count: 7)
   end
 
   it 'and return to home page' do
