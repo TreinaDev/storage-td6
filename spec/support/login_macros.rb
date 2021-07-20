@@ -4,7 +4,6 @@ module LoginMacros
   end
 
   def login_as_user
-    create(:supplier)
     warehouse = create(:warehouse)
     user = create(:user, warehouse: warehouse)
 

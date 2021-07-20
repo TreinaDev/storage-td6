@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'User register product entry' do
   it 'success' do
+    create(:supplier)
+
     login_as_user
     visit root_path
     click_on 'Produtos'
