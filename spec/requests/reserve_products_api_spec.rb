@@ -10,7 +10,7 @@ describe 'Reserve API' do
       post '/api/v1/reserve', params: {
         reserve: {
           sku: product.sku,
-          transportadora: 'Transportadora 1',
+          shipping_company: 'Transportadora 1',
           request_number: 125,
           warehouse: 'Galpão 1'
         }
@@ -27,7 +27,7 @@ describe 'Reserve API' do
       post '/api/v1/reserve', params: {
         reserve: {
           sku: 'AIXRP128',
-          transportadora: 'Transportadora 1',
+          shipping_company: 'Transportadora 1',
           request_number: 125,
           warehouse: 'Galpão 1'
         }
@@ -46,7 +46,7 @@ describe 'Reserve API' do
       post '/api/v1/reserve', params: {
         reserve: {
           sku: 'AIXRP128',
-          transportadora: 'Transportadora 1',
+          shipping_company: 'Transportadora 1',
           request_number: 125,
           warehouse: 'Galpão 1'
         }
@@ -55,6 +55,18 @@ describe 'Reserve API' do
       expect(response).to have_http_status(404)
       expect(response.content_type).to include('application/json')
       expect(response.body).to include('Galpão não encontrado')
+    end
+
+    it 'should not accept without valid params' do
+      post '/api/v1/reserve', params: {
+        reserve: {
+        }
+      }
+
+      expect(response).to have_http_status(412)
+      expect(response.body).to include(
+        'parece que você não enviou nenhum parametro ou o valor é vazio, preencha e envie novamente'
+      )
     end
   end
 end

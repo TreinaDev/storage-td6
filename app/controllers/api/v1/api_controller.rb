@@ -10,22 +10,15 @@ class Api::V1::ApiController < ActionController::API
   end
 
   def not_found(exception)
-    render json: { message: "#{model_name(exception.model)} não encontrado" }, status: :not_found
+    render json: { message: I18n.t('activerecord.errors.not_found',
+                                   model_name: exception.model.constantize.model_name.human) },
+           status: :not_found
   end
 
   def parameter_missing
     render json:
                 { errors:
-                  'parece que você não enviou nenhum parametro ou o valor é vazio, preencha e envie novamente.' },
+                  I18n.t('activerecord.errors.parameter_missing') },
            status: :precondition_failed
-  end
-
-  def model_name(name)
-    case name
-    when 'Warehouse'
-      'Galpão'
-    when 'Product'
-      'Produto'
-    end
   end
 end
