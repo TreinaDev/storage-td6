@@ -58,4 +58,19 @@ describe 'User register product entry' do
     expect(page).to have_content('já está em uso')
     expect(page).to have_link('Voltar', href: product_entries_path)
   end
+
+  it 'must be logged in to register a product entry' do
+    visit root_path
+    click_on 'Produtos'
+
+    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se.')
+  end
+
+  it 'must be logged in to register a product entry through route' do
+    visit product_entries_path
+
+    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se.')
+  end
 end
