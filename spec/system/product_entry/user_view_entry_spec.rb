@@ -42,10 +42,7 @@ describe 'User View Products Entry' do
   end
 
   it 'and there is none' do
-    warehouse = create(:warehouse)
-    user = create(:user, warehouse: warehouse)
-
-    login_as user
+    login_as_user
     visit root_path
     click_on 'Produtos'
 

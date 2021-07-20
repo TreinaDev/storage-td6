@@ -2,11 +2,7 @@ require 'rails_helper'
 
 describe 'User register product entry' do
   it 'success' do
-    create(:supplier)
-    warehouse = create(:warehouse)
-    user = create(:user, warehouse: warehouse)
-
-    login_as user
+    login_as_user
     visit root_path
     click_on 'Produtos'
     click_on 'Adicionar Entrada'
@@ -24,11 +20,7 @@ describe 'User register product entry' do
   end
 
   it 'cannot be blank' do
-    create(:supplier)
-    warehouse = create(:warehouse)
-    user = create(:user, warehouse: warehouse)
-
-    login_as user
+    login_as_user
     visit root_path
     click_on 'Produtos'
     click_on 'Adicionar Entrada'
