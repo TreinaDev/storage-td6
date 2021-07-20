@@ -1,0 +1,50 @@
+name: Code Pipeline
+
+env:
+  RUBY_VERSION: 3.0.1
+  NODE_VERSION: 14.17.3
+  BUNDLER_VERSION: 2.2.15
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup System
+        run: sudo apt-get install -y libsqlite3-dev
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+    
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+ 
+      - name: Yarn Install
+        run: bin/yarn
+
+      - name: Rspec
+        run: |
+          bundle exec rails db:prepare
+          bundle exec rspec
+
+      - name: Rubocop
+        run: bundle exec rubocop -c .rubocop.yml
+
+      - name: Audit
+        run: |
+          gem install bundler-audit
+          bundle-audit --update
+        continue-on-error: true

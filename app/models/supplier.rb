@@ -1,4 +1,5 @@
 class Supplier < ApplicationRecord
+  has_many :addresses, as: :addressable, dependent: :destroy
   validates :name, :cnpj, :trade_name, presence: true
   validates :cnpj, uniqueness: true
   validates :cnpj, length: { is: 18 }
