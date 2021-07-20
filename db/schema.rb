@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(version: 2021_07_19_231331) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "sku"
     t.integer "product_entry_id", null: false
-    t.string "warehouse_belongs_to"
+    t.integer "warehouse_id", null: false
     t.index ["product_entry_id"], name: "index_items_on_product_entry_id"
     t.index ["sku"], name: "index_items_on_sku", unique: true
     t.index ["supplier_id"], name: "index_items_on_supplier_id"
+    t.index ["warehouse_id"], name: "index_items_on_warehouse_id"
   end
 
   create_table "product_entries", force: :cascade do |t|
@@ -77,6 +78,7 @@ ActiveRecord::Schema.define(version: 2021_07_19_231331) do
 
   add_foreign_key "items", "product_entries"
   add_foreign_key "items", "suppliers"
+  add_foreign_key "items", "warehouses"
   add_foreign_key "product_entries", "suppliers"
   add_foreign_key "product_entries", "warehouses"
   add_foreign_key "users", "warehouses"
