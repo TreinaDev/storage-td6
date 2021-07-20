@@ -4,13 +4,32 @@
     <% warehouse.errors.full_messages.each do |error| %>
       <li><%= error %></li>
     <% end %>
+    <% warehouse.addresses.each do |address| %>
+        <% address.errors.full_messages.each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+    <% end %>
   </ul>
 <% end %>
 
-<%= form_with model: warehouse do |f| %>
-<%= f.label :name  %>
-<%= f.text_field :name %>
-<%= f.label :code%>
-<%= f.text_field :code %>
-<%= f.submit%>
+<%= form_with model: warehouse do |form| %>
+<%= form.label :name  %>
+<%= form.text_field :name %>
+<%= form.label :code%>
+<%= form.text_field :code %>
+<%= fields_for :address do |address_form| %>
+  <%= address_form.label :name, Address.human_attribute_name("name") %>
+  <%= address_form.text_field :name %>
+  <%= address_form.label :number, Address.human_attribute_name("number") %>
+  <%= address_form.text_field :number %>
+  <%= address_form.label :district, Address.human_attribute_name("district") %>
+  <%= address_form.text_field :district %>
+  <%= address_form.label :city, Address.human_attribute_name("city")  %>
+  <%= address_form.text_field :city %>
+  <%= address_form.label :state, Address.human_attribute_name("state")  %>
+  <%= address_form.text_field :state %>
+  <%= address_form.label :zip_code, Address.human_attribute_name("zip_code")  %>
+  <%= address_form.text_field :zip_code %>
+<% end %>
+<%= form.submit%>
 <% end %>
