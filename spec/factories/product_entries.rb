@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :product_entry do
-    sku { 'MyString' }
-    invoice { 'MyString' }
-    quantity { 1 }
+    sku { 'abc123' }
+    invoice { '123654' }
+    quantity { 2 }
     supplier
     warehouse
   end

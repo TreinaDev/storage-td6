@@ -2,6 +2,10 @@
 pt-BR:
   invalid_message: 'deve ser válido'
   product_entries:
+    index:
+      title: 'Entrada de Produtos'
+    show:
+      title: 'Entrada de Produto'
     new:
       title: 'Cadastrar Entrada de produto'
     create:
