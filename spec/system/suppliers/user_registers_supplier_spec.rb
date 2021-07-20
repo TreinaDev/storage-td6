@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'User Register a Supplier' do
   it 'success' do
+    login_as_user
     visit suppliers_path
     click_on 'Registrar Fornecedor'
     fill_in 'Razão Social', with: 'Codeplay SA'
@@ -17,6 +18,7 @@ describe 'User Register a Supplier' do
   end
 
   it 'cannot be blank' do
+    login_as_user
     visit suppliers_path
     click_on 'Registrar Fornecedor'
     click_on 'Criar Fornecedor'
@@ -26,6 +28,7 @@ describe 'User Register a Supplier' do
   end
 
   it 'cnpj have uniqueness' do
+    login_as_user
     create(:supplier, cnpj: '41.617.980/0001-53')
 
     visit suppliers_path
@@ -42,6 +45,7 @@ describe 'User Register a Supplier' do
   it 'cnpj must be valid' do
     create(:supplier, cnpj: '41.617.980/0001-53')
 
+    login_as_user
     visit suppliers_path
     click_on 'Registrar Fornecedor'
     fill_in 'Razão Social', with: 'Codeplay SA'
@@ -56,6 +60,7 @@ describe 'User Register a Supplier' do
   it 'cnpj must be valid' do
     create(:supplier, cnpj: '41.617.980/0001-53')
 
+    login_as_user
     visit suppliers_path
     click_on 'Registrar Fornecedor'
     fill_in 'Razão Social', with: 'Codeplay SA'
@@ -65,5 +70,12 @@ describe 'User Register a Supplier' do
 
     expect(page).to have_content('deve ser válido')
     expect(page).to have_content('Não foi possível cadastrar o fornecedor')
+  end
+
+  it 'must be logged in to register a supplier through route' do
+    visit new_supplier_path
+
+    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content('Para continuar, efetue login ou registre-se.')
   end
 end
