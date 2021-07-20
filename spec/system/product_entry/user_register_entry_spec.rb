@@ -16,7 +16,6 @@ describe 'User register product entry' do
 
     expect(page).to have_content('abc123')
     expect(page).to have_content('123654')
-    expect(page).to have_content('10')
     expect(page).to have_content('Código do Fornecedor: 1')
     expect(page).to have_link('Voltar', href: product_entries_path)
   end
@@ -66,5 +65,20 @@ describe 'User register product entry' do
 
     expect(current_path).to eq(new_user_session_path)
     expect(page).to have_content('Para continuar, efetue login ou registre-se.')
+  end
+
+  it 'must be logged in to register a product entry through request' do
+    post '/product_entries', params: {
+                                        product_entry:
+                                        {
+                                          sku: 1,
+                                          invoice: 1,
+                                          quantity: 10,
+                                          supplier_id: 1,
+                                          warehouse_id: 1
+                                        }
+                                      }
+
+    expect(response).to redirect_to new_user_session_path
   end
 end
