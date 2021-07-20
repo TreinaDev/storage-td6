@@ -1,0 +1,13 @@
+<h1><%= t('.title') %></h1>
+
+<% if @product_entry.empty? %>
+  <h3>Nenhuma Entrada de Produto</h3>
+<% end %>
+
+<%= @product_entry.each do |entry| %>
+  <p>SKU: <%= entry.sku %></p>
+  <p>Quantidade <%= entry.quantity %></p>
+  <p>Data de Entrada: <%= entry.created_at %></p>
+<% end %>
+
+<p><%= link_to 'Adicionar Entrada', new_product_entry_path %></p>

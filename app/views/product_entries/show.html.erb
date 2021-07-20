@@ -1,0 +1,17 @@
+<h1><%= t('.titile') %></h1>
+<ul>
+  <li>
+    <p>SKU: <%= @product_entry.sku %></p>
+  </li>
+  <li>
+    <p>Quantidade: <%= @product_entry.quantity %></p>
+  </li>
+  <li>
+    <p>Nota Fiscal: <%= @product_entry.invoice %></p>
+  </li>
+  <li>
+    <p>Código do Fornecedor: <%= @product_entry.supplier_id %></p>
+  </li>
+</ul>
+
+<%= link_to 'Voltar', product_entries_path %>
