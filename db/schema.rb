@@ -12,6 +12,22 @@
 
 ActiveRecord::Schema.define(version: 2021_07_19_231331) do
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "name"
+    t.integer "number"
+    t.string "district"
+    t.string "city"
+    t.string "state"
+    t.string "zip_code"
+    t.string "addressable_type", null: false
+    t.integer "addressable_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "code"
     t.integer "supplier_id", null: false

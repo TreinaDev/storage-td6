@@ -7,6 +7,7 @@ describe 'User block supplier' do
                       cnpj: '29.317.821/0001-38',
                       active: true)
 
+    login_as_user
     visit root_path
     click_on 'Fornecedores'
     click_on 'Codeplay S.A.'
@@ -27,6 +28,7 @@ describe 'User block supplier' do
                       cnpj: '29.317.821/0001-38',
                       active: false)
 
+    login_as_user
     visit root_path
     click_on 'Fornecedores'
     click_on 'Codeplay S.A.'
