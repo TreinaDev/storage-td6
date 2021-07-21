@@ -41,5 +41,10 @@ resposta:
     lat: -12.980587,
     lon: -38.494138
   },
+  {
+    warehouse_code: CD34,
+    lat: -11.980587,
+    lon: -39.494138
+  }
 ]
 ```

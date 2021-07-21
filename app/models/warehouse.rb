@@ -8,7 +8,7 @@ class Warehouse < ApplicationRecord
   has_many :product_warehouses, dependent: :destroy
   has_many :products, through: :product_warehouses
 
-  def to_api
+  def as_json(_options = {})
     {
       warehouse_code: code,
       lat: addresses.first.latitude,
