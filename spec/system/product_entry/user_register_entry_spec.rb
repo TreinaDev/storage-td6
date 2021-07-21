@@ -81,4 +81,13 @@ describe 'User register product entry' do
 
     expect(response).to redirect_to new_user_session_path
   end
+
+  it 'must create items' do
+    warehouse = create(:warehouse, code: 'abcd')
+    supplier = create(:supplier)
+    create(:product_entry, quantity: 10, warehouse: warehouse, supplier: supplier)
+
+    expect(Items.count).to eq(10)
+    expect(Items.last.code).to eq('abcd000010')
+  end
 end
