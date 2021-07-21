@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_20_202613) do
+ActiveRecord::Schema.define(version: 2021_07_21_001443) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2021_07_20_202613) do
     t.integer "status", default: 0
     t.index ["product_id"], name: "index_items_on_product_id"
     t.index ["supplier_id"], name: "index_items_on_supplier_id"
+  end
+
+  create_table "product_warehouses", force: :cascade do |t|
+    t.integer "warehouse_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id", "warehouse_id"], name: "index_product_warehouses_on_product_id_and_warehouse_id", unique: true
+    t.index ["product_id"], name: "index_product_warehouses_on_product_id"
+    t.index ["warehouse_id"], name: "index_product_warehouses_on_warehouse_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -95,6 +105,8 @@ ActiveRecord::Schema.define(version: 2021_07_20_202613) do
 
   add_foreign_key "items", "products"
   add_foreign_key "items", "suppliers"
+  add_foreign_key "product_warehouses", "products"
+  add_foreign_key "product_warehouses", "warehouses"
   add_foreign_key "reserve_logs", "items"
   add_foreign_key "users", "warehouses"
 end

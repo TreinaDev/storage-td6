@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       post 'reserve', param: :sku, to: 'items#reserve'
+      namespace :freightage do
+        resources :warehouses, only: %i[] do 
+          get ':sku', on: :collection, param: :sku, to: 'warehouses#list'
+        end
+      end
     end
   end
 end
