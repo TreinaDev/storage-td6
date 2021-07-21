@@ -9,8 +9,25 @@ class ProductEntry < ApplicationRecord
 
   after_create :create_items
 
+  private
+
   def create_items
-    #warehouse = Warehouse.find(self.warehouse_id)
-    binding.pry
+    (1..self.quantity).each do |item|
+      item = Item.new(sku: self.sku,
+                      product_entry: self,
+                      supplier: self.supplier,
+                      warehouse: self.warehouse)
+      last_code = Item.last.code if Item.last && Item.where(warehouse: self.warehouse)
+      item.code = generate_last_code(last_code)
+      item.save
+    end
+  end
+
+  def generate_last_code(last_code)
+    if last_code
+      last_code.succ
+    else
+      "#{self.warehouse.code}#{'1'.rjust(10 - self.warehouse.code.size, '0')}"
+    end
   end
 end

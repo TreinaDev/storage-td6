@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_231331) do
+ActiveRecord::Schema.define(version: 2021_07_21_024603) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -33,11 +33,11 @@ ActiveRecord::Schema.define(version: 2021_07_19_231331) do
     t.integer "supplier_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "sku"
     t.integer "product_entry_id", null: false
     t.integer "warehouse_id", null: false
+    t.string "sku"
     t.index ["product_entry_id"], name: "index_items_on_product_entry_id"
-    t.index ["sku"], name: "index_items_on_sku", unique: true
+    t.index ["sku"], name: "index_items_on_sku"
     t.index ["supplier_id"], name: "index_items_on_supplier_id"
     t.index ["warehouse_id"], name: "index_items_on_warehouse_id"
   end
