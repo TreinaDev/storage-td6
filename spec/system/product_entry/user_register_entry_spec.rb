@@ -87,7 +87,7 @@ describe 'User register product entry' do
     supplier = create(:supplier)
     create(:product_entry, quantity: 10, warehouse: warehouse, supplier: supplier)
 
-    expect(Items.count).to eq(10)
-    expect(Items.last.code).to eq('abcd000010')
+    expect(Item.count).to eq(10)
+    expect(Item.last.code).to eq('abcd000010')
   end
 end

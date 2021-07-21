@@ -6,4 +6,11 @@ class ProductEntry < ApplicationRecord
 
   validates :invoice, :sku, :quantity, presence: true
   validates :sku, uniqueness: true
+
+  after_create :create_items
+
+  def create_items
+    #warehouse = Warehouse.find(self.warehouse_id)
+    binding.pry
+  end
 end
