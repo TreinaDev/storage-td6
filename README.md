@@ -22,3 +22,24 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+
+# API
+
+## Consulta de galpões que possuem um produto
+
+```
+GET '/api/v1/freightage/warehouses/:sku'
+```
+
+resposta:
+
+```json
+[
+  {
+    warehouse_code: AB12,
+    lat: -12.980587,
+    lon: -38.494138
+  },
+]
+```
