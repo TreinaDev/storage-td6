@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_19_213416) do
+ActiveRecord::Schema.define(version: 2021_07_20_202613) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_07_19_213416) do
     t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "status", default: 0
     t.index ["product_id"], name: "index_items_on_product_id"
     t.index ["supplier_id"], name: "index_items_on_supplier_id"
   end
@@ -43,6 +44,16 @@ ActiveRecord::Schema.define(version: 2021_07_19_213416) do
     t.string "sku"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reserve_logs", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.string "shipping_company"
+    t.integer "request_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "sku"
+    t.index ["item_id"], name: "index_reserve_logs_on_item_id"
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -84,5 +95,6 @@ ActiveRecord::Schema.define(version: 2021_07_19_213416) do
 
   add_foreign_key "items", "products"
   add_foreign_key "items", "suppliers"
+  add_foreign_key "reserve_logs", "items"
   add_foreign_key "users", "warehouses"
 end

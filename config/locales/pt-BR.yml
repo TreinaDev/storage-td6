@@ -7,6 +7,7 @@ pt-BR:
         restrict_dependent_destroy:
           has_one: Não é possível excluir o registro pois existe um %{record} dependente
           has_many: Não é possível excluir o registro pois existem %{record} dependentes
+      parameter_missing: parece que você não enviou nenhum parametro ou o valor é vazio, preencha e envie novamente  
   date:
     abbr_day_names:
     - dom

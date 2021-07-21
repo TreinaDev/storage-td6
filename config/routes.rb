@@ -8,4 +8,10 @@ Rails.application.routes.draw do
 
   resources :warehouses, only: %i[new show create]
   resources :users, only: %i[index new create]
+
+  namespace :api do
+    namespace :v1 do
+      post 'reserve', param: :sku, to: 'items#reserve'
+    end
+  end
 end

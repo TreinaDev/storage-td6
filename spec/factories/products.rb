@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :product do
-    sku { 'MyString' }
+    sku { 'AIXRP128' }
   end
 end
