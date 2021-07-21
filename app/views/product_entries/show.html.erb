@@ -13,5 +13,10 @@
     <p>Código do Fornecedor: <%= @product_entry.supplier_id %></p>
   </li>
 </ul>
+<% @product_entry.items.each do |item| %>
+  <div>
+   <p> Código do item: <%= item.code %></p>
+  </div>
+<% end %>
 
 <%= link_to 'Voltar', product_entries_path %>
