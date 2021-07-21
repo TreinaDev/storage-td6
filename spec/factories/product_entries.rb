@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :product_entry do
-    sku { 'abc123' }
+    sequence(:sku) { |n| n }
     invoice { '123654' }
-    quantity { 2 }
+    sequence(:quantity) { |n| n }
     supplier
     warehouse
   end
