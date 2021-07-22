@@ -13,6 +13,7 @@ class ProductEntriesController < AuthenticationController
 
   def create
     @product_entry = ProductEntry.new(entry_params)
+    @product_entry.warehouse = current_user.warehouse
     if @product_entry.save
       redirect_to @product_entry, notice: t('.success')
     else

@@ -21,9 +21,7 @@
 
   <p><%= form.label :supplier_id %></p>
   <p><%= form.text_field :supplier_id %></p>
-
-  <%= form.hidden_field :warehouse_id, value: current_user.warehouse_id %>
-
+  
   <p><%= form.submit %></p>
 <% end %>
 

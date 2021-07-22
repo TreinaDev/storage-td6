@@ -12,21 +12,18 @@ class ProductEntry < ApplicationRecord
 
   def create_items
     (1..quantity).each do
-      item = Item.new(sku: sku,
-                      product_entry: self,
-                      supplier: supplier,
-                      warehouse: warehouse)
-      last_code = Item.last.code if Item.last && Item.where(warehouse: warehouse)
+      item = items.new(sku: sku,
+                       supplier: supplier,
+                       warehouse: warehouse)
+      last_code = Item.where(warehouse: warehouse)&.last&.code
       item.code = generate_last_code(last_code)
       item.save
     end
   end
 
   def generate_last_code(last_code)
-    if last_code
-      last_code.succ
-    else
-      "#{warehouse.code}#{'1'.rjust(10 - warehouse.code.size, '0')}"
-    end
+    return last_code.succ if last_code
+
+    "#{warehouse.code}#{'1'.rjust(10 - warehouse.code.size, '0')}"
   end
 end

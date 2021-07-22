@@ -8,9 +8,9 @@ describe Item do
 
   context 'uniqueness' do
     it 'must be uniq' do
-      product = FactoryBot.create(:product_entry)
-      FactoryBot.create(:item, code: 'abcd001111', warehouse: product.warehouse)
-      item = Item.new(code: 'abcd001111')
+      product = create(:product_entry)
+      create(:item, code: 'abcd001111', warehouse: product.warehouse)
+      item = build(:item, code: 'abcd001111')
 
       item.valid?
 
