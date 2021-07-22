@@ -75,10 +75,8 @@ describe 'Admin should create Warehouse' do
 
   it 'must be logged in to register a warehouse' do
     visit root_path
-    click_on 'Criar Galpões'
 
-    expect(current_path).to eq(new_user_session_path)
-    expect(page).to have_content('Para continuar, efetue login ou registre-se.')
+    expect(page).to_not have_link('Criar Galpões')
   end
 
   it 'must be logged in to register a warehouse through route' do
