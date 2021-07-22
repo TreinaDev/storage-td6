@@ -22,3 +22,4 @@ pt-BR:
         invoice: 'Nota Fiscal'
         quantity: 'Quantidade'
         supplier_id: 'Código do Fornecedor'
+        item_code: 'Código do item'

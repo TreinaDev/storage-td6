@@ -1,21 +1,21 @@
 <h1><%= t('.title') %></h1>
 <ul>
   <li>
-    <p>SKU: <%= @product_entry.sku %></p>
+    <p> <%= "#{ProductEntry.human_attribute_name("sku")}: #{@product_entry.sku}" %></p>
   </li>
   <li>
-    <p>Quantidade: <%= @product_entry.quantity %></p>
+    <p><%= "#{ProductEntry.human_attribute_name("quantity")}: #{@product_entry.quantity}" %></p>
   </li>
   <li>
-    <p>Nota Fiscal: <%= @product_entry.invoice %></p>
+    <p><%= "#{ProductEntry.human_attribute_name("quantity")}: #{@product_entry.invoice }" %></p>
   </li>
   <li>
-    <p>Código do Fornecedor: <%= @product_entry.supplier_id %></p>
+    <p><%= "#{ProductEntry.human_attribute_name("supplier_id")}: #{@product_entry.supplier_id}" %></p>
   </li>
 </ul>
 <% @product_entry.items.each do |item| %>
   <div>
-   <p> Código do item: <%= item.code %></p>
+    <p><%= "#{ProductEntry.human_attribute_name("item_code")}: #{item.code}" %></p>
   </div>
 <% end %>
 
