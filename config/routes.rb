@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :warehouses, only: %i[new show create]
-  resources :users, only: %i[index new create]
+  resources :users, only: %i[index new create edit update]
 
   namespace :api do
     namespace :v1 do

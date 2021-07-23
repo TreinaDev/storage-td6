@@ -30,14 +30,30 @@ ActiveRecord::Schema.define(version: 2021_07_21_001443) do
 
   create_table "items", force: :cascade do |t|
     t.string "code"
-    t.string "invoice"
     t.integer "supplier_id", null: false
-    t.integer "product_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sku"
+    t.integer "product_entry_id", null: false
+    t.integer "warehouse_id", null: false
     t.integer "status", default: 0
-    t.index ["product_id"], name: "index_items_on_product_id"
+    t.index ["product_entry_id"], name: "index_items_on_product_entry_id"
+    t.index ["sku"], name: "index_items_on_sku", unique: true
     t.index ["supplier_id"], name: "index_items_on_supplier_id"
+    t.index ["warehouse_id"], name: "index_items_on_warehouse_id"
+  end
+
+  create_table "product_entries", force: :cascade do |t|
+    t.string "sku"
+    t.string "invoice"
+    t.integer "quantity"
+    t.integer "supplier_id", null: false
+    t.integer "warehouse_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["sku"], name: "index_product_entries_on_sku", unique: true
+    t.index ["supplier_id"], name: "index_product_entries_on_supplier_id"
+    t.index ["warehouse_id"], name: "index_product_entries_on_warehouse_id"
   end
 
   create_table "product_warehouses", force: :cascade do |t|
@@ -103,8 +119,11 @@ ActiveRecord::Schema.define(version: 2021_07_21_001443) do
     t.index ["code"], name: "index_warehouses_on_code", unique: true
   end
 
-  add_foreign_key "items", "products"
+  add_foreign_key "items", "product_entries"
   add_foreign_key "items", "suppliers"
+  add_foreign_key "items", "warehouses"
+  add_foreign_key "product_entries", "suppliers"
+  add_foreign_key "product_entries", "warehouses"
   add_foreign_key "product_warehouses", "products"
   add_foreign_key "product_warehouses", "warehouses"
   add_foreign_key "reserve_logs", "items"
