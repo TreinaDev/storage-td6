@@ -30,7 +30,7 @@ describe 'Admin should create Warehouse' do
   end
 
   it 'code must be unique' do
-    create(:warehouse)
+    create(:warehouse, code: 'code')
 
     login_as_admin
     visit root_path

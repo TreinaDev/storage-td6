@@ -3,13 +3,13 @@ require 'rails_helper'
 describe 'Reserve API' do
   context 'post /api/v1/reserve' do
     it 'should create reserve for a product' do
-      product = create(:product, sku: 'AIXRP128')
       supplier = create(:supplier)
-      create(:warehouse, name: 'Galpão 1')
-      item = create(:item, code: 'code000001', invoice: 'nf0001', supplier: supplier, product: product)
+      warehouse = create(:warehouse, code: 'abcd', name: 'Galpão 1')
+      create(:product_entry, sku: 'AIXRP128', quantity: 1, warehouse: warehouse, supplier: supplier)
+      # item = create(:item, code: 'code000001', invoice: 'nf0001', supplier: supplier, product: product)
       post '/api/v1/reserve', params: {
         reserve: {
-          sku: product.sku,
+          sku: Item.last.sku,
           shipping_company: 'Transportadora 1',
           request_number: 125,
           warehouse: 'Galpão 1'
@@ -18,8 +18,8 @@ describe 'Reserve API' do
 
       expect(response).to have_http_status(201)
       expect(response.content_type).to include('application/json')
-      expect(response.body).to include(item.code)
-      expect(response.body).to include(product.sku)
+      expect(response.body).to include('abcd000001')
+      expect(response.body).to include('AIXRP128')
       expect(response.body).to include('reserved')
     end
 
@@ -39,9 +39,9 @@ describe 'Reserve API' do
     end
 
     it 'should not found unregistered warehouse' do
-      product = create(:product, sku: 'AIXRP128')
       supplier = create(:supplier)
-      create(:item, code: 'code000001', invoice: 'nf0001', supplier: supplier, product: product)
+      warehouse = create(:warehouse, code: 'abce', name: 'Galpão 2')
+      create(:product_entry, sku: 'AIXRP128', quantity: 1, warehouse: warehouse, supplier: supplier)
 
       post '/api/v1/reserve', params: {
         reserve: {
