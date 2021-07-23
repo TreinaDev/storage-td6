@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :product do
-    sku { 'AIXRP128' }
+    sequence(:sku) { |n| n }
   end
 end

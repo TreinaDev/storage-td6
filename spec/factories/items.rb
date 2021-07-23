@@ -5,5 +5,6 @@ FactoryBot.define do
     supplier
     product_entry
     warehouse
+    product
   end
 end

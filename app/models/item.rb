@@ -6,16 +6,16 @@ class Item < ApplicationRecord
   validates :code, :sku, presence: true
   validates :code, uniqueness: true
   validates :code, length: { is: 10 }
-  # belongs_to :product
+  belongs_to :product
 
   enum status: { available: 0, reserved: 5, dispatched: 10 }
 
   scope :availables, -> { where(status: :available) }
-  # scope :by_product, ->(product) { where(product: product) }
+  scope :by_product, ->(product) { where(product: product) }
 
-  # def self.available_items(warehouse, product)
-  #   availables.by_product(product).where('code LIKE ?', "%#{warehouse.code}%")
-  # end
+  def self.available_items(warehouse, product)
+    availables.by_product(product).where('code LIKE ?', "%#{warehouse.code}%")
+  end
 
   def save_log(params)
     reserved!

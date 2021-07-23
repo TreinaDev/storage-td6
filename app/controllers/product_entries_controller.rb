@@ -25,6 +25,6 @@ class ProductEntriesController < AuthenticationController
   private
 
   def entry_params
-    params.require(:product_entry).permit(:sku, :invoice, :quantity, :supplier_id, :warehouse_id)
+    params.require(:product_entry).permit(:sku, :invoice, :quantity, :supplier_id)
   end
 end
