@@ -31,6 +31,6 @@ class ProductEntry < ApplicationRecord
   def generate_last_code(last_code)
     return last_code.succ if last_code
 
-    "#{warehouse.code}#{'1'.rjust(10 - warehouse.code.size, '0')}"
+    "#{warehouse.code}#{'1'.rjust(6, '0')}"
   end
 end
