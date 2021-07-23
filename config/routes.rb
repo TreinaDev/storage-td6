@@ -9,4 +9,15 @@ Rails.application.routes.draw do
   resources :warehouses, only: %i[new show create]
   resources :users, only: %i[index new create]
   resources :product_entries, only: %i[index show new create]
+
+  namespace :api do
+    namespace :v1 do
+      post 'reserve', param: :sku, to: 'items#reserve'
+      namespace :freightage do
+        resources :warehouses, only: %i[] do 
+          get ':sku', on: :collection, param: :sku, to: 'warehouses#list'
+        end
+      end
+    end
+  end
 end

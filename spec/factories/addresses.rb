@@ -5,7 +5,7 @@ FactoryBot.define do
     district { 'MyString' }
     city { 'MyString' }
     state { 'MyString' }
-    zip_code { 'MyString' }
+    zip_code { '12345678' }
     addressable { nil }
   end
 end

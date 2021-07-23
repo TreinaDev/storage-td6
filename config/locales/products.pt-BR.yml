@@ -1,0 +1,10 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      product: 'Produto'
+    attributes:
+      product:
+        sky: 'Sku'
+    errors:
+      not_found: '%{model_name} não encontrado'

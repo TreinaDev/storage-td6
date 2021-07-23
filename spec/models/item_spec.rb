@@ -21,4 +21,10 @@ describe Item do
   context 'length' do
     it { should validate_length_of(:code).is_equal_to(10) }
   end
+  context 'Enum' do
+    it do
+      should define_enum_for(:status)
+        .with_values(available: 0, reserved: 5, dispatched: 10)
+    end
+  end
 end
