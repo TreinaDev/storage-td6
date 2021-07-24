@@ -1,0 +1,14 @@
+<h1><%= t('.title') %></h1>
+
+<p><%= link_to 'Adicionar Entrada', new_product_entry_path %></p>
+<p><%= link_to 'Voltar', root_path %></p>
+
+<% if @product_entry.empty? %>
+  <h3>Nenhuma Entrada de Produto</h3>
+<% end %>
+
+<%= @product_entry.each do |entry| %>
+  <p>SKU: <%= link_to entry.sku, entry %></p>
+  <p>Quantidade: <%= entry.quantity %></p>
+  <p>Data de Entrada: <%= entry.created_at.strftime('%d/%m/%Y') %></p>
+<% end %>

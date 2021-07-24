@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :warehouse do
-    code { 'code' }
+    sequence(:code) { |n| n.to_s.rjust(4, '0') }
     sequence(:name) { |n| "Galpão #{n}" }
   end
 end

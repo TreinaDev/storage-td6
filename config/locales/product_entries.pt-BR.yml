@@ -1,0 +1,25 @@
+---
+pt-BR:
+  invalid_message: 'deve ser válido'
+  product_entries:
+    index:
+      title: 'Entrada de Produtos'
+    show:
+      title: 'Entrada de Produto'
+    new:
+      title: 'Cadastrar Entrada de produto'
+    create:
+      success: 'Entrada de produto criada!'
+      fail: 'Não foi possível cadastrar a entrada de produto'
+  activerecord:
+    models:
+      product_entry:
+        one: 'Entrada de Produto'
+        other: 'Entrada de produtos'
+    attributes:
+      product_entry:
+        sku: 'SKU'
+        invoice: 'Nota Fiscal'
+        quantity: 'Quantidade'
+        supplier_id: 'Código do Fornecedor'
+        item_code: 'Código do item'

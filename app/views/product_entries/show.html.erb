@@ -1,0 +1,22 @@
+<h1><%= t('.title') %></h1>
+<ul>
+  <li>
+    <p> <%= "#{ProductEntry.human_attribute_name("sku")}: #{@product_entry.sku}" %></p>
+  </li>
+  <li>
+    <p><%= "#{ProductEntry.human_attribute_name("quantity")}: #{@product_entry.quantity}" %></p>
+  </li>
+  <li>
+    <p><%= "#{ProductEntry.human_attribute_name("invoice")}: #{@product_entry.invoice }" %></p>
+  </li>
+  <li>
+    <p><%= "#{ProductEntry.human_attribute_name("supplier_id")}: #{@product_entry.supplier_id}" %></p>
+  </li>
+</ul>
+<% @product_entry.items.each do |item| %>
+  <div>
+    <p><%= "#{ProductEntry.human_attribute_name("item_code")}: #{item.code}" %></p>
+  </div>
+<% end %>
+
+<%= link_to 'Voltar', product_entries_path %>

@@ -1,9 +1,9 @@
 FactoryBot.define do
-  factory :item do
-    sequence(:code) { |n| "abcd#{n.to_s.rjust(6, '0')}" }
+  factory :product_entry do
     sequence(:sku) { |n| n }
+    invoice { '123654' }
+    sequence(:quantity) { |n| n }
     supplier
-    product_entry
     warehouse
     product
   end
