@@ -2,7 +2,6 @@
 pt-BR:
   invalid_message: deve ser válido
   users:
-    not_allowed: Você não tem permissão para acessar essa área
     domain_not_allowed: domínio não permitido
     index:
       new_user: Criar novo usuário

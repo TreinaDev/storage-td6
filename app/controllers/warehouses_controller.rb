@@ -1,5 +1,9 @@
 class WarehousesController < AuthenticationController
-  before_action :authorize_admin!, only: %i[new create]
+  before_action :authorize_admin!, only: %i[index new create]
+
+  def index
+    @warehouse = Warehouse.all
+  end
 
   def new
     @warehouse = Warehouse.new

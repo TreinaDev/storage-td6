@@ -52,4 +52,13 @@ describe 'Account Managment' do
       expect(page).to_not have_link('Produtos')
     end
   end
+  context 'Permission Access' do
+    it 'User cannot access Warehouse_paths' do
+      login_as_user
+      visit warehouses_path
+
+      expect(current_path).to eq(root_path)
+      expect(page).to have_content('Você não tem permissão para acessar essa área')
+    end
+  end
 end
