@@ -1,5 +1,6 @@
 ---
 pt-BR:
+  must_be_active: 'Fornecedor está desativado, entrada de produto bloqueada'
   invalid_message: 'deve ser válido'
   suppliers:
     new:

@@ -6,6 +6,7 @@ class ProductEntry < ApplicationRecord
   has_many :items, dependent: :destroy
 
   validates :invoice, :sku, :quantity, presence: true
+  validates :supplier, supplier_is_active: true
 
   before_validation :find_or_create_product
   after_create :create_items
