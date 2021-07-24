@@ -49,6 +49,8 @@ pt-BR:
       signed_in: "Login efetuado com sucesso!"
       signed_out: "Saiu com sucesso."
       already_signed_out: "Saiu com sucesso."
+      new:
+        log_in: "Entrar"
     unlocks:
       send_instructions: "Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta."
       send_paranoid_instructions: "Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos."
@@ -60,6 +62,7 @@ pt-BR:
       expired: "expirou, por favor, solicite uma nova"
       not_found: "não encontrado"
       not_locked: "não foi bloqueado"
+      not_allowed: "Você não tem permissão para acessar essa área"
       not_saved:
         one: "Não foi possível salvar %{resource}: 1 erro"
         other: "Não foi possível salvar %{resource}: %{count} erros."
