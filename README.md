@@ -48,3 +48,25 @@ resposta:
   }
 ]
 ```
+
+
+## Consulta de galpões que possuem um produto e suas quantidades disponíveis em cada galpão
+
+```
+GET '/api/v1/ecommerce/warehouses/:sku'
+```
+
+resposta:
+
+```json
+[
+  {
+    warehouse_code: AB12,
+    quantity: 10
+  },
+  {
+    warehouse_code: CD34,
+    quantity: 5
+  }
+]
+```

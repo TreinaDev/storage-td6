@@ -16,4 +16,11 @@ class Warehouse < ApplicationRecord
       lon: addresses.first.longitude
     }
   end
+
+  def to_ecommerce_json(quantity, _options = {})
+    {
+      warehouse_code: code,
+      quantity: quantity
+    }
+  end
 end
