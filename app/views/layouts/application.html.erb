@@ -15,7 +15,7 @@
       <% if user_signed_in? %>
         <%= current_user.name %>
         <%= link_to 'Fornecedores', suppliers_path %>
-        <%= link_to 'Produtos', "#" %>
+        <%= link_to 'Produtos', product_entries_path %>
         <% if current_user.admin? %>
           <%= link_to 'Criar Galpões', new_warehouse_path %>
         <% end %>

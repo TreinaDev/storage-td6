@@ -34,15 +34,14 @@ describe 'User register product entry' do
   end
 
   it 'must be logged in to register a product entry' do
-    visit root_path
-    click_on 'Produtos'
+    visit product_entries_path
 
     expect(current_path).to eq(new_user_session_path)
     expect(page).to have_content('Para continuar, efetue login ou registre-se.')
   end
 
   it 'must be logged in to register a product entry through route' do
-    visit product_entries_path
+    visit new_product_entry_path
 
     expect(current_path).to eq(new_user_session_path)
     expect(page).to have_content('Para continuar, efetue login ou registre-se.')
