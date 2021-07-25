@@ -11,6 +11,20 @@
   </head>
 
   <body>
+    <nav>
+      <% if user_signed_in? %>
+        <%= current_user.name %>
+        <%= link_to 'Fornecedores', suppliers_path %>
+        <%= link_to 'Produtos', product_entries_path %>
+        <% if current_user.admin? %>
+          <%= link_to 'Criar Galpões', new_warehouse_path %>
+        <% end %>
+        <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Entrar', new_user_session_path %>
+      <% end %>
+    </nav>
+
     <% if notice %>
       <div>
         <%= notice %>
