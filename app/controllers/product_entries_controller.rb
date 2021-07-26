@@ -21,6 +21,15 @@ class ProductEntriesController < AuthenticationController
     end
   end
 
+  def create_by_csv
+    warehouse = current_user.warehouse
+    csv = ProductEntry.convert_csv(params)
+    if valid_entries = ProductEntry.create_object_from_csv(csv, warehouse)
+      ProductEntry.save_entry(valid_entries)
+      redirect_to product_entries_path, notice: 'CSV importado com sucesso'
+    end
+  end
+
   private
 
   def entry_params

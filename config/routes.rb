@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :warehouses, only: %i[index new show create]
   resources :users, only: %i[index new create]
   resources :product_entries, only: %i[index show new create]
+  post :create_entry_by_csv, to: 'product_entries#create_by_csv'
 
   namespace :api do
     namespace :v1 do
