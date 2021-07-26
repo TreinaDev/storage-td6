@@ -1,0 +1,9 @@
+<%= form_with model: @dispatch_log do |form| %>
+  <%= form.label :authorized_person, 'Pessoa Autorizada' %>
+  <%= form.text_field :authorized_person %>
+  <%= fields_for :item do |item| %>
+    <%= item.label :code, 'Código do Item' %>
+    <%= item.text_field :code, value: @item.code, readonly: true %>
+  <% end %>
+  <%= form.submit 'Confirmar' %>
+<% end %>

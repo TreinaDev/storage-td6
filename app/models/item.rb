@@ -8,9 +8,12 @@ class Item < ApplicationRecord
   validates :code, length: { is: 10 }
   belongs_to :product
 
+  has_one :dispatch_log
+
   enum status: { available: 0, reserved: 5, dispatched: 10 }
 
   scope :availables, -> { where(status: :available) }
+  scope :reserveds, -> { where(status: :reserved) }
   scope :by_product, ->(product) { where(product: product) }
 
   def self.available_items(warehouse, product)
