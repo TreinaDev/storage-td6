@@ -4,4 +4,6 @@ class Product < ApplicationRecord
 
   has_many :items, dependent: :destroy
   has_many :product_entries, dependent: :destroy
+
+  validates :sku, uniqueness: true
 end
