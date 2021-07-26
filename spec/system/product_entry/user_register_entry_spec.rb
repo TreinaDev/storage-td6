@@ -83,7 +83,7 @@ describe 'User register product entry' do
     click_on 'Criar Entrada de Produto'
 
     expect(page).to have_content('Fornecedor está desativado, entrada de produto bloqueada')
-    expect(Item.count).to eq 0
-    expect(ProductEntry.count).to eq 0
+    expect(Item.count).to be_zero
+    expect(ProductEntry.count).to be_zero
   end
 end
