@@ -22,15 +22,13 @@ class ProductEntriesController < AuthenticationController
   end
 
   def create_by_csv
-    if ProductEntry.import_from_csv(params, current_user.warehouse)
+    raise FileMustBeUploaded if params[:product_entry].blank?
+
+    if ProductEntry.import_from_csv(params[:product_entry][:csv], current_user.warehouse)
       redirect_to product_entries_path, notice: t('.success')
     else
       redirect_to new_product_entry_path, notice: t('.fail')
     end
-  rescue MustBeAValidCsv
-    redirect_to new_product_entry_path, notice: t('.csv_must_be_valid')
-  rescue FileMustBeUploaded
-    redirect_to new_product_entry_path, notice: t('.file_must_be_uploaded')
   end
 
   private
