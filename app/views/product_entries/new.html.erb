@@ -1,3 +1,4 @@
+<h1><%= t('.model') %></h1>
 <% if @product_entry.errors.any? %>
   <p>Foram encontrados <%= @product_entry.errors.count %> erro(s):</p>
   <ul>
@@ -7,7 +8,11 @@
   </ul>
 <% end %>
 
-<h1><%= t('.model') %></h1>
+<%= form_with url: create_entry_by_csv_path, model:@product_entry do |form|%>
+  <%= form.label :csv, 'Arquivo CSV'%>
+  <%= form.file_field :csv %>
+  <%= form.submit 'Enviar arquivo'%>
+<% end %>
 
 <%= form_with model: @product_entry do |form| %>
   <p><%= form.label :sku %></p>
