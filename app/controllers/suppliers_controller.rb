@@ -27,11 +27,13 @@ class SuppliersController < AuthenticationController
     redirect_to @supplier, notice: t('.success')
   end
 
-  def edit; end
+  def edit
+    @address = @supplier.addresses.last
+  end
 
   def update
     @supplier.update(supplier_params)
-    @supplier.addresses.update(address_params)
+    @supplier.addresses.last.update(address_params)
     redirect_to @supplier, notice: t('.success')
   end
 
