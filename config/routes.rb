@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   devise_for :users
 
-  resources :suppliers, only: %i[index new create show] do
+  resources :suppliers, only: %i[index new create show edit update] do
     post :change_active, on: :member
   end
 

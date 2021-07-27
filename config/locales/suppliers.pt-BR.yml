@@ -10,6 +10,9 @@ pt-BR:
       fail: 'Não foi possível cadastrar o fornecedor'
     change_active:
       success: 'Fornecedor alterado com sucesso!'
+    update:
+      title: 'Editar Fornecedor'
+      success: 'Fornecedor editado!'
   activerecord:
     models:
       supplier:
