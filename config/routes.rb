@@ -18,6 +18,11 @@ Rails.application.routes.draw do
           get ':sku', on: :collection, param: :sku, to: 'warehouses#list'
         end
       end
+      namespace :ecommerce do
+        resources :warehouses, only: %i[] do 
+          get ':sku', on: :collection, param: :sku, to: 'warehouses#list'
+        end
+      end
     end
   end
 end

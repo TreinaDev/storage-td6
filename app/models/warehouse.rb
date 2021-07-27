@@ -8,12 +8,20 @@ class Warehouse < ApplicationRecord
   has_many :product_warehouses, dependent: :destroy
   has_many :products, through: :product_warehouses
   has_many :product_entries, dependent: :destroy
+  has_many :items, dependent: :destroy
 
   def as_json(_options = {})
     {
       warehouse_code: code,
       lat: addresses.first.latitude,
       lon: addresses.first.longitude
+    }
+  end
+
+  def to_ecommerce_json(quantity, _options = {})
+    {
+      warehouse_code: code,
+      quantity: quantity
     }
   end
 end
