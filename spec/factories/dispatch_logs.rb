@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :dispatch_log do
-    item { nil }
-    user { nil }
-    authorized_person { "MyString" }
+    item
+    user { create(:user, warehouse: create(:warehouse)) }
+    authorized_person { 'MyString' }
   end
 end

@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validates :code, length: { is: 10 }
   belongs_to :product
 
-  has_one :dispatch_log
+  has_one :dispatch_log, dependent: :destroy
 
   enum status: { available: 0, reserved: 5, dispatched: 10 }
 

@@ -1,4 +1,4 @@
-class DispatchLogsController < ApplicationController
+class DispatchLogsController < AuthenticationController
   def new
     @item = Item.find(params[:item])
     @dispatch_log = DispatchLog.new
