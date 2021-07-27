@@ -1,10 +1,10 @@
 FactoryBot.define do
   factory :address do
-    name { 'MyString' }
-    number { 1 }
-    district { 'MyString' }
-    city { 'MyString' }
-    state { 'MyString' }
+    name { 'Rua Jaguar' }
+    number { 4 }
+    district { 'Leão' }
+    city { 'Papagolândia' }
+    state { 'AM' }
     zip_code { '12345678' }
     addressable { nil }
   end

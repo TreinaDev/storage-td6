@@ -39,12 +39,22 @@ resposta:
   {
     warehouse_code: AB12,
     lat: -12.980587,
-    lon: -38.494138
+    lon: -38.494138,
+    name: rua maracujá,
+    number: 4,
+    district: fruteira,
+    city: cidade das frutas,
+    state: estado das frutas
   },
   {
     warehouse_code: CD34,
     lat: -11.980587,
-    lon: -39.494138
+    lon: -39.494138,
+    name: rua jabuticaba,
+    number: 456,
+    district: fruteira,
+    city: cidade das frutas,
+    state: estado das frutas
   }
 ]
 ```

@@ -13,8 +13,7 @@ class Warehouse < ApplicationRecord
   def as_json(_options = {})
     {
       warehouse_code: code,
-      lat: addresses.first.latitude,
-      lon: addresses.first.longitude
+      **addresses.last.as_json
     }
   end
 
