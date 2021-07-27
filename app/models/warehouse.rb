@@ -8,6 +8,7 @@ class Warehouse < ApplicationRecord
   has_many :product_warehouses, dependent: :destroy
   has_many :products, through: :product_warehouses
   has_many :product_entries, dependent: :destroy
+  has_many :items, dependent: :destroy
 
   def as_json(_options = {})
     {
