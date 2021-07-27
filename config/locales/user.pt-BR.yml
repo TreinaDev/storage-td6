@@ -11,6 +11,11 @@ pt-BR:
       back: Voltar
     create:
       success: Usuário criado com sucesso
+    edit:
+      title: Editar Perfil
+    update:
+      success: Usuário atualizado com sucesso
+      fail: Não foi possível atualizar o usuário
   activerecord:
     models:
       user:
