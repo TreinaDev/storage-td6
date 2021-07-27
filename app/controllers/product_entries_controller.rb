@@ -26,8 +26,12 @@ class ProductEntriesController < AuthenticationController
     csv = ProductEntry.convert_csv(params)
     if valid_entries = ProductEntry.create_object_from_csv(csv, warehouse)
       ProductEntry.save_entry(valid_entries)
-      redirect_to product_entries_path, notice: 'CSV importado com sucesso'
+      redirect_to product_entries_path, notice: t('.success')
+    else
+      redirect_to new_product_entry_path, notice: t('.fail')
     end
+  rescue MustBeAValidCsv
+    redirect_to new_product_entry_path, notice: t('.csv_must_be_valid')
   end
 
   private

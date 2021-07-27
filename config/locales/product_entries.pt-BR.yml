@@ -11,6 +11,10 @@ pt-BR:
     create:
       success: 'Entrada de produto criada!'
       fail: 'Não foi possível cadastrar a entrada de produto'
+    create_by_csv:
+      success: 'CSV importado com sucesso'
+      fail: 'Nenhum atributo pode estar faltando'
+      csv_must_be_valid: 'O arquivo precisa ser válido'
   activerecord:
     models:
       product_entry:
