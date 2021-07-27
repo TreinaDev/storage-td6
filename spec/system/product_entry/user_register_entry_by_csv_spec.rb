@@ -47,4 +47,15 @@ describe 'User register Product Entr by csv' do
     expect(page).to have_content('O arquivo precisa ser válido')
     expect(current_path).to eq new_product_entry_path
   end
+
+  it 'must send a file' do
+    login_as_user
+    visit root_path
+    click_on 'Produtos'
+    click_on 'Adicionar Entrada'
+    click_on 'Enviar arquivo'
+
+    expect(page).to have_content('Um arquivo deve ser enviado!')
+    expect(current_path).to eq new_product_entry_path
+  end
 end

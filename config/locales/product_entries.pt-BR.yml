@@ -15,6 +15,7 @@ pt-BR:
       success: 'CSV importado com sucesso'
       fail: 'Nenhum atributo pode estar faltando'
       csv_must_be_valid: 'O arquivo precisa ser válido'
+      file_must_be_uploaded: 'Um arquivo deve ser enviado!'
   activerecord:
     models:
       product_entry:

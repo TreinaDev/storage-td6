@@ -12,8 +12,10 @@ class ProductEntry < ApplicationRecord
   before_validation :find_or_create_product
   after_create :create_items
 
-  def self.import_from_csv(file, warehouse)
-    csv = CSV.parse(File.read(file), headers: true)
+  def self.import_from_csv(params, warehouse)
+    raise FileMustBeUploaded if params[:product_entry].blank?
+
+    csv = CSV.parse(File.read(params[:product_entry][:csv]), headers: true)
 
     raise MustBeAValidCsv if csv.empty?
 
