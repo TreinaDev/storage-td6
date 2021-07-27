@@ -1,5 +1,5 @@
 <h1><%= t('.model') %></h1>
-<% if @product_entry&.errors&.any? %>
+<% if @product_entry.errors.any? %>
   <p>Foram encontrados <%= @product_entry.errors.count %> erro(s):</p>
   <ul>
     <% @product_entry.errors.full_messages.each do |error| %>

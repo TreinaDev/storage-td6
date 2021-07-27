@@ -12,19 +12,15 @@ class ProductEntry < ApplicationRecord
   before_validation :find_or_create_product
   after_create :create_items
 
-  def self.convert_csv(params)
-    CSV.parse(File.read(params[:product_entry][:csv]), headers: true)
-  end
+  def self.import_from_csv(file, warehouse)
+    csv = CSV.parse(File.read(file), headers: true)
 
-  def self.create_object_from_csv(csv, warehouse)
     raise MustBeAValidCsv if csv.empty?
 
     entries = csv.map { |row| ProductEntry.new(**row.to_h, warehouse: warehouse) }
-    entries.map(&:valid?).any?(false) ? false : entries
-  end
+    return if entries.map(&:valid?).any?(false)
 
-  def self.save_entry(valid_entries)
-    valid_entries.each(&:save)
+    entries.each(&:save)
   end
 
   private

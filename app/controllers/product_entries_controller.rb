@@ -22,10 +22,7 @@ class ProductEntriesController < AuthenticationController
   end
 
   def create_by_csv
-    warehouse = current_user.warehouse
-    csv = ProductEntry.convert_csv(params)
-    if (valid_entries = ProductEntry.create_object_from_csv(csv, warehouse))
-      ProductEntry.save_entry(valid_entries)
+    if ProductEntry.import_from_csv(params[:product_entry][:csv], current_user.warehouse)
       redirect_to product_entries_path, notice: t('.success')
     else
       redirect_to new_product_entry_path, notice: t('.fail')
