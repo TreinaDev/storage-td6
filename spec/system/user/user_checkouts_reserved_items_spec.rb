@@ -39,7 +39,8 @@ describe 'User checkouts reserved item' do
   end
 
   it 'cannot create if not signed in' do
-    visit new_dispatch_log_path
+    create(:product_entry, warehouse: warehouse)
+    visit new_item_dispatch_log_path(Item.first)
 
     expect(current_path).to eq(new_user_session_path)
   end

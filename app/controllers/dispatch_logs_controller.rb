@@ -1,12 +1,12 @@
 class DispatchLogsController < AuthenticationController
+  before_action :set_item, only: %i[new create]
+
   def new
-    @item = Item.find(params[:item])
     @dispatch_log = DispatchLog.new
   end
 
   def create
-    @item = Item.find_by(code: params[:item][:code])
-    @dispatch_log = DispatchLog.new(dispatch_log_params.merge(item: @item))
+    @dispatch_log = DispatchLog.new(**dispatch_log_params, item: @item, user: current_user)
     if @dispatch_log.save
       redirect_to @dispatch_log
     else
@@ -21,6 +21,10 @@ class DispatchLogsController < AuthenticationController
   private
 
   def dispatch_log_params
-    params.require(:dispatch_log).permit(:item, :authorized_person).merge(user: current_user)
+    params.require(:dispatch_log).permit(:item, :authorized_person)
+  end
+
+  def set_item
+    @item = params[:item].present? ? Item.find_by(code: params[:item][:code]) : Item.find(params[:item_id])
   end
 end
