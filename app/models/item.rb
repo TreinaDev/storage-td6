@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   validates :code, uniqueness: true
   validates :code, length: { is: 10 }
   belongs_to :product
+  has_many :reserve_logs
 
   enum status: { available: 0, reserved: 5, dispatched: 10 }
 
@@ -17,10 +18,13 @@ class Item < ApplicationRecord
     availables.by_product(product).where('code LIKE ?', "%#{warehouse.code}%")
   end
 
+  def self.first_item(warehouse, product)
+    availables.by_product(product).find_by('code LIKE ? ', "%#{warehouse.code}%")
+  end
+
   def save_log(params)
     reserved!
     reserve = ReserveLog.new(params)
-    reserve.item = self
     reserve.save
   end
 end
