@@ -1,0 +1,1 @@
+class MustBeAValidCsv < StandardError; end

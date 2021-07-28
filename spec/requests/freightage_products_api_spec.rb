@@ -22,11 +22,11 @@ describe 'Freightage Products API' do
       expect(parsed_body['warehouses'][2]['warehouse_code']).to eq('0002')
       expect(parsed_body['warehouses'][0]['latitude']).to eq('-23.5672582')
       expect(parsed_body['warehouses'][0]['longitude']).to eq('-46.651529')
-      expect(parsed_body['warehouses'][0]['address']).to eq('Rua Jaguar')
-      expect(parsed_body['warehouses'][0]['number']).to eq(4)
-      expect(parsed_body['warehouses'][0]['district']).to eq('Leão')
-      expect(parsed_body['warehouses'][0]['city']).to eq('Papagolândia')
-      expect(parsed_body['warehouses'][0]['state']).to eq('AM')
+      expect(parsed_body['warehouses'][0]['address']).to eq('Alameda Santos')
+      expect(parsed_body['warehouses'][0]['number']).to eq(1293)
+      expect(parsed_body['warehouses'][0]['district']).to eq('Jardim Paulista')
+      expect(parsed_body['warehouses'][0]['city']).to eq('São Paulo')
+      expect(parsed_body['warehouses'][0]['state']).to eq('SP')
     end
 
     it 'should not found a warehouse by sku' do

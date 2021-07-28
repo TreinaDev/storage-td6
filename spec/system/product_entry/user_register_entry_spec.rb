@@ -68,4 +68,22 @@ describe 'User register product entry' do
     expect(Item.count).to eq(10)
     expect(Item.last.code).to eq('abcd000010')
   end
+
+  it 'and supplier must be active' do
+    create(:supplier, active: false)
+
+    login_as_user
+    visit root_path
+    click_on 'Produtos'
+    click_on 'Adicionar Entrada'
+    fill_in 'SKU', with: 'abc123'
+    fill_in 'Nota Fiscal', with: '123654'
+    fill_in 'Quantidade', with: '10'
+    fill_in 'Código do Fornecedor', with: '1'
+    click_on 'Criar Entrada de Produto'
+
+    expect(page).to have_content('Fornecedor está desativado, entrada de produto bloqueada')
+    expect(Item.count).to be_zero
+    expect(ProductEntry.count).to be_zero
+  end
 end

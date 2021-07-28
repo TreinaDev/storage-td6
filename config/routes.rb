@@ -2,13 +2,14 @@ Rails.application.routes.draw do
   root to: 'home#index'
   devise_for :users
 
-  resources :suppliers, only: %i[index new create show] do
+  resources :suppliers, only: %i[index new create show edit update] do
     post :change_active, on: :member
   end
 
   resources :warehouses, only: %i[index new show create]
-  resources :users, only: %i[index new create]
+  resources :users, only: %i[index new create edit update]
   resources :product_entries, only: %i[index show new create]
+  post :create_entry_by_csv, to: 'product_entries#create_by_csv'
 
   namespace :api do
     namespace :v1 do
