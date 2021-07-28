@@ -25,6 +25,6 @@ class DispatchLogsController < AuthenticationController
   end
 
   def set_item
-    @item = params[:item].present? ? Item.find_by(code: params[:item][:code]) : Item.find(params[:item_id])
+    @item = Item.find_by(code: params[:item_code])
   end
 end

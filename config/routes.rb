@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :product_entries, only: %i[index show new create]
   resources :reserved_items, only: %i[index]
   resources :dispatch_logs, only: %i[create show]
-  resources :items, only: %i[] do
+  resources :items, only: %i[], param: :code do
     resources :dispatch_logs, only: %i[new]
   end
 

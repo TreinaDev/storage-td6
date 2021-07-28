@@ -1,4 +1,4 @@
 <% @items.each do |item| %>
 <%= item.code %>
-<%= link_to "Despachar", new_item_dispatch_log_path(item) %>
+<%= link_to "Despachar", new_item_dispatch_log_path(item.code) %>
 <% end %>
