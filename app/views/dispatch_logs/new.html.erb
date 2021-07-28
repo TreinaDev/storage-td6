@@ -1,0 +1,8 @@
+<h1>Despachar <%= @item.code %></h1>
+
+<%= form_with model: @dispatch_log do |form| %>
+  <%= form.label :authorized_person, 'Pessoa Autorizada' %>
+  <%= form.text_field :authorized_person %>
+  <%= hidden_field_tag(:item_code, @item.code) %>
+  <%= form.submit 'Confirmar' %>
+<% end %>
