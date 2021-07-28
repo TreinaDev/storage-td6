@@ -7,5 +7,7 @@ FactoryBot.define do
     state { 'SP' }
     zip_code { '01419002' }
     addressable { nil }
+    latitude { -23.5672582 }
+    longitude { -46.651529 }
   end
 end
