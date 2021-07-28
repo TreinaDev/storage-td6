@@ -34,7 +34,7 @@ describe 'User block supplier' do
     click_on 'Ativar Fornecedor'
 
     expect(Supplier.last.active).to eq(true)
-    expect(page).to have_content('Ativado')
+    expect(page).to have_content('Ativo')
     expect(page).to have_content('Fornecedor alterado com sucesso!')
     expect(page).to have_content('Codeplay S.A.')
     expect(page).to have_content('Codeplay Vendas')

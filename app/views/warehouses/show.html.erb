@@ -1,8 +1,8 @@
-<p>Nome:</p>
+<p><%= Warehouse.human_attribute_name(:name) %>: </p>
 <%= @warehouse.name %>
-<p>Código:</p>
+<p><%= Warehouse.human_attribute_name(:code) %>:</p>
 <%= @warehouse.code %>
-<p>Endereço:</p>
+<p><%= Warehouse.human_attribute_name(:addresses) %>:</p>
     <% @warehouse.addresses.each do |address| %>
         <div>
             <%= address.name %>, <%= address.number %>. <%= address.district %><br>
@@ -11,4 +11,4 @@
             <%= address.latitude %> , <%= address.longitude %>
         </div><br>
     <% end %>
-<%= link_to 'Voltar', root_path%>
+<%= link_to t('.back'), root_path%>

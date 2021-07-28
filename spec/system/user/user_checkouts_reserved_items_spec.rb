@@ -13,7 +13,7 @@ describe 'User checkouts reserved item' do
     click_on 'Itens Reservados'
     click_on 'Despachar'
 
-    fill_in 'Pessoa Autorizada', with: 'John Doe'
+    fill_in 'Pessoa autorizada para retirada', with: 'John Doe'
     expect { click_on 'Confirmar' }.to change { DispatchLog.count }.by(1)
 
     expect(Item.first.status).to eq('dispatched')
