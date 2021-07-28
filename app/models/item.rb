@@ -24,7 +24,6 @@ class Item < ApplicationRecord
 
   def save_log(params)
     reserved!
-    reserve = ReserveLog.new(params)
-    reserve.save
+    reserve_logs.create(params)
   end
 end
