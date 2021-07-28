@@ -5,7 +5,9 @@ class ProductEntriesController < AuthenticationController
   before_action :file_uploaded?, only: %i[create_by_csv]
 
   def index
-    @product_entry = ProductEntry.all
+    return @product_entry = ProductEntry.all if current_user.admin?
+
+    @product_entry = current_user.warehouse.product_entries
   end
 
   def show
