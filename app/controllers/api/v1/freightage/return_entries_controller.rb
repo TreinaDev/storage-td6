@@ -1,7 +1,7 @@
 class Api::V1::Freightage::ReturnEntriesController < Api::V1::ApiController
   def create
     @return_entry = ReturnEntry.new(return_params)
-    return unless @return_entry.save
+    @return_entry.save!
 
     render json: { return_entry: @return_entry.as_json(only: [:id]),
                    message: I18n.t('return_entries.create.success') },
