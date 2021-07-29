@@ -39,7 +39,7 @@ pt-BR:
         cnpj: 'CNPJ'
         name: 'Razão Social'
         trade_name: 'Nome Fantasia'
-        addresses: 'Endereços'
+        address: 'Endereço'
         status: 'Situação'
         status/true: 'Ativo'
         status/false: 'Bloqueado' 

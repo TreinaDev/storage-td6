@@ -24,4 +24,11 @@ class Warehouse < ApplicationRecord
       quantity: quantity
     }
   end
+
+  def to_ecommerce_with_address_json(_options = {})
+    {
+      code: code,
+      full_address: address.as_json
+    }
+  end
 end

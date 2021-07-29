@@ -7,4 +7,11 @@ class Api::V1::Ecommerce::WarehousesController < Api::V1::ApiController
   rescue ActiveRecord::RecordNotFound
     head :not_found
   end
+
+  def address
+    @warehouse = Warehouse.find_by!(code: params[:code])
+    render json: { warehouse: @warehouse.to_ecommerce_with_address_json }
+  rescue ActiveRecord::RecordNotFound
+    head :not_found
+  end
 end
