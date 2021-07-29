@@ -3,7 +3,6 @@ class DispatchLog < ApplicationRecord
   belongs_to :user
 
   validates :item, :user, :authorized_person, presence: true
-  validates :item, uniqueness: true
 
   after_create :dispatch_item!
 
