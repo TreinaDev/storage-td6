@@ -2,10 +2,10 @@
   <h1><%= t('.title') %></h1>
 
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <h6 class="btn btn-primary"> <%= link_to t('.back'), product_entries_path, class:"link-secondary" %> </h6>
+    <h6 class="btn btn-primary"> <%= link_to t('.back'), product_entries_path, class:"link-secondary text-decoration-none" %> </h6>
   </div>
 
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 20rem;">
     <h6 class="card-header"> Produto </h6>
     <div class="card-body">
       <p class="card-text">
@@ -23,14 +23,14 @@
     </div>
   </div>
 
-  <div class="card" style="width: 18rem;">
+  <div class="card" style="width: 20rem;">
     <h6 class="card-header"> Itens </h6>
     <div class="card-body">
-      <p class="card-text">
+      <div class="card-text">
         <% @product_entry.items.each do |item| %>
-            <%= "#{ProductEntry.human_attribute_name("item_code")}: #{item.code}" %>
+            <p> <%= "#{ProductEntry.human_attribute_name("item_code")}: #{item.code}" %> </p>
         <% end %>
-      </p>
+      </div>
     </div>
   </div>
 </div>

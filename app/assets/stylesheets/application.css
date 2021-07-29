@@ -21,5 +21,16 @@ footer {
   text-align: center;
   left: 0;
   right: 0;
-  color: #ffde59
-};
+  color: #ffde59;
+}
+
+footer div a {
+  font-size: 1rem !important;
+}
+
+.img-bg {
+  height: 100vh;
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+}

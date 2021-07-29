@@ -1,34 +1,42 @@
-<h1><%= t('.title') %></h1>
-<ul>
-  <li>
-  <p><%= Supplier.human_attribute_name(:name) %>: <%= @supplier.name %> </p>
-  </li>
-  <li>
-  <p><%= Supplier.human_attribute_name(:trade_name) %>: <%= @supplier.trade_name %> </p>
-  </li>
-  <li>
-  <p><%= Supplier.human_attribute_name(:cnpj) %>: <%= @supplier.cnpj %> </p>
-  </li>
-  <li>
-  <p><%= Supplier.human_attribute_name(:status) %>: <%= Supplier.human_attribute_name("status/#{@supplier.active}") %> </p>
-  </li>
-  <% if @supplier.address %>
-      <p><%= Supplier.human_attribute_name(:address) %><p>
-      <div>
-        <%= @supplier.address.name %>, <%= @supplier.address.number %>. <%= @supplier.address.district %><br>
-        <%= @supplier.address.city %>, <%= @supplier.address.state %><br>
-        <%= @supplier.address.zip_code %>
-        <%= @supplier.address.latitude %> , <%= @supplier.address.longitude %>
-      </div><br>
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <% if @supplier.active? %>
+    <h6 class="btn btn-primary">
+      <%= link_to t('.inactivate'), change_active_supplier_path, method: :post, class:"link-secondary" %>
+    </h6>
+    <% else %>
+      <h6 class="btn btn-primary">
+        <%= link_to t('.activate'), change_active_supplier_path, method: :post, class:"link-secondary" %>
+      </h6>
     <% end %>
-  </li>
-</ul>
 
-<% if @supplier.active? %>
-  <p><%= link_to t('.inactivate'), change_active_supplier_path, method: :post %></p>
-<% else %>
-  <p><%= link_to t('.activate'), change_active_supplier_path, method: :post %></p>
-<% end %>
+    <h6 class="btn btn-primary">
+      <%= link_to t('.edit'), edit_supplier_path, class:"link-secondary" %>
+    </h6>
+    <h6 class="btn btn-primary"> <%= link_to t('.back'), suppliers_path, class:"link-secondary" %> </h6>
+  </div>
 
-<p><%= link_to t('.edit'), edit_supplier_path %></p>
-<p><%= link_to t('.back'), suppliers_path %></p>
+    <div class="card" style="width: 18rem;">
+      <h6 class="card-header"> <%= Supplier.human_attribute_name(:name) %>: <%= @supplier.name %> </h6>
+      <div class="card-body">
+        <p class="card-text"> <%= Supplier.human_attribute_name(:trade_name) %>: <%= @supplier.trade_name %> </p>
+        <p class="card-text"> <%= Supplier.human_attribute_name(:cnpj) %>: <%= @supplier.cnpj %> </p>
+        <p class="card-text"> <%= Supplier.human_attribute_name(:status) %>: <%= Supplier.human_attribute_name("status/#{@supplier.active}") %> </p>
+      </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+      <h6 class="card-header"> <%= Supplier.human_attribute_name(:address) %> </h6>
+      <div class="card-body">
+        <% if @supplier.address %>
+          <p class="card-text">
+            <%= @supplier.address.name %>, <%= @supplier.address.number %>. <%= @supplier.address.district %><br>
+            <%= @supplier.address.city %>, <%= @supplier.address.state %><br>
+            <%= @supplier.address.zip_code %>
+            <%= @supplier.address.latitude %> , <%= @supplier.address.longitude %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+</div>
