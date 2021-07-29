@@ -9,7 +9,6 @@ describe 'User block supplier' do
     login_as_user
     visit root_path
     click_on 'Fornecedores'
-    save_page
     click_on 'Codeplay S.A.'
     click_on 'Desativar Fornecedor'
 
