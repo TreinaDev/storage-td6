@@ -24,6 +24,7 @@ Rails.application.routes.draw do
         resources :warehouses, only: %i[] do 
           get ':sku', on: :collection, param: :sku, to: 'warehouses#list'
         end
+        resources :return_entries, only: %[create]
       end
       namespace :ecommerce do
         resources :warehouses, only: %i[] do 

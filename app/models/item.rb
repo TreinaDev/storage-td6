@@ -9,6 +9,8 @@ class Item < ApplicationRecord
   belongs_to :product
 
   has_one :dispatch_log, dependent: :destroy
+  has_many :return_entries, foreign_key: :code  ,dependent: :destroy
+  has_many :return_entries, foreign_key: 'item_code', primary_key: 'code'
 
   enum status: { available: 0, reserved: 5, dispatched: 10 }
 

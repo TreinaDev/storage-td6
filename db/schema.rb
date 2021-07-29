@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_002214) do
+ActiveRecord::Schema.define(version: 2021_07_29_011314) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -34,8 +34,6 @@ ActiveRecord::Schema.define(version: 2021_07_27_002214) do
     t.string "authorized_person"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "item"
-    t.index ["item"], name: "index_dispatch_logs_on_item", unique: true
     t.index ["item_id"], name: "index_dispatch_logs_on_item_id"
     t.index ["user_id"], name: "index_dispatch_logs_on_user_id"
   end
@@ -100,6 +98,15 @@ ActiveRecord::Schema.define(version: 2021_07_27_002214) do
     t.index ["item_id"], name: "index_reserve_logs_on_item_id"
   end
 
+  create_table "return_entries", force: :cascade do |t|
+    t.integer "request_number"
+    t.string "item_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_code"], name: "index_return_entries_on_item_code"
+    t.index ["request_number"], name: "index_return_entries_on_request_number"
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string "cnpj"
     t.string "name"
@@ -149,5 +156,6 @@ ActiveRecord::Schema.define(version: 2021_07_27_002214) do
   add_foreign_key "product_warehouses", "products"
   add_foreign_key "product_warehouses", "warehouses"
   add_foreign_key "reserve_logs", "items"
+  add_foreign_key "return_entries", "items", column: "item_code", primary_key: "code"
   add_foreign_key "users", "warehouses"
 end

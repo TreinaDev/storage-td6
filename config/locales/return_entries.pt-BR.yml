@@ -1,0 +1,15 @@
+---
+pt-BR:
+  return_entries:
+    create:
+      success: 'Ordem de retorno criada com sucesso!'
+      fail: 'Não foi possível cadastrar o fornecedor'
+  activerecord:
+    models:
+      return_entries:
+        one: 'Entrada de Devolução'
+        other: 'Entrada de Devolução'
+    attributes:
+      supplier:
+        item_code: 'Código do Item'
+        request_number: 'Número da venda'
