@@ -12,15 +12,14 @@
   <li>
   <p><%= Supplier.human_attribute_name(:status) %>: <%= Supplier.human_attribute_name("status/#{@supplier.active}") %> </p>
   </li>
-  <li>
-  <p><%= Supplier.human_attribute_name(:addresses) %><p>
-    <% @supplier.addresses.each do |address| %>
-        <div>
-            <%= address.name %>, <%= address.number %>. <%= address.district %><br>
-            <%= address.city %>, <%= address.state %><br>
-            <%= address.zip_code %>
-            <%= address.latitude %> , <%= address.longitude %>
-        </div><br>
+  <% if @supplier.address %>
+      <p><%= Supplier.human_attribute_name(:addresses) %><p>
+      <div>
+        <%= @supplier.address.name %>, <%= @supplier.address.number %>. <%= @supplier.address.district %><br>
+        <%= @supplier.address.city %>, <%= @supplier.address.state %><br>
+        <%= @supplier.address.zip_code %>
+        <%= @supplier.address.latitude %> , <%= @supplier.address.longitude %>
+      </div><br>
     <% end %>
   </li>
 </ul>
