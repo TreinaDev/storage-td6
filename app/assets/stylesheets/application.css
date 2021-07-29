@@ -14,3 +14,12 @@
  *= require_tree .
  *= require_self
  */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  left: 0;
+  right: 0;
+  color: #ffde59
+};
