@@ -6,7 +6,6 @@ describe 'User block supplier' do
                       trade_name: 'Codeplay Vendas',
                       cnpj: '29.317.821/0001-38',
                       active: true)
-
     login_as_user
     visit root_path
     click_on 'Fornecedores'
