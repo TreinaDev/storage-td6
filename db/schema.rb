@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_23_021108) do
+ActiveRecord::Schema.define(version: 2021_07_27_002214) do
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 2021_07_23_021108) do
     t.decimal "latitude"
     t.decimal "longitude"
     t.index ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable"
+  end
+
+  create_table "dispatch_logs", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "user_id", null: false
+    t.string "authorized_person"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "item"
+    t.index ["item"], name: "index_dispatch_logs_on_item", unique: true
+    t.index ["item_id"], name: "index_dispatch_logs_on_item_id"
+    t.index ["user_id"], name: "index_dispatch_logs_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -125,6 +137,8 @@ ActiveRecord::Schema.define(version: 2021_07_23_021108) do
     t.index ["code"], name: "index_warehouses_on_code", unique: true
   end
 
+  add_foreign_key "dispatch_logs", "items"
+  add_foreign_key "dispatch_logs", "users"
   add_foreign_key "items", "product_entries"
   add_foreign_key "items", "products"
   add_foreign_key "items", "suppliers"
