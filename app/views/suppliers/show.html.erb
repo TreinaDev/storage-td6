@@ -13,7 +13,7 @@
   <p><%= Supplier.human_attribute_name(:status) %>: <%= Supplier.human_attribute_name("status/#{@supplier.active}") %> </p>
   </li>
   <% if @supplier.address %>
-      <p><%= Supplier.human_attribute_name(:addresses) %><p>
+      <p><%= Supplier.human_attribute_name(:address) %><p>
       <div>
         <%= @supplier.address.name %>, <%= @supplier.address.number %>. <%= @supplier.address.district %><br>
         <%= @supplier.address.city %>, <%= @supplier.address.state %><br>
