@@ -37,7 +37,7 @@ describe 'User Register a Supplier' do
     click_on 'Registrar Fornecedor'
     click_on 'Criar Fornecedor'
 
-    expect(page).to have_content('não pode ficar em branco', count: 8)
+    expect(page).to have_content('não pode ficar em branco', count: 3)
     expect(page).to have_content('Não foi possível cadastrar o fornecedor')
   end
 

@@ -13,7 +13,7 @@ class SuppliersController < AuthenticationController
 
   def create
     @supplier = Supplier.new(supplier_params)
-    @supplier.addresses.new(address_params)
+    @supplier.address = Address.new(address_params)
     if @supplier.save
       redirect_to @supplier, notice: t('.success')
     else
@@ -28,12 +28,12 @@ class SuppliersController < AuthenticationController
   end
 
   def edit
-    @address = @supplier.addresses.last
+    @address = @supplier.address
   end
 
   def update
     @supplier.update(supplier_params)
-    @supplier.addresses.last.update(address_params)
+    @supplier.address.update(address_params)
     redirect_to @supplier, notice: t('.success')
   end
 

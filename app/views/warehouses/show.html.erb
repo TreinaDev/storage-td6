@@ -2,13 +2,13 @@
 <%= @warehouse.name %>
 <p><%= Warehouse.human_attribute_name(:code) %>:</p>
 <%= @warehouse.code %>
-<p><%= Warehouse.human_attribute_name(:addresses) %>:</p>
-    <% @warehouse.addresses.each do |address| %>
-        <div>
-            <%= address.name %>, <%= address.number %>. <%= address.district %><br>
-            <%= address.city %>, <%= address.state %><br>
-            <%= address.zip_code %>
-            <%= address.latitude %> , <%= address.longitude %>
-        </div><br>
-    <% end %>
+<% if @warehouse.address %>
+    <p><%= Warehouse.human_attribute_name(:addresses) %>:</p>
+    <div>
+        <%= @warehouse.address.name %>, <%= @warehouse.address.number %>. <%= @warehouse.address.district %><br>
+        <%= @warehouse.address.city %>, <%= @warehouse.address.state %><br>
+        <%= @warehouse.address.zip_code %>
+        <%= @warehouse.address.latitude %> , <%= @warehouse.address.longitude %>
+    </div><br>
+<% end %>
 <%= link_to t('.back'), root_path%>

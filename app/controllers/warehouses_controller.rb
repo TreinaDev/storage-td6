@@ -11,7 +11,7 @@ class WarehousesController < AuthenticationController
 
   def create
     @warehouse = Warehouse.new(warehouse_params)
-    @warehouse.addresses.new(address_params)
+    @warehouse.address = Address.new(address_params)
     if @warehouse.save
       redirect_to warehouse_path(@warehouse), notice: t('.success')
     else
