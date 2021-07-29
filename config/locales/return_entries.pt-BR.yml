@@ -3,13 +3,15 @@ pt-BR:
   return_entries:
     create:
       success: 'Ordem de retorno criada com sucesso!'
-      fail: 'Não foi possível cadastrar o fornecedor'
   activerecord:
     models:
       return_entries:
         one: 'Entrada de Devolução'
         other: 'Entrada de Devolução'
+      reserve_log: 'Log de reserva'
     attributes:
-      supplier:
+      return_entry:
         item_code: 'Código do Item'
         request_number: 'Número da venda'
+    errors: 
+      not_found: '%{model_name} não encontrado'
