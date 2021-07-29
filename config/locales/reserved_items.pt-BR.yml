@@ -1,0 +1,7 @@
+---
+pt-BR:
+  reserved_items:
+    nav_link: 'Itens Reservados'
+    index:
+      title: 'Itens Reservados'
+      button: 'Despachar'

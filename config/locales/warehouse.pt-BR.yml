@@ -1,13 +1,21 @@
 ---
 pt-BR:
   warehouses:
+    nav_link: 
+      new: 'Criar Galpões'
+      mine: 'Meu Galpão'
     new:
       title: 'Novo Galpão'
+      back: 'Voltar'
     update:
       title: 'Atualizar Galpão'
       success: 'Galpão atualizado com sucesso'
+    show:
+      back: 'Voltar'
     create:
       success: 'Galpão cadastrado com sucesso'
+    form:
+      errors: Foram encontrados %{count} erro(s)
   activerecord:
     models:
       warehouse: 'Galpão'
@@ -15,5 +23,6 @@ pt-BR:
       warehouse:
         name: 'Nome'
         code: 'Código'
+        addresses: 'Endereços'
     errors:
       not_found: '%{model_name} não encontrado'

@@ -1,14 +1,14 @@
-<h1>Fornecedores</h1>
+<h1><%= t('.title') %></h1>
 <% if @suppliers.empty? %>
-    <p><h4>Nenhum Fornecedor Cadastrado</h4></p>
+    <p><h4><%= t('.empty') %></h4></p>
 <% else %>
   <% @suppliers.each do |supplier| %>
-    <p>Razão Social <%= link_to supplier.name, supplier_path(supplier) %></p>
-    <p>Nome Fantasia <%= supplier.trade_name %></p>
-    <p>CNPJ <%= supplier.cnpj %></p>
+    <p><%= Supplier.human_attribute_name(:name) %>: <%= link_to supplier.name, supplier_path(supplier) %></p>
+    <p><%= Supplier.human_attribute_name(:trade_name) %>: <%= supplier.trade_name %></p>
+    <p><%= Supplier.human_attribute_name(:cnpj) %>: <%= supplier.cnpj %></p>
   <% end %>
 <% end %>
 
-<%= link_to 'Registrar Fornecedor', new_supplier_path %>
+<%= link_to t('.add_new'), new_supplier_path %>
 
-<%= link_to 'Voltar', root_path %>
+<%= link_to t('.back'), root_path %>

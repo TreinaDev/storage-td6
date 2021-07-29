@@ -1,5 +1,5 @@
 <% if warehouse.errors.any? %>
-  <p>Foram encontrados <%= warehouse.errors.count %> erro(s):</p>
+  <p><%= t('.errors', count: warehouse.errors.count) %>:</p>
   <ul>
     <% warehouse.errors.full_messages.each do |error| %>
       <li><%= error %></li>

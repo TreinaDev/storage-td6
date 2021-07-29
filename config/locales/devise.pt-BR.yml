@@ -49,12 +49,19 @@ pt-BR:
       signed_in: "Login efetuado com sucesso!"
       signed_out: "Saiu com sucesso."
       already_signed_out: "Saiu com sucesso."
+      log_out: 'Sair'
+      log_in: 'Entrar'
       new:
-        log_in: "Entrar"
+        title: "Entrar"
+        button: "Entrar"
+        remember_me: "Lembrar-me"
     unlocks:
       send_instructions: "Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta."
       send_paranoid_instructions: "Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos."
       unlocked: "Sua conta foi desbloqueada com sucesso. Efetue login para continuar."
+    shared:
+      links:
+        forgot_password: "Esqueceu sua senha?"
   errors:
     messages:
       already_confirmed: "já foi confirmado"
@@ -66,3 +73,4 @@ pt-BR:
       not_saved:
         one: "Não foi possível salvar %{resource}: 1 erro"
         other: "Não foi possível salvar %{resource}: %{count} erros."
+
