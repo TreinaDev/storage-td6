@@ -4,7 +4,7 @@ class CreateReturnLogs < ActiveRecord::Migration[6.1]
       t.belongs_to :return_entry, null: false, foreign_key: true
       t.string :date
       t.text :justification
-      t.integer :decision
+      t.integer :decision, default: 0
 
       t.timestamps
     end

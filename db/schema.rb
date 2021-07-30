@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 2021_07_29_225215) do
   create_table "return_logs", force: :cascade do |t|
     t.integer "return_entry_id", null: false
     t.text "justification"
-    t.integer "decision"
+    t.integer "decision", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "date"
