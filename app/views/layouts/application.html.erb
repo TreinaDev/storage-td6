@@ -20,7 +20,7 @@
         <%= link_to t('reserved_items.nav_link'), reserved_items_path %>
         <% if current_user.admin? %>
           <%= link_to t('users.nav_link'), users_path %>
-          <%= link_to t('warehouses.nav_link.new'), new_warehouse_path %>
+          <%= link_to t('warehouses.nav_link.all'), warehouses_path %>
         <% else %>
           <%= link_to t('warehouses.nav_link.mine'), warehouse_path(current_user.warehouse) %>
         <% end %>

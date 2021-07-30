@@ -64,4 +64,17 @@ describe 'User checkouts reserved item' do
     expect(page).to have_content('yyyy000003')
     expect(page).to have_link('Despachar', count: 3)
   end
+
+  it 'cannot create without authorized_person' do
+    create(:product_entry, warehouse: warehouse)
+    Item.first.reserved!
+
+    login_as user, scope: :user
+    visit root_path
+    click_on 'Itens Reservados'
+    click_on 'Despachar'
+
+    expect { click_on 'Confirmar' }.to_not(change { DispatchLog.count })
+    expect(page).to have_content('não pode ficar em branco')
+  end
 end

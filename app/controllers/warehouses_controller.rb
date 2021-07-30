@@ -2,7 +2,7 @@ class WarehousesController < AuthenticationController
   before_action :authorize_admin!, only: %i[index new create]
 
   def index
-    @warehouse = Warehouse.all
+    @warehouses = Warehouse.all
   end
 
   def new
