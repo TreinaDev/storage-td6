@@ -4,8 +4,8 @@ describe 'Freightage Products API' do
   context 'GET /api/v1/freightage/return_entries' do
     it 'should create a return entry' do
       warehouse = FactoryBot.create(:warehouse, code: 'abdc')
-      FactoryBot.create(:product_entry, quantity: 1, warehouse: warehouse)
-      FactoryBot.create(:reserve_log, request_number: '123456', item: Item.last)
+      product = FactoryBot.create(:product_entry, quantity: 1, warehouse: warehouse)
+      FactoryBot.create(:reserve_log, request_number: '123456', item: Item.last, sku: product.sku)
 
       post '/api/v1/freightage/return_entries', params: { return_entry: { request_number: '123456' } }
 
