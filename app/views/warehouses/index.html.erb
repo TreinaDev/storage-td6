@@ -1,0 +1,12 @@
+<h1><%= t('.title') %></h1>
+<% if @warehouses.empty? %>
+    <p><h4><%= t('.empty') %></h4></p>
+<% else %>
+  <% @warehouses.each do |warehouse| %>
+    <p><%= Warehouse.human_attribute_name(:name) %>: <%= link_to warehouse.name, warehouse_path(warehouse) %></p>
+    <p><%= Warehouse.human_attribute_name(:code) %>: <%= warehouse.code %></p>
+  <% end %>
+<% end %>
+
+<%= link_to t('.add_new'), new_warehouse_path %>
+<%= link_to t('.back'), root_path %>

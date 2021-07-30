@@ -1,5 +1,14 @@
 <h1><%= t('.title') %> <%= @item.code %></h1>
 
+<% if @dispatch_log.errors.any? %>
+  <p><%= t('.errors', count: @dispatch_log.errors.count) %>:</p>
+  <ul>
+    <% @dispatch_log.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @dispatch_log do |form| %>
   <%= form.label :authorized_person %>
   <%= form.text_field :authorized_person %>
