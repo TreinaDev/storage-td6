@@ -3,7 +3,7 @@ class ReturnEntry < ApplicationRecord
 
   before_validation :set_item_code
 
-  validates :item_code, presence: true
+  validates :item_code, :request_number, presence: true
 
   def set_item_code
     code = ReserveLog.find_by!(request_number: request_number).item.code
