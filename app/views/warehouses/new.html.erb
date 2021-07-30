@@ -1,3 +1,11 @@
-<h1><%= t '.title' %></h1>
-<%= render 'form', warehouse: @warehouse %>
-<%= link_to t('.back'), root_path%>
+<div class="container py-3">
+  <h1><%= t '.title' %></h1>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), root_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
+
+  <%= render 'form', warehouse: @warehouse %>
+</div>

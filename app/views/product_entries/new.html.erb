@@ -1,6 +1,6 @@
-<h1><%= t('.title') %></h1>
-
 <div class="container py-3">
+  <h1><%= t('.title') %></h1>
+
   <% if @product_entry.errors.any? %>
     <p><%= t('.errors', count: @product_entry.errors.count) %>:</p>
     <ul>
@@ -11,7 +11,9 @@
   <% end %>
 
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <h6 class="btn btn-primary"> <%= link_to t('.back'), product_entries_path, class:"link-secondary text-decoration-none" %> </h6>
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), product_entries_path, class:"link-secondary text-decoration-none" %>
+    </h6>
   </div>
 
   <div class="input-group mb-3">
@@ -22,7 +24,7 @@
     <% end %>
   </div>
 
-  <div class="py-2">
+  <div class="py-2 w-50">
     <%= form_with model: @product_entry, html: { class: 'form-control' } do |form| %>
       <div class="field">
         <%= form.label :sku, class: "form-label mt-2" %>

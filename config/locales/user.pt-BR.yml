@@ -5,6 +5,7 @@ pt-BR:
     nav_link: Usuários
     domain_not_allowed: domínio não permitido
     index:
+      title: Usuários
       new_user: Criar novo usuário
       no_warehouse: Sem galpão
     new:

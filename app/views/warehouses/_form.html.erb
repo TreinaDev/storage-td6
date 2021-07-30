@@ -12,24 +12,42 @@
   </ul>
 <% end %>
 
-<%= form_with model: warehouse do |form| %>
-<%= form.label :name  %>
-<%= form.text_field :name %>
-<%= form.label :code%>
-<%= form.text_field :code %>
-<%= fields_for :address do |address_form| %>
-  <%= address_form.label :name, Address.human_attribute_name("name") %>
-  <%= address_form.text_field :name %>
-  <%= address_form.label :number, Address.human_attribute_name("number") %>
-  <%= address_form.text_field :number %>
-  <%= address_form.label :district, Address.human_attribute_name("district") %>
-  <%= address_form.text_field :district %>
-  <%= address_form.label :city, Address.human_attribute_name("city")  %>
-  <%= address_form.text_field :city %>
-  <%= address_form.label :state, Address.human_attribute_name("state")  %>
-  <%= address_form.text_field :state %>
-  <%= address_form.label :zip_code, Address.human_attribute_name("zip_code")  %>
-  <%= address_form.text_field :zip_code %>
-<% end %>
-<%= form.submit%>
-<% end %>
+<div class="py-2 w-50">
+  <%= form_with model: warehouse, html: { class: 'form-control' } do |form| %>
+    <div class="field">
+      <%= form.label :name, class: "form-label mt-2" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= form.label :code, class: "form-label mt-2" %>
+      <%= form.text_field :code, class: "form-control" %>
+    </div>
+    <%= fields_for :address do |address_form| %>
+      <div class="field">
+        <%= address_form.label :name, Address.human_attribute_name("name"), class: "form-label mt-2" %>
+        <%= address_form.text_field :name, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= address_form.label :number, Address.human_attribute_name("number"), class: "form-label mt-2" %>
+        <%= address_form.text_field :number, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= address_form.label :district, Address.human_attribute_name("district"), class: "form-label mt-2" %>
+        <%= address_form.text_field :district, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= address_form.label :city, Address.human_attribute_name("city"), class: "form-label mt-2" %>
+        <%= address_form.text_field :city, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= address_form.label :state, Address.human_attribute_name("state"), class: "form-label mt-2" %>
+        <%= address_form.text_field :state, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= address_form.label :zip_code, Address.human_attribute_name("zip_code"), class: "form-label mt-2" %>
+        <%= address_form.text_field :zip_code, class: "form-control" %>
+      </div>
+    <% end %>
+    <%= form.submit class: "btn btn-primary text-secondary mt-3" %>
+  <% end %>
+</div>

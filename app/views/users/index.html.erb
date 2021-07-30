@@ -1,21 +1,30 @@
-<%= link_to t('.new_user'), new_user_path %>
-<ul>
-  <% @users.each do |user| %>
-    <li>
-      <div style="background: #e0ebeb; margin: 12px; padding: 5px; border-radius: 5px;">
-        <p><%= User.human_attribute_name(:name) %>:
-        <%= user.name %>
-        <p><%= User.human_attribute_name(:registration_code) %>: 
-        <%= user.registration_code %></p>
-        <% if user.warehouse %>
-          <p><%= User.human_attribute_name(:warehouse_id) %>:
-          <%= user.warehouse.name %></p>
-        <% else %>
-          <p><%= User.human_attribute_name(:warehouse_id) %>:
-          <%= t('.no_warehouse') %></p>
-        <% end %>
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.new_user'), new_user_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
+
+  <div class="container-sm py-3 w-75">
+    <div class="row border bg-light py-1">
+      <div class="col col-lg-4 mt-2"><h5> <%= User.human_attribute_name(:name) %> </h5></div>
+      <div class="col col-lg-4 mt-2"><h5> <%= User.human_attribute_name(:registration_code) %> </h5></div>
+      <div class="col col-lg-4 mt-2"><h5> <%= User.human_attribute_name(:warehouse_id) %> </h5></div>
+    </div>
+    <% @users.each do |user| %>
+      <div class="row border">
+        <div class="col col-lg-4 mt-2"><p> <%= user.name %> </p></div>
+        <div class="col col-lg-4 mt-2"><p> <%= user.registration_code %> </p></div>
+        <div class="col col-lg-4 mt-2">
+          <% if user.warehouse %>
+            <p> <%= user.warehouse.name %> </p>
+          <% else %>
+            <p> <%= t('.no_warehouse') %> </p>
+          <% end %>
+        </div>
       </div>
-    </li>
-  <% end %>
-  
-</ul>
+    <% end %>
+  </div>
+</div>

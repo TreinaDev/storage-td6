@@ -3,22 +3,23 @@
 
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
     <% if @supplier.active? %>
-    <h6 class="btn btn-primary">
-      <%= link_to t('.inactivate'), change_active_supplier_path, method: :post, class:"link-secondary" %>
-    </h6>
+      <h6 class="btn btn-primary">
+        <%= link_to t('.inactivate'), change_active_supplier_path, method: :post, class:"link-secondary text-decoration-none" %>
+      </h6>
     <% else %>
       <h6 class="btn btn-primary">
-        <%= link_to t('.activate'), change_active_supplier_path, method: :post, class:"link-secondary" %>
+        <%= link_to t('.activate'), change_active_supplier_path, method: :post, class:"link-secondary text-decoration-none" %>
       </h6>
     <% end %>
-
     <h6 class="btn btn-primary">
-      <%= link_to t('.edit'), edit_supplier_path, class:"link-secondary" %>
+      <%= link_to t('.edit'), edit_supplier_path, class:"link-secondary text-decoration-none" %>
     </h6>
-    <h6 class="btn btn-primary"> <%= link_to t('.back'), suppliers_path, class:"link-secondary" %> </h6>
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), suppliers_path, class:"link-secondary text-decoration-none" %>
+    </h6>
   </div>
 
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
       <h6 class="card-header"> <%= Supplier.human_attribute_name(:name) %>: <%= @supplier.name %> </h6>
       <div class="card-body">
         <p class="card-text"> <%= Supplier.human_attribute_name(:trade_name) %>: <%= @supplier.trade_name %> </p>
@@ -26,7 +27,7 @@
         <p class="card-text"> <%= Supplier.human_attribute_name(:status) %>: <%= Supplier.human_attribute_name("status/#{@supplier.active}") %> </p>
       </div>
     </div>
-    <div class="card" style="width: 18rem;">
+    <div class="card" style="width: 20rem;">
       <h6 class="card-header"> <%= Supplier.human_attribute_name(:address) %> </h6>
       <div class="card-body">
         <% if @supplier.address %>

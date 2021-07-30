@@ -20,19 +20,37 @@
         <div class="d-inline-block">
           <% if user_signed_in? %>
             <h6 class="align-text-right text-secondary"> <%= current_user.name %> </h6>
-            <h6 class="btn btn-secondary btn-sm"> <%= link_to Supplier.model_name.human(count: 2), suppliers_path, class:"fw-bold link-primary text-decoration-none" %> </h6>
-            <h6 class="btn btn-secondary btn-sm"> <%= link_to Product.model_name.human(count: 2), product_entries_path, class:"fw-bold link-primary text-decoration-none" %> </h6>
-            <h6 class="btn btn-secondary btn-sm"> <%= link_to t('users.edit.title'), edit_user_path(current_user), class:"fw-bold link-primary text-decoration-none" %> </h6>
-            <h6 class="btn btn-secondary btn-sm"> <%= link_to t('reserved_items.nav_link'), reserved_items_path, class:"fw-bold link-primary text-decoration-none" %> </h6>
+            <h6 class="btn btn-secondary btn-sm">
+              <%= link_to Supplier.model_name.human(count: 2), suppliers_path, class:"fw-bold link-primary text-decoration-none" %>
+            </h6>
+            <h6 class="btn btn-secondary btn-sm">
+              <%= link_to Product.model_name.human(count: 2), product_entries_path, class:"fw-bold link-primary text-decoration-none" %>
+            </h6>
+            <h6 class="btn btn-secondary btn-sm">
+              <%= link_to t('users.edit.title'), edit_user_path(current_user), class:"fw-bold link-primary text-decoration-none" %>
+            </h6>
+            <h6 class="btn btn-secondary btn-sm">
+              <%= link_to t('reserved_items.nav_link'), reserved_items_path, class:"fw-bold link-primary text-decoration-none" %>
+            </h6>
             <% if current_user.admin? %>
-              <h6 class="btn btn-secondary btn-sm"> <%= link_to t('users.nav_link'), users_path, class:"fw-bold link-primary text-decoration-none" %> </h6>
-              <h6 class="btn btn-secondary btn-sm"> <%= link_to t('warehouses.nav_link.new'), new_warehouse_path, class:"fw-bold link-primary text-decoration-none" %> </h6>
+              <h6 class="btn btn-secondary btn-sm">
+                <%= link_to t('users.nav_link'), users_path, class:"fw-bold link-primary text-decoration-none" %>
+              </h6>
+              <h6 class="btn btn-secondary btn-sm">
+                <%= link_to t('warehouses.nav_link.new'), new_warehouse_path, class:"fw-bold link-primary text-decoration-none" %>
+              </h6>
             <% else %>
-              <h6 class="btn btn-secondary btn-sm"> <%= link_to t('warehouses.nav_link.mine'), warehouse_path(current_user.warehouse), class:"fw-bold link-primary text-decoration-none" %> </h6>
+              <h6 class="btn btn-secondary btn-sm">
+                <%= link_to t('warehouses.nav_link.mine'), warehouse_path(current_user.warehouse), class:"fw-bold link-primary text-decoration-none" %>
+              </h6>
             <% end %>
-            <h6 class="btn btn-secondary btn-sm"> <%= link_to t('devise.sessions.log_out'), destroy_user_session_path, method: :delete, class:"fw-bold link-primary text-decoration-none" %> </h6>
+            <h6 class="btn btn-secondary btn-sm">
+              <%= link_to t('devise.sessions.log_out'), destroy_user_session_path, method: :delete, class:"fw-bold link-primary text-decoration-none" %>
+            </h6>
           <% else %>
-            <h6 class="btn btn-secondary"> <%= link_to t('devise.sessions.log_in'), new_user_session_path, class:"fw-bold link-primary text-decoration-none" %> </h6>
+            <h6 class="btn btn-secondary">
+              <%= link_to t('devise.sessions.log_in'), new_user_session_path, class:"fw-bold link-primary text-decoration-none" %>
+            </h6>
           <% end %>
         </div>
       </div>
@@ -50,14 +68,14 @@
     <% end %>
     <%= yield %>
 
-    <footer class="bg-primary">
+    <footer class="bg-primary mt-2">
       <div class="container mb-2">
         <h6 class="mt-2 mb-0">Desenvolvido por:</h6>
-        <a class="navbar-brand link-secondary" href="https://github.com/ericdaher">Eric </a>
-        <a class="navbar-brand link-secondary" href="https://github.com/glmsilva">Guilherme </a>
-        <a class="navbar-brand link-secondary" href="https://github.com/Laryssa-lfa">Laryssa </a>
-        <a class="navbar-brand link-secondary" href="https://github.com/cohako">Murilo </a>
-        <a class="navbar-brand link-secondary" href="https://github.com/rog404">Rogerio </a>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/ericdaher">Eric </a>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/glmsilva">Guilherme </a>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/Laryssa-lfa">Laryssa </a>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/cohako">Murilo </a>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/rog404">Rogerio </a>
       </div>
     </footer>
 

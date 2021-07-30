@@ -1,5 +1,11 @@
-<h1> <%= t '.title'%></h1>
+<div class="container py-3">
+  <h1> <%= t '.title'%> </h1>
 
-<%= render 'form', supplier: @supplier %>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), suppliers_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
 
-<%= link_to t('.back'), suppliers_path %>
+  <%= render 'form', supplier: @supplier %>
+</div>

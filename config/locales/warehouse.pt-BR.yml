@@ -11,6 +11,7 @@ pt-BR:
       title: 'Atualizar Galpão'
       success: 'Galpão atualizado com sucesso'
     show:
+      title: 'Galpão'
       back: 'Voltar'
     create:
       success: 'Galpão cadastrado com sucesso'

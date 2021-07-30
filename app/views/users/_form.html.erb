@@ -1,22 +1,29 @@
 <% user.errors.each do |error| %>
-    <span><%= error.full_message %></span><br>
+  <span><%= error.full_message %></span><br>
 <% end %>
 
-<%= form_with model: user do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-
-    <%= f.label :cpf %>
-    <%= f.text_field :cpf %>
-
-    <%= f.label :registration_code %>
-    <%= f.text_field :registration_code %>
-
-    <%= f.label :warehouse_id %>
-    <%= f.collection_select :warehouse_id, warehouses, :id, :name, {} %>
-
-    <%= f.submit %>
-<% end %>
+<div class="py-2 w-50">
+  <%= form_with model: user, html: { class: 'form-control' } do |f| %>
+    <div class="field">
+      <%= f.label :name, class: "form-label mt-2" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :email, class: "form-label mt-2" %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :cpf, class: "form-label mt-2" %>
+      <%= f.text_field :cpf, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :registration_code, class: "form-label mt-2" %>
+      <%= f.text_field :registration_code, class: "form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :warehouse_id, class: "form-label mt-2" %>
+      <%= f.collection_select :warehouse_id, warehouses, :id, :name, {}, class: "form-control" %>
+    </div>
+    <%= f.submit class: "btn btn-primary text-secondary mt-3" %>
+  <% end %>
+</div>
