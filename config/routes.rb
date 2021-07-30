@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :items, only: %i[], param: :code do
     resources :dispatch_logs, only: %i[new]
   end
+  resources :return_entries, only: %i[index show] do
+    resources :return_logs, only: %i[new create]
+  end
 
   post :create_entry_by_csv, to: 'product_entries#create_by_csv'
 
