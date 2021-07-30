@@ -3,15 +3,15 @@
   <% @users.each do |user| %>
     <li>
       <div style="background: #e0ebeb; margin: 12px; padding: 5px; border-radius: 5px;">
-        <p>Nome:
+        <p><%= User.human_attribute_name(:name) %>:
         <%= user.name %>
-        <p>Matrícula: 
+        <p><%= User.human_attribute_name(:registration_code) %>: 
         <%= user.registration_code %></p>
         <% if user.warehouse %>
-          <p>Galpão de Origem:
+          <p><%= User.human_attribute_name(:warehouse_id) %>:
           <%= user.warehouse.name %></p>
         <% else %>
-          <p>Galpão de Origem:
+          <p><%= User.human_attribute_name(:warehouse_id) %>:
           <%= t('.no_warehouse') %></p>
         <% end %>
       </div>

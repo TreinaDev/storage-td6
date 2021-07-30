@@ -9,9 +9,9 @@ describe 'Reserve API' do
       post '/api/v1/reserve', params: {
         reserve: {
           sku: Item.last.sku,
-          shipping_company: 'Transportadora 1',
+          shipping_company: 'XYZ8',
           request_number: 125,
-          warehouse: 'Galpão 1'
+          warehouse: 'abcd'
         }
       }
 
@@ -26,9 +26,9 @@ describe 'Reserve API' do
       post '/api/v1/reserve', params: {
         reserve: {
           sku: 'AIXRP128',
-          shipping_company: 'Transportadora 1',
+          shipping_company: 'XYZ8',
           request_number: 125,
-          warehouse: 'Galpão 1'
+          warehouse: 'abcd'
         }
       }
 
@@ -45,9 +45,9 @@ describe 'Reserve API' do
       post '/api/v1/reserve', params: {
         reserve: {
           sku: 'AIXRP128',
-          shipping_company: 'Transportadora 1',
+          shipping_company: 'XYZ8',
           request_number: 125,
-          warehouse: 'Galpão 1'
+          warehouse: 'abcd'
         }
       }
 

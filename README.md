@@ -94,3 +94,28 @@ resposta:
    ]
 }
 ```
+
+## Consulta do endereço de um galpão
+
+```
+GET '/api/v1/ecommerce/warehouse/:code'
+```
+
+resposta:
+
+```json
+{
+  "warehouse": {
+    "code": "0002",
+    "full_address": {
+      "number": 1293,
+      "district": "Jardim Paulista",
+      "city": "São Paulo",
+      "state": "SP",
+      "latitude": "-23.5569296",
+      "longitude": "-46.6635382",
+      "address": "Alameda Santos"
+    }
+  }
+}
+```

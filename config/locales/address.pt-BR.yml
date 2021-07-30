@@ -1,6 +1,6 @@
 ---
 pt-BR:
-  addresses:
+  address:
   activerecord:
     models:
       address:

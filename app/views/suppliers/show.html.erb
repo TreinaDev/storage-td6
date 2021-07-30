@@ -1,35 +1,34 @@
-<h1>Fornecedor</h1>
+<h1><%= t('.title') %></h1>
 <ul>
   <li>
-  <p> Razão Social: <%= @supplier.name %> </p>
+  <p><%= Supplier.human_attribute_name(:name) %>: <%= @supplier.name %> </p>
   </li>
   <li>
-  <p> Nome Fantasia: <%= @supplier.trade_name %> </p>
+  <p><%= Supplier.human_attribute_name(:trade_name) %>: <%= @supplier.trade_name %> </p>
   </li>
   <li>
-  <p> CNPJ: <%= @supplier.cnpj %> </p>
+  <p><%= Supplier.human_attribute_name(:cnpj) %>: <%= @supplier.cnpj %> </p>
   </li>
   <li>
-  <p> Situação: <%= @supplier.active? ? 'Ativado' : 'Bloqueado' %> </p>
+  <p><%= Supplier.human_attribute_name(:status) %>: <%= Supplier.human_attribute_name("status/#{@supplier.active}") %> </p>
   </li>
-  <li>
-  <p>Endereço:<p>
-    <% @supplier.addresses.each do |address| %>
-        <div>
-            <%= address.name %>, <%= address.number %>. <%= address.district %><br>
-            <%= address.city %>, <%= address.state %><br>
-            <%= address.zip_code %>
-            <%= address.latitude %> , <%= address.longitude %>
-        </div><br>
+  <% if @supplier.address %>
+      <p><%= Supplier.human_attribute_name(:address) %><p>
+      <div>
+        <%= @supplier.address.name %>, <%= @supplier.address.number %>. <%= @supplier.address.district %><br>
+        <%= @supplier.address.city %>, <%= @supplier.address.state %><br>
+        <%= @supplier.address.zip_code %>
+        <%= @supplier.address.latitude %> , <%= @supplier.address.longitude %>
+      </div><br>
     <% end %>
   </li>
 </ul>
 
 <% if @supplier.active? %>
-  <p><%= link_to 'Desativar Fornecedor', change_active_supplier_path, method: :post %></p>
+  <p><%= link_to t('.inactivate'), change_active_supplier_path, method: :post %></p>
 <% else %>
-  <p><%= link_to 'Ativar Fornecedor', change_active_supplier_path, method: :post %></p>
+  <p><%= link_to t('.activate'), change_active_supplier_path, method: :post %></p>
 <% end %>
 
-<p><%= link_to 'Editar Fornecedor', edit_supplier_path %></p>
-<p><%= link_to 'Voltar', suppliers_path %></p>
+<p><%= link_to t('.edit'), edit_supplier_path %></p>
+<p><%= link_to t('.back'), suppliers_path %></p>

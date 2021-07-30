@@ -30,6 +30,9 @@ Rails.application.routes.draw do
         resources :warehouses, only: %i[] do 
           get ':sku', on: :collection, param: :sku, to: 'warehouses#list'
         end
+        resource :warehouse, only: %i[] do
+          get ':code', on: :member, param: :code, to: 'warehouses#address'
+        end
       end
     end
   end

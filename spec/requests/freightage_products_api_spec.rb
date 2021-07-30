@@ -7,7 +7,7 @@ describe 'Freightage Products API' do
     it 'should return a warehouse' do
       FactoryBot.build_list(:address, 3) do |address, index|
         warehouse = create(:warehouse, code: "000#{index}")
-        warehouse.addresses << address
+        warehouse.address = address
         create(:product_warehouse, warehouse: warehouse, product: product)
       end
 

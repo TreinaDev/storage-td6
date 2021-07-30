@@ -1,13 +1,13 @@
 <% if warehouse.errors.any? %>
-  <p>Foram encontrados <%= warehouse.errors.count %> erro(s):</p>
+  <p><%= t('.errors', count: warehouse.errors.count) %>:</p>
   <ul>
     <% warehouse.errors.full_messages.each do |error| %>
       <li><%= error %></li>
     <% end %>
-    <% warehouse.addresses.each do |address| %>
-        <% address.errors.full_messages.each do |error| %>
-          <li><%= error %></li>
-        <% end %>
+    <% if warehouse.address.errors.any? %>
+      <% warehouse.address.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
     <% end %>
   </ul>
 <% end %>
