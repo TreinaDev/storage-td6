@@ -24,7 +24,7 @@ describe Item do
   context 'Enum' do
     it do
       should define_enum_for(:status)
-        .with_values(available: 0, reserved: 5, dispatched: 10, discarted: 15)
+        .with_values(available: 0, reserved: 5, dispatched: 10)
     end
   end
 end

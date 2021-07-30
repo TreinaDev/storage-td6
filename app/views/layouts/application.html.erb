@@ -14,7 +14,6 @@
     <nav>
       <% if user_signed_in? %>
         <%= current_user.name %>
-        <%= link_to ReturnEntry.model_name.human(count: 2), return_entries_path %>
         <%= link_to Supplier.model_name.human(count: 2), suppliers_path %>
         <%= link_to Product.model_name.human(count: 2), product_entries_path %>
         <%= link_to t('users.edit.title'), edit_user_path(current_user) %>

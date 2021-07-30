@@ -1,8 +1,5 @@
 class ReturnEntry < ApplicationRecord
-  belongs_to :item, foreign_key: 'item_code', primary_key: 'code', optional: true, inverse_of: :return_entries
-
-  has_many :warehouses, through: :items
-  has_many :return_logs, dependent: :destroy
+  belongs_to :item, foreign_key: 'item_code', primary_key: 'code', optional: true, inverse_of: :items
 
   before_validation :set_item_code
 

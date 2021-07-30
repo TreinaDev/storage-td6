@@ -5,9 +5,9 @@ pt-BR:
       success: 'Ordem de retorno criada com sucesso!'
   activerecord:
     models:
-      return_entry:
+      return_entries:
         one: 'Entrada de Devolução'
-        other: 'Entrada de Devoluções'
+        other: 'Entrada de Devolução'
       reserve_log: 'Log de reserva'
     attributes:
       return_entry:

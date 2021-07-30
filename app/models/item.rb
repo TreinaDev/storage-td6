@@ -12,9 +12,9 @@ class Item < ApplicationRecord
   has_one :dispatch_log, dependent: :destroy
   has_many :return_entries,
            foreign_key: 'item_code', primary_key: 'code',
-           inverse_of: :item, dependent: :destroy
+           inverse_of: :product_entry, dependent: :destroy
 
-  enum status: { available: 0, reserved: 5, dispatched: 10, discarted: 15 }
+  enum status: { available: 0, reserved: 5, dispatched: 10 }
 
   scope :availables, -> { where(status: :available) }
   scope :reserveds, -> { where(status: :reserved) }
