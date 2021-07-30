@@ -1,18 +1,34 @@
 ---
 pt-BR:
-  must_be_active: 'Fornecedor está desativado, entrada de produto bloqueada'
+  must_be_active: 'está desativado, entrada de produto bloqueada'
   invalid_message: 'deve ser válido'
   suppliers:
+    index:
+      title: 'Fornecedores'
+      empty: 'Nenhum Fornecedor Cadastrado'
+      add_new: 'Registrar Fornecedor'
+      back: 'Voltar'
     new:
       title: 'Cadastrar Fornecedor'
+      back: 'Voltar'
     create:
       success: 'Fornecedor criado!'
       fail: 'Não foi possível cadastrar o fornecedor'
+    show:
+      title: 'Fornecedor'
+      inactivate: 'Desativar Fornecedor'
+      activate: 'Ativar Fornecedor'
+      edit: 'Editar Fornecedor'
+      back: 'Voltar'
     change_active:
       success: 'Fornecedor alterado com sucesso!'
     update:
-      title: 'Editar Fornecedor'
       success: 'Fornecedor editado!'
+    edit:
+      title: 'Editar Fornecedor'
+      back: 'Voltar'
+    form:
+      errors: Foram encontrados %{count} erro(s)
   activerecord:
     models:
       supplier:
@@ -23,3 +39,7 @@ pt-BR:
         cnpj: 'CNPJ'
         name: 'Razão Social'
         trade_name: 'Nome Fantasia'
+        address: 'Endereço'
+        status: 'Situação'
+        status/true: 'Ativo'
+        status/false: 'Bloqueado' 

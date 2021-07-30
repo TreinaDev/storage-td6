@@ -14,20 +14,20 @@
     <nav>
       <% if user_signed_in? %>
         <%= current_user.name %>
-        <%= link_to 'Fornecedores', suppliers_path %>
-        <%= link_to 'Produtos', product_entries_path %>
-        <%= link_to 'Itens Reservados', reserved_items_path %>
-        <%= link_to 'Devoluções', return_entries_path %>
+        <%= link_to ReturnEntry.model_name.human(count: 2), return_entries_path %>
+        <%= link_to Supplier.model_name.human(count: 2), suppliers_path %>
+        <%= link_to Product.model_name.human(count: 2), product_entries_path %>
+        <%= link_to t('users.edit.title'), edit_user_path(current_user) %>
+        <%= link_to t('reserved_items.nav_link'), reserved_items_path %>
         <% if current_user.admin? %>
-          <%= link_to 'Usuários', users_path %>
-          <%= link_to 'Criar Galpões', new_warehouse_path %>
+          <%= link_to t('users.nav_link'), users_path %>
+          <%= link_to t('warehouses.nav_link.new'), new_warehouse_path %>
         <% else %>
-          <%= link_to 'Meu Galpão', warehouse_path(current_user.warehouse) %>
+          <%= link_to t('warehouses.nav_link.mine'), warehouse_path(current_user.warehouse) %>
         <% end %>
-        <%= link_to 'Editar Perfil', edit_user_path(current_user) %>
-        <%= link_to 'Sair', destroy_user_session_path, method: :delete %>
+        <%= link_to t('devise.sessions.log_out'), destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to 'Entrar', new_user_session_path %>
+        <%= link_to t('devise.sessions.log_in'), new_user_session_path %>
       <% end %>
     </nav>
 

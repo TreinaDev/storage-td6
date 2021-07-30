@@ -1,0 +1,14 @@
+---
+pt-BR:
+  dispatch_logs:
+    new:
+      title: 'Despachar'
+      button: 'Confirmar'
+    show:
+      title: 'Log de despacho'
+  activerecord:
+    models:
+      dispatch_logs: 'Log de despacho'
+    attributes:
+      dispatch_log:
+        authorized_person: 'Pessoa autorizada para retirada'

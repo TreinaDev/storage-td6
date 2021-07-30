@@ -51,7 +51,7 @@ describe 'User View Suppliers' do
     expect(page).to have_content('Codeplay S.A.')
     expect(page).to have_content('Codeplay Vendas')
     expect(page).to have_content('42.122.917/9093-10')
-    expect(page).to have_content('Ativado')
+    expect(page).to have_content('Ativo')
     expect(page).to have_link('Voltar', href: suppliers_path)
   end
 

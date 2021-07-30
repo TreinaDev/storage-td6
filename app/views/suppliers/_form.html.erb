@@ -1,13 +1,13 @@
 <% if supplier.errors.any? %>
-  <p>Foram encontrados <%= supplier.errors.count %> erro(s):</p>
+  <p><%= t('.errors', count: supplier.errors.count) %></p>
   <ul>
     <% supplier.errors.full_messages.each do |error| %>
       <li><%= error %></li>
     <% end %>
-    <% supplier.addresses.each do |address| %>
-        <% address.errors.full_messages.each do |error| %>
-          <li><%= error %></li>
-        <% end %>
+    <% if supplier.address.errors.any? %>
+      <% supplier.address.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
     <% end %>
   </ul>
 <% end %>

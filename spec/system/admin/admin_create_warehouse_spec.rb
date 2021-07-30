@@ -61,7 +61,8 @@ describe 'Admin should create Warehouse' do
     click_on 'Criar Galpão'
 
     expect(page).to have_content('Novo Galpão')
-    expect(page).to have_content('não pode ficar em branco', count: 7)
+    expect(page).to have_content('não pode ficar em branco', count: 2)
+    expect(page).to have_content('não possui o tamanho esperado')
   end
 
   it 'and return to home page' do

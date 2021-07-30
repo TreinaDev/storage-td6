@@ -4,7 +4,7 @@ class Warehouse < ApplicationRecord
     validates :code, uniqueness: true, length: { is: 4 }
   end
 
-  has_many :addresses, as: :addressable, dependent: :destroy
+  has_one :address, as: :addressable, dependent: :destroy
   has_many :product_warehouses, dependent: :destroy
   has_many :products, through: :product_warehouses
   has_many :product_entries, dependent: :destroy
@@ -15,7 +15,7 @@ class Warehouse < ApplicationRecord
   def as_json(_options = {})
     {
       warehouse_code: code,
-      **addresses.last.as_json
+      **address.as_json
     }
   end
 
@@ -23,6 +23,13 @@ class Warehouse < ApplicationRecord
     {
       warehouse_code: code,
       quantity: quantity
+    }
+  end
+
+  def to_ecommerce_with_address_json(_options = {})
+    {
+      code: code,
+      full_address: address.as_json
     }
   end
 end
