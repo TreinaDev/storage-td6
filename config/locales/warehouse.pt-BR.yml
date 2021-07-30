@@ -2,8 +2,13 @@
 pt-BR:
   warehouses:
     nav_link: 
-      new: 'Criar Galpões'
+      all: 'Galpões'
       mine: 'Meu Galpão'
+    index:
+      title: 'Galpões'
+      empty: 'Nenhum Galpão Cadastrado'
+      add_new: 'Criar Galpão'
+      back: 'Voltar'
     new:
       title: 'Novo Galpão'
       back: 'Voltar'
