@@ -17,6 +17,7 @@
         <%= link_to 'Fornecedores', suppliers_path %>
         <%= link_to 'Produtos', product_entries_path %>
         <%= link_to 'Itens Reservados', reserved_items_path %>
+        <%= link_to 'Devoluções', return_entries_path %>
         <% if current_user.admin? %>
           <%= link_to 'Usuários', users_path %>
           <%= link_to 'Criar Galpões', new_warehouse_path %>
