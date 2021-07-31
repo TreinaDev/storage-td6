@@ -10,7 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_27_002214) do
+ActiveRecord::Schema.define(version: 2021_07_29_225215) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.integer "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
 
   create_table "addresses", force: :cascade do |t|
     t.string "name"
@@ -100,6 +128,25 @@ ActiveRecord::Schema.define(version: 2021_07_27_002214) do
     t.index ["item_id"], name: "index_reserve_logs_on_item_id"
   end
 
+  create_table "return_entries", force: :cascade do |t|
+    t.integer "request_number"
+    t.string "item_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_code"], name: "index_return_entries_on_item_code"
+    t.index ["request_number"], name: "index_return_entries_on_request_number"
+  end
+
+  create_table "return_logs", force: :cascade do |t|
+    t.integer "return_entry_id", null: false
+    t.text "justification"
+    t.integer "decision", default: 0
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.index ["return_entry_id"], name: "index_return_logs_on_return_entry_id"
+  end
+
   create_table "suppliers", force: :cascade do |t|
     t.string "cnpj"
     t.string "name"
@@ -137,6 +184,8 @@ ActiveRecord::Schema.define(version: 2021_07_27_002214) do
     t.index ["code"], name: "index_warehouses_on_code", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dispatch_logs", "items"
   add_foreign_key "dispatch_logs", "users"
   add_foreign_key "items", "product_entries"
@@ -149,5 +198,7 @@ ActiveRecord::Schema.define(version: 2021_07_27_002214) do
   add_foreign_key "product_warehouses", "products"
   add_foreign_key "product_warehouses", "warehouses"
   add_foreign_key "reserve_logs", "items"
+  add_foreign_key "return_entries", "items", column: "item_code", primary_key: "code"
+  add_foreign_key "return_logs", "return_entries"
   add_foreign_key "users", "warehouses"
 end

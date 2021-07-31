@@ -1,0 +1,37 @@
+<div class="container py-3">
+  <%= t('.title') %>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.add_log'), new_return_entry_return_log_path(@return_entry), class:"link-secondary text-decoration-none" %>
+    </h6>
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), return_entries_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
+
+  <div class="card" style="width: 20rem;">
+    <h6 class="card-header"> <%= t('.subtitle') %> </h6>
+    <div class="card-body">
+      <p class="card-text">
+        <%= "#{ReturnEntry.human_attribute_name("item_code")}: #{@return_entry.item.code}" %>
+      </p>
+      <p class="card-text">
+        <%= "#{ReturnEntry.human_attribute_name("request_number")}: #{@return_entry.request_number}" %>
+      </p>
+      <% @return_entry.return_logs&.each do |log|%>
+        <p class="card-text"><%= "#{t('.date')}: #{l log.date}" %></p>
+        <p class="card-text"><%= "#{t('.justification')}: #{log.justification}" %></p>
+        <p class="card-text">
+          <%= "#{t('.decision')}: #{ReturnLog.human_enum_name(:decision, log.decision)}" %>
+        </p>
+        <p class="card-text">
+          <%= "#{t('.img')}:" %>
+          <% log.picture.each do |picture| %>
+            <p> <%= image_tag picture %> </p>
+          <% end %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

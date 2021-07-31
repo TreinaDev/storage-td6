@@ -1,0 +1,35 @@
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.add_new'), new_warehouse_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), root_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
+
+  <% if @warehouses.empty? %>
+      <p><h4><%= t('.empty') %></h4></p>
+  <% else %>
+    <div class="container-sm py-3 w-75">
+      <div class="row border bg-light py-1">
+        <div class="col col-lg-4 mt-2">
+          <%= Warehouse.human_attribute_name(:name) %>
+        </div>
+        <div class="col col-lg-4 mt-2">
+          <%= Warehouse.human_attribute_name(:code) %>
+        </div>
+      </div>
+      <% @warehouses.each do |warehouse| %>
+        <div class="row border">
+          <div class="col col-lg-4 mt-2">
+            <p> <%= link_to warehouse.name, warehouse_path(warehouse), class: "fw-bold text-decoration-none btn btn-outline-primary" %> </p>
+          </div>
+          <div class="col col-lg-4 mt-3"><p> <%= warehouse.code %> </p></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

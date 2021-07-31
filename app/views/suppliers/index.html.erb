@@ -22,7 +22,7 @@
       <% @suppliers.each do |supplier| %>
         <div class="row border">
           <div class="col col-lg-4 mt-2">
-            <%= link_to supplier.name, supplier_path(supplier), class: "fw-bold text-decoration-none btn btn-outline-primary" %>
+            <p> <%= link_to supplier.name, supplier_path(supplier), class: "fw-bold text-decoration-none btn btn-outline-primary" %> </p>
           </div>
           <div class="col col-lg-4 mt-3"> <p><%= supplier.trade_name %></p> </div>
           <div class="col col-lg-4 mt-3"> <p><%= supplier.cnpj %></p> </div>

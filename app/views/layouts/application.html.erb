@@ -21,6 +21,9 @@
           <% if user_signed_in? %>
             <h6 class="align-text-right text-secondary"> <%= current_user.name %> </h6>
             <h6 class="btn btn-secondary btn-sm">
+              <%= link_to ReturnEntry.model_name.human(count: 2), return_entries_path, class:"fw-bold link-primary text-decoration-none" %>
+            </h6>
+            <h6 class="btn btn-secondary btn-sm">
               <%= link_to Supplier.model_name.human(count: 2), suppliers_path, class:"fw-bold link-primary text-decoration-none" %>
             </h6>
             <h6 class="btn btn-secondary btn-sm">
@@ -37,7 +40,7 @@
                 <%= link_to t('users.nav_link'), users_path, class:"fw-bold link-primary text-decoration-none" %>
               </h6>
               <h6 class="btn btn-secondary btn-sm">
-                <%= link_to t('warehouses.nav_link.new'), new_warehouse_path, class:"fw-bold link-primary text-decoration-none" %>
+                <%= link_to t('warehouses.nav_link.all'), warehouses_path, class:"fw-bold link-primary text-decoration-none" %>
               </h6>
             <% else %>
               <h6 class="btn btn-secondary btn-sm">

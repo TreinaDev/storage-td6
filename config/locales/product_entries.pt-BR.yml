@@ -9,6 +9,8 @@ pt-BR:
       empty: 'Nenhuma Entrada de Produto'
     show:
       title: 'Entrada de Produto'
+      subtitle: 'Produto'
+      subtitle2: 'Itens'
       back: 'Voltar'
     new:
       errors: Foram encontrados %{count} erro(s)

@@ -1,0 +1,37 @@
+<div class="container py-3">
+  <h1><%= t('.model') %></h1>
+
+  <% if @return_log.errors.any? %>
+    <p>Foram encontrados <%= @return_log.errors.count %> erro(s):</p>
+    <ul>
+      <% @return_log.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary"> <%= link_to t('.back'), return_entries_path%> </h6>
+  </div>
+
+  <div class="py-2 w-50">
+    <%= form_with url: return_entry_return_logs_path, model: [:return_entry, @return_log], html: { class: 'form-control' } do |form|%>
+      <div class="field">
+        <%= form.label :date, class: "form-label mt-2" %>
+        <%= form.date_field :date, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :justification, class: "form-label mt-2" %>
+        <%= form.text_area :justification, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :decision, class: "form-label mt-2" %>
+        <%= form.select :decision, ReturnLog.decisions.map {|key, value| [ReturnLog.human_enum_name(:decision, key), key]} %>
+      </div>
+      <div class="field">
+        <%= form.label :picture, class: "form-label mt-2" %>
+        <%= form.file_field :picture, class: "form-control" %>
+      </div>
+      <%= form.submit class: "btn btn-primary text-secondary mt-3" %>
+    <% end %>
+</div>

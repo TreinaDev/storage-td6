@@ -1,0 +1,27 @@
+---
+pt-BR:
+  return_entries:
+    create:
+      success: 'Ordem de retorno criada com sucesso!'
+    index:
+      title: 'Entrada de Devoluções'
+      subtitle: 'Ordens de Retorno'
+    show:
+      back: 'Voltar'
+      add_log: 'Cadastrar Log de Devolução'
+      date: 'Data da devolução'
+      justification: 'Justificativa'
+      decision: 'Decisão'
+      img: 'Imagem'
+  activerecord:
+    models:
+      return_entry:
+        one: 'Entrada de Devolução'
+        other: 'Entrada de Devoluções'
+      reserve_log: 'Log de reserva'
+    attributes:
+      return_entry:
+        item_code: 'Código do Item'
+        request_number: 'Número da venda'
+    errors:
+      not_found: '%{model_name} não encontrado'

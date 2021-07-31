@@ -14,6 +14,9 @@ Rails.application.routes.draw do
   resources :items, only: %i[], param: :code do
     resources :dispatch_logs, only: %i[new]
   end
+  resources :return_entries, only: %i[index show] do
+    resources :return_logs, only: %i[new create]
+  end
 
   post :create_entry_by_csv, to: 'product_entries#create_by_csv'
 
@@ -24,6 +27,7 @@ Rails.application.routes.draw do
         resources :warehouses, only: %i[] do 
           get ':sku', on: :collection, param: :sku, to: 'warehouses#list'
         end
+        resources :return_entries, only: %[create]
       end
       namespace :ecommerce do
         resources :warehouses, only: %i[] do 

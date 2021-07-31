@@ -1,4 +1,18 @@
-<h1><%= t('.title') %></h1>
-<%= @dispatch_log.item.code %>
-<%= @dispatch_log.user.email%>
-<%= @dispatch_log.authorized_person%>
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
+
+  <div class="card" style="width: 20rem;">
+    <h6 class="card-header"> <%= t('.subtitle') %> </h6>
+    <div class="card-body">
+      <p class="card-text">
+        <%= "#{DispatchLog.human_attribute_name("item")}: #{@dispatch_log.item.code}" %>
+      </p>
+      <p class="card-text">
+        <%= "#{DispatchLog.human_attribute_name("user")}: #{@dispatch_log.user.email}" %>
+      </p>
+      <p class="card-text">
+        <%= "#{DispatchLog.human_attribute_name("authorized_person")}: #{@dispatch_log.authorized_person}" %>
+      </p>
+    </div>
+  </div>
+</div>

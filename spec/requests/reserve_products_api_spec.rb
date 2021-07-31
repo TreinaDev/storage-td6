@@ -6,7 +6,6 @@ describe 'Reserve API' do
       supplier = create(:supplier)
       warehouse = create(:warehouse, code: 'abcd', name: 'Galpão 1')
       create(:product_entry, sku: 'AIXRP128', quantity: 1, warehouse: warehouse, supplier: supplier)
-      # item = create(:item, code: 'code000001', invoice: 'nf0001', supplier: supplier, product: product)
       post '/api/v1/reserve', params: {
         reserve: {
           sku: Item.last.sku,

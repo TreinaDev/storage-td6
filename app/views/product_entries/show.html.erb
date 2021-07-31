@@ -8,7 +8,7 @@
   </div>
 
   <div class="card" style="width: 20rem;">
-    <h6 class="card-header"> Produto </h6>
+    <h6 class="card-header"> <%= t('.subtitle') %> </h6>
     <div class="card-body">
       <p class="card-text">
         <%= "#{ProductEntry.human_attribute_name("sku")}: #{@product_entry.sku}" %>
@@ -26,7 +26,7 @@
   </div>
 
   <div class="card" style="width: 20rem;">
-    <h6 class="card-header"> Itens </h6>
+    <h6 class="card-header"> <%= t('.subtitle2') %> </h6>
     <div class="card-body">
       <div class="card-text">
         <% @product_entry.items.each do |item| %>
