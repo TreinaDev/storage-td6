@@ -1,38 +1,72 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Estoque
+Projeto final da turma 6 do TreinaDev, realizado pela Campus Code, com apoio das empresas Rebase, Konduto, Vindi, Portal Solar e SmartFit. O projeto consiste na criação de uma plataforma de estoque vinculada ao ecommerce. Tem como objetivo registrar a quantidade de itens cadastrados pelo ecommerce, os fornecedores, os galpões onde são armazenados os produtos e todo o processo de entrada e saída de produto.
 
-Things you may want to cover:
+# Tecnologias Utilizadas
+## Backend
+- Ruby 3.0.1
+- Rails 6.1.4
 
-* Ruby version
+- ### Gems 
+    * Rspec
+    * Capybara 
+    * Shoulda Matchers
+    * FactoryBot 
+    * Devise 
+    * Geocoder
+    * Rubocop
+    * Cpf_Cnpj
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Frontend 
+- Html 5
+- Css 3
+- Bootstrap
 
 
-# API
+## Instalação
 
-## Consulta de galpões que possuem um produto
+Primeiramente, clone o projeto:
+
+```bash
+  $ git clone https://github.com/TreinaDev/storage-td6.git
+```
+Em seguida instale as dependências:
+
+```bash 
+$ cd storage-td6 
+$ bin/setup 
+```
+
+Popule o banco de dados:
+
+```bash
+$ rails db:seed
+```
+
+Inicie o servidor localmente:
+```bash 
+$ rails server
+```
+
+Em seguida, clique no link para acessar a aplicação:
+
+http://127.0.0.1:3000/
+
+
+## API 
+
+#### Consulta de galpões que possuem um produto (frete)
+
+```http
+  GET '/api/v1/freightage/warehouses/:sku'
 
 ```
-GET '/api/v1/freightage/warehouses/:sku'
-```
 
-resposta:
+| Parametro | Tipo     | Descrição               |
+| :-------- | :------- | :------------------------- |
+| `sku` | `string` | **Obrigatório**. SKU do produto |
+
+Resposta:
 
 ```json
 {
@@ -72,13 +106,19 @@ resposta:
 ```
 
 
-## Consulta de galpões que possuem um produto e suas quantidades disponíveis em cada galpão
 
-```
+#### Consulta de galpões que possuem um produto e suas quantidades disponíveis em cada galpão (e-commerce)
+
+```http 
 GET '/api/v1/ecommerce/warehouses/:sku'
 ```
 
-resposta:
+| Parametro | Tipo     | Descrição                       |
+| :-------- | :------- | :-------------------------------- |
+| `sku`      | `string` | **Obrigatório**. SKU do produto |
+
+
+Resposta:
 
 ```json
 {
@@ -95,13 +135,18 @@ resposta:
 }
 ```
 
-## Consulta do endereço de um galpão
+#### Consulta do endereço de um galpão
 
-```
-GET '/api/v1/ecommerce/warehouse/:code'
-```
+  ```http
+  GET '/api/v1/ecommerce/warehouse/:code'
+  ```
 
-resposta:
+  | Parametro | Tipo     | Descrição                       |
+| :-------- | :------- | :-------------------------------- |
+| `code`      | `string` | **Obrigatório**. Código do galpão |
+
+
+Resposta:
 
 ```json
 {
@@ -119,3 +164,50 @@ resposta:
   }
 }
 ```
+
+#### Criar uma reserva de produto
+  ```http
+  POST '/api/v1/reserve'
+  ```
+  - Cria uma reserva de produto em um determinado galpão, com os seguintes parametros:
+  ```json
+  {
+    "reserve": {
+          "sku": "abcd0000001" ,
+          "shipping_company:" "XYZ8",
+          "request_number": "125",
+          "warehouse": "abcd"
+        }
+  }
+  ```
+  | Parametro | Tipo     | Descrição                       |
+| :-------- | :------- | :-------------------------------- |
+| `sku`      | `string` | **Obrigatório**. SKU do produto |
+| `shipping_company` | `int` | **Obrigatório**. Identificador da empresa de entrega|
+|`request_number` | `string` | **Obrigatório**. Número do pedido |
+| `warehouse` | `string` | **Obrigatório**. Código do Galpão |
+
+Resposta: 
+
+- HTTP Status: 201 
+
+```json
+{
+   "status":"reserved",
+   "code":"abcd000001",
+   "supplier_id":"1",
+   "product_entry_id":"1",
+   "warehouse_id":"1",
+   "sku":"AIXRP128"
+}
+```
+
+## Autores
+
+* [@cohako](https://www.github.com/cohako)
+* [@ericdaher](https://www.github.com/ericdaher)
+* [@glmsilva](https://www.github.com/glmsilva)
+* [@Laryssa-lfa](https://www.github.com/Laryssa-lfa)
+* [@rog404](https://www.github.com/rog404)
+
+  
