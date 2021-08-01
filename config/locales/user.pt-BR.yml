@@ -2,6 +2,7 @@
 pt-BR:
   invalid_message: deve ser válido
   users:
+    nav_link: Usuários
     domain_not_allowed: domínio não permitido
     index:
       new_user: Criar novo usuário
@@ -11,6 +12,12 @@ pt-BR:
       back: Voltar
     create:
       success: Usuário criado com sucesso
+    edit:
+      title: Editar Perfil
+      back: Voltar
+    update:
+      success: Usuário atualizado com sucesso
+      fail: Não foi possível atualizar o usuário
   activerecord:
     models:
       user:
@@ -25,6 +32,7 @@ pt-BR:
         cpf: CPF
         registration_code: Matrícula
         warehouse_id: Galpão de origem
+        remember_me: Lembrar-me
       user/role:
         admin: Administrador
         user: Funcionário

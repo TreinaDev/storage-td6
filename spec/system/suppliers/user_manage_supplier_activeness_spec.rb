@@ -6,7 +6,6 @@ describe 'User block supplier' do
                       trade_name: 'Codeplay Vendas',
                       cnpj: '29.317.821/0001-38',
                       active: true)
-
     login_as_user
     visit root_path
     click_on 'Fornecedores'
@@ -35,7 +34,7 @@ describe 'User block supplier' do
     click_on 'Ativar Fornecedor'
 
     expect(Supplier.last.active).to eq(true)
-    expect(page).to have_content('Ativado')
+    expect(page).to have_content('Ativo')
     expect(page).to have_content('Fornecedor alterado com sucesso!')
     expect(page).to have_content('Codeplay S.A.')
     expect(page).to have_content('Codeplay Vendas')

@@ -1,5 +1,6 @@
+<h1><%= t('.title') %></h1>
 <% if @product_entry.errors.any? %>
-  <p>Foram encontrados <%= @product_entry.errors.count %> erro(s):</p>
+  <p><%= t('.errors', count: @product_entry.errors.count) %>:</p>
   <ul>
     <% @product_entry.errors.full_messages.each do |error| %>
       <li><%= error %></li>
@@ -7,7 +8,11 @@
   </ul>
 <% end %>
 
-<h1><%= t('.model') %></h1>
+<%= form_with url: create_entry_by_csv_path, model:@product_entry do |form|%>
+  <%= form.label :csv, t('.csv_label') %>
+  <%= form.file_field :csv %>
+  <%= form.submit t('.csv_submit') %>
+<% end %>
 
 <%= form_with model: @product_entry do |form| %>
   <p><%= form.label :sku %></p>
@@ -25,4 +30,4 @@
   <p><%= form.submit %></p>
 <% end %>
 
-<%= link_to 'Voltar', product_entries_path %>
+<%= link_to t('.back'), product_entries_path %>

@@ -35,18 +35,40 @@ GET '/api/v1/freightage/warehouses/:sku'
 resposta:
 
 ```json
-[
-  {
-    warehouse_code: AB12,
-    lat: -12.980587,
-    lon: -38.494138
-  },
-  {
-    warehouse_code: CD34,
-    lat: -11.980587,
-    lon: -39.494138
-  }
-]
+{
+   "warehouses":[
+      {
+         "warehouse_code":"0000",
+         "number":4,
+         "district":"Leão",
+         "city":"Papagolândia",
+         "state":"AM",
+         "latitude":"-23.5672582",
+         "longitude":"-46.651529",
+         "address":"Rua Jaguar"
+      },
+      {
+         "warehouse_code":"0001",
+         "number":4,
+         "district":"Leão",
+         "city":"Papagolândia",
+         "state":"AM",
+         "latitude":"-23.5672582",
+         "longitude":"-46.651529",
+         "address":"Rua Jaguar"
+      },
+      {
+         "warehouse_code":"0002",
+         "number":4,
+         "district":"Leão",
+         "city":"Papagolândia",
+         "state":"AM",
+         "latitude":"-23.5672582",
+         "longitude":"-46.651529",
+         "address":"Rua Jaguar"
+      }
+   ]
+}
 ```
 
 
@@ -59,14 +81,41 @@ GET '/api/v1/ecommerce/warehouses/:sku'
 resposta:
 
 ```json
-[
-  {
-    warehouse_code: AB12,
-    quantity: 10
-  },
-  {
-    warehouse_code: CD34,
-    quantity: 5
+{
+   "warehouses":[
+      {
+         "warehouse_code":"ROB2",
+         "quantity":9
+      },
+      {
+         "warehouse_code":"AMZ1",
+         "quantity":3
+      }
+   ]
+}
+```
+
+## Consulta do endereço de um galpão
+
+```
+GET '/api/v1/ecommerce/warehouse/:code'
+```
+
+resposta:
+
+```json
+{
+  "warehouse": {
+    "code": "0002",
+    "full_address": {
+      "number": 1293,
+      "district": "Jardim Paulista",
+      "city": "São Paulo",
+      "state": "SP",
+      "latitude": "-23.5569296",
+      "longitude": "-46.6635382",
+      "address": "Alameda Santos"
+    }
   }
-]
+}
 ```

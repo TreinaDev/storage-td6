@@ -1,0 +1,6 @@
+<h1><%= t('.title') %></h1>
+
+<% @items.each do |item| %>
+<%= item.code %>
+<%= link_to t('.button'), new_item_dispatch_log_path(item.code) %>
+<% end %>

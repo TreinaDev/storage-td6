@@ -4,7 +4,8 @@ describe 'Admin should create Warehouse' do
   it 'succesffully' do
     login_as_admin
     visit root_path
-    click_on 'Criar Galpões'
+    click_on 'Galpões'
+    click_on 'Criar Galpão'
     fill_in 'Código', with: 'aeio'
     fill_in 'Nome', with: 'Galpão 1'
     fill_in 'Endereço', with: 'Alameda Santos'
@@ -34,7 +35,8 @@ describe 'Admin should create Warehouse' do
 
     login_as_admin
     visit root_path
-    click_on 'Criar Galpões'
+    click_on 'Galpões'
+    click_on 'Criar Galpão'
     fill_in 'Código', with: 'code'
     fill_in 'Nome', with: 'Galpão 1'
     click_on 'Criar Galpão'
@@ -46,7 +48,8 @@ describe 'Admin should create Warehouse' do
   it 'code must be 4 characters long' do
     login_as_admin
     visit root_path
-    click_on 'Criar Galpões'
+    click_on 'Galpões'
+    click_on 'Criar Galpão'
     fill_in 'Código', with: 'aeiou'
     click_on 'Criar Galpão'
 
@@ -57,17 +60,20 @@ describe 'Admin should create Warehouse' do
   it 'and fields should not be blank' do
     login_as_admin
     visit root_path
-    click_on 'Criar Galpões'
+    click_on 'Galpões'
+    click_on 'Criar Galpão'
     click_on 'Criar Galpão'
 
     expect(page).to have_content('Novo Galpão')
-    expect(page).to have_content('não pode ficar em branco', count: 7)
+    expect(page).to have_content('não pode ficar em branco', count: 2)
+    expect(page).to have_content('não possui o tamanho esperado')
   end
 
   it 'and return to home page' do
     login_as_admin
     visit root_path
-    click_on 'Criar Galpões'
+    click_on 'Galpões'
+    click_on 'Criar Galpão'
     click_on 'Voltar'
 
     expect(current_path).to eq(root_path)

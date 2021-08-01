@@ -1,3 +1,4 @@
+require 'csv'
 class ProductEntry < ApplicationRecord
   belongs_to :supplier
   belongs_to :warehouse
@@ -10,6 +11,17 @@ class ProductEntry < ApplicationRecord
 
   before_validation :find_or_create_product
   after_create :create_items
+
+  def self.import_from_csv(file, warehouse)
+    csv = CSV.parse(File.read(file), headers: true)
+
+    raise MustBeAValidCsv if csv.empty?
+
+    entries = csv.map { |row| ProductEntry.new(**row.to_h, warehouse: warehouse) }
+    return if entries.map(&:valid?).any?(false)
+
+    entries.each(&:save)
+  end
 
   private
 

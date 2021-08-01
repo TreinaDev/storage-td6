@@ -1,5 +1,5 @@
 class SuppliersController < AuthenticationController
-  before_action :set_supplier, only: %i[show change_active]
+  before_action :set_supplier, only: %i[show change_active edit update]
 
   def index
     @suppliers = Supplier.all
@@ -13,20 +13,28 @@ class SuppliersController < AuthenticationController
 
   def create
     @supplier = Supplier.new(supplier_params)
-    @supplier.addresses.new(address_params)
+    @supplier.address = Address.new(address_params)
     if @supplier.save
-      flash[:notice] = t('.success')
-      redirect_to @supplier
+      redirect_to @supplier, notice: t('.success')
     else
-      flash[:notice] = t('.fail')
+      flash.now[:notice] = t('.fail')
       render :new
     end
   end
 
   def change_active
     @supplier.switch_allowance
-    flash[:notice] = t('.success')
-    redirect_to @supplier
+    redirect_to @supplier, notice: t('.success')
+  end
+
+  def edit
+    @address = @supplier.address
+  end
+
+  def update
+    @supplier.update(supplier_params)
+    @supplier.address.update(address_params)
+    redirect_to @supplier, notice: t('.success')
   end
 
   private

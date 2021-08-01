@@ -1,0 +1,22 @@
+<h1><%= t('.model') %></h1>
+<% if @return_log.errors.any? %>
+  <p>Foram encontrados <%= @return_log.errors.count %> erro(s):</p>
+  <ul>
+    <% @return_log.errors.full_messages.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with url: return_entry_return_logs_path, model: [:return_entry, @return_log] do |form|%>
+  <%= form.label :date %>
+  <%= form.date_field :date%>
+  <%= form.label :justification %>
+  <%= form.text_area :justification %>
+  <%= form.label :decision %>
+  <%= form.select :decision, ReturnLog.decisions.map {|key, value| [ReturnLog.human_enum_name(:decision, key), key]} %>
+  <%= form.label :picture %>
+  <%= form.file_field :picture %>
+  <%= form.submit %>
+<% end %>
+<%= link_to 'Voltar', return_entries_path%>

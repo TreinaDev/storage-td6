@@ -1,0 +1,29 @@
+---
+pt-BR:
+  return_logs:
+    index:
+      title: 'Log de retorno'
+    show:
+      title: 'Log de retorno'
+    new:
+      title: 'Cadastrar Log de retorno'
+    create:
+      success: 'Entrada de produto criada!'
+      fail: 'Não foi possível cadastrar log de devolução!'
+  activerecord:
+    models:
+      return_log:
+        one: 'Log de Devolução'
+        other: 'Logs de Devolução'
+    attributes:
+      return_log:
+        date: 'Data de devolução'
+        decision: 'Decisão'
+        justification: 'Justificativa'
+        decisions:
+          approved: 'Aprovado'
+          discarted: 'Descartado'
+          waiting: 'Em espera'
+        picture: 'Foto'
+
+

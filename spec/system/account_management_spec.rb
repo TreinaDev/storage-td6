@@ -14,7 +14,7 @@ describe 'Account Managment' do
       expect(page).to have_content('Login efetuado com sucesso!')
       expect(page).to have_content('Admin')
       expect(current_path).to eq(root_path)
-      expect(page).to have_link('Criar Galpões')
+      expect(page).to have_link('Galpões')
       expect(page).to have_link('Fornecedores')
       expect(page).to have_link('Produtos')
       expect(page).to_not have_link('Entrar')

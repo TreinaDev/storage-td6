@@ -4,13 +4,26 @@ pt-BR:
   product_entries:
     index:
       title: 'Entrada de Produtos'
+      add_new: 'Adicionar Entrada'
+      back: 'Voltar'
+      empty: 'Nenhuma Entrada de Produto'
     show:
       title: 'Entrada de Produto'
+      back: 'Voltar'
     new:
+      errors: Foram encontrados %{count} erro(s)
       title: 'Cadastrar Entrada de produto'
+      csv_label: 'Arquivo CSV'
+      csv_submit: 'Enviar arquivo'
+      back: 'Voltar'
     create:
       success: 'Entrada de produto criada!'
       fail: 'Não foi possível cadastrar a entrada de produto'
+    create_by_csv:
+      success: 'CSV importado com sucesso'
+      fail: 'Nenhum atributo pode estar faltando'
+      csv_must_be_valid: 'O arquivo precisa ser válido'
+      file_must_be_uploaded: 'Um arquivo deve ser enviado!'
   activerecord:
     models:
       product_entry:
@@ -18,8 +31,10 @@ pt-BR:
         other: 'Entrada de produtos'
     attributes:
       product_entry:
+        supplier: 'Fornecedor'
         sku: 'SKU'
         invoice: 'Nota Fiscal'
         quantity: 'Quantidade'
         supplier_id: 'Código do Fornecedor'
         item_code: 'Código do item'
+        created_at: 'Data de Entrada'

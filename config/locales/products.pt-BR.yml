@@ -2,7 +2,9 @@
 pt-BR:
   activerecord:
     models:
-      product: 'Produto'
+      product: 
+        one: 'Produto'
+        other: 'Produtos'
     attributes:
       product:
         sky: 'Sku'
