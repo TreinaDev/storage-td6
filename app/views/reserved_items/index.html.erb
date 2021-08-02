@@ -1,6 +1,18 @@
-<h1><%= t('.title') %></h1>
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
 
-<% @items.each do |item| %>
-<%= item.code %>
-<%= link_to t('.button'), new_item_dispatch_log_path(item.code) %>
-<% end %>
+  <div class="container-sm py-3 w-75">
+    <div class="row border bg-light py-1">
+      <div class="col col-lg-6 mt-2"><h5> <%= t('.code') %> </h5></div>
+    </div>
+
+    <% @items.each do |item| %>
+      <div class="row border bg-light py-1">
+        <div class="col col-lg-4 mt-2"><h5> <%= item.code %> </h5></div>
+        <div class="col col-lg-4 mt-2">
+          <p> <%= link_to t('.button'), new_item_dispatch_log_path(item.code), class: "fw-bold text-decoration-none btn btn-outline-primary" %> </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

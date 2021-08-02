@@ -1,33 +1,48 @@
-<h1><%= t('.title') %></h1>
-<% if @product_entry.errors.any? %>
-  <p><%= t('.errors', count: @product_entry.errors.count) %>:</p>
-  <ul>
-    <% @product_entry.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
+
+  <% if @product_entry.errors.any? %>
+    <p><%= t('.errors', count: @product_entry.errors.count) %>:</p>
+    <ul>
+      <% @product_entry.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), product_entries_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
+
+  <div class="input-group mb-3">
+    <%= form_with url: create_entry_by_csv_path, model:@product_entry do |form|%>
+      <%= form.label :csv, t('.csv_label'), class: "input-group-text fw-bold" %>
+      <%= form.file_field :csv, class: "form-control" %>
+      <%= form.submit t('.csv_submit'), class: "btn btn-primary text-secondary text-secondary mt-2" %>
     <% end %>
-  </ul>
-<% end %>
+  </div>
 
-<%= form_with url: create_entry_by_csv_path, model:@product_entry do |form|%>
-  <%= form.label :csv, t('.csv_label') %>
-  <%= form.file_field :csv %>
-  <%= form.submit t('.csv_submit') %>
-<% end %>
-
-<%= form_with model: @product_entry do |form| %>
-  <p><%= form.label :sku %></p>
-  <p><%= form.text_field :sku %></p>
-
-  <p><%= form.label :quantity %></p>
-  <p><%= form.text_field :quantity %></p>
-
-  <p><%= form.label :invoice %></p>
-  <p><%= form.text_field :invoice %></p>
-
-  <p><%= form.label :supplier_id %></p>
-  <p><%= form.text_field :supplier_id %></p>
-  
-  <p><%= form.submit %></p>
-<% end %>
-
-<%= link_to t('.back'), product_entries_path %>
+  <div class="py-2 w-50">
+    <%= form_with model: @product_entry, html: { class: 'form-control' } do |form| %>
+      <div class="field">
+        <%= form.label :sku, class: "form-label mt-2" %>
+        <%= form.text_field :sku, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :quantity, class: "form-label mt-2" %>
+        <%= form.text_field :quantity, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :invoice, class: "form-label mt-2" %>
+        <%= form.text_field :invoice, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= form.label :supplier_id, class: "form-label mt-2" %>
+        <%= form.text_field :supplier_id, class: "form-control" %>
+      </div>
+      <%= form.submit class: "btn btn-primary text-secondary mt-3" %>
+    <% end %>
+  </div>
+</div>

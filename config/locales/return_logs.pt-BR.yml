@@ -7,6 +7,7 @@ pt-BR:
       title: 'Log de retorno'
     new:
       title: 'Cadastrar Log de retorno'
+      back: 'Voltar'
     create:
       success: 'Entrada de produto criada!'
       fail: 'Não foi possível cadastrar log de devolução!'
@@ -25,5 +26,6 @@ pt-BR:
           discarted: 'Descartado'
           waiting: 'Em espera'
         picture: 'Foto'
+
 
 

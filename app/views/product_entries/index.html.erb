@@ -1,14 +1,33 @@
-<h1><%= t('.title') %></h1>
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
 
-<p><%= link_to t('.add_new'), new_product_entry_path %></p>
-<p><%= link_to t('.back'), root_path %></p>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.add_new'), new_product_entry_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), root_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
 
-<% if @product_entry.empty? %>
-  <h3><%= t('.empty') %></h3>
-<% end %>
-
-<% @product_entry.each do |entry| %>
-  <p><%= ProductEntry.human_attribute_name(:sku) %>: <%= link_to entry.sku, entry %></p>
-  <p><%= ProductEntry.human_attribute_name(:quantity) %>: <%= entry.quantity %></p>
-  <p><%= ProductEntry.human_attribute_name(:created_at) %>: <%= entry.created_at.strftime('%d/%m/%Y') %></p>
-<% end %>
+  <% if @product_entry.empty? %>
+    <h3><%= t('.empty') %></h3>
+  <% else %>
+    <div class="container-sm py-3 w-75">
+      <div class="row border bg-light py-1">
+        <div class="col col-lg-4 mt-2"><h5> <%= ProductEntry.human_attribute_name(:sku) %> </h5></div>
+        <div class="col col-lg-4 mt-2"><h5> <%= ProductEntry.human_attribute_name(:quantity) %> </h5></div>
+        <div class="col col-lg-4 mt-2"><h5> <%= ProductEntry.human_attribute_name(:created_at) %> </h5></div>
+      </div>
+      <% @product_entry.each do |entry| %>
+        <div class="row border">
+          <div class="col col-lg-4 mt-2">
+            <p> <%= link_to entry.sku, entry, class: "fw-bold text-decoration-none btn btn-outline-primary" %> </p>
+          </div>
+          <div class="col col-lg-4 mt-3"><p> <%= entry.quantity %> </p></div>
+          <div class="col col-lg-4 mt-3"><p> <%= entry.created_at.strftime('%d/%m/%Y') %> </p></div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

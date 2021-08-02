@@ -1,14 +1,27 @@
-<p><%= Warehouse.human_attribute_name(:name) %>: </p>
-<%= @warehouse.name %>
-<p><%= Warehouse.human_attribute_name(:code) %>:</p>
-<%= @warehouse.code %>
-<% if @warehouse.address %>
-    <p><%= Warehouse.human_attribute_name(:address) %>:</p>
-    <div>
-        <%= @warehouse.address.name %>, <%= @warehouse.address.number %>. <%= @warehouse.address.district %><br>
-        <%= @warehouse.address.city %>, <%= @warehouse.address.state %><br>
-        <%= @warehouse.address.zip_code %>
-        <%= @warehouse.address.latitude %> , <%= @warehouse.address.longitude %>
-    </div><br>
-<% end %>
-<%= link_to t('.back'), root_path%>
+<div class="container py-3">
+  <h1><%= t '.title' %></h1>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), root_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
+
+  <div class="card" style="width: 20rem;">
+    <h6 class="card-header">
+      <%= "#{Warehouse.human_attribute_name(:name)}: #{@warehouse.name}" %>
+    </h6>
+    <div class="card-body">
+      <p class="card-text"> <%= "#{Warehouse.human_attribute_name(:code)}: #{@warehouse.code}" %> </p>
+      <p class="card-text fw-bold"> <%= Warehouse.human_attribute_name(:address) %>:</p>
+      <% if @warehouse.address %>
+        <p class="card-text">
+          <%= @warehouse.address.name %>, <%= @warehouse.address.number %>. <%= @warehouse.address.district %><br>
+          <%= @warehouse.address.city %>, <%= @warehouse.address.state %><br>
+          <%= @warehouse.address.zip_code %>
+          <%= @warehouse.address.latitude %> , <%= @warehouse.address.longitude %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

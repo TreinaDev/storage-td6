@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>Storage</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,36 +12,77 @@
   </head>
 
   <body>
-    <nav>
-      <% if user_signed_in? %>
-        <%= current_user.name %>
-        <%= link_to ReturnEntry.model_name.human(count: 2), return_entries_path %>
-        <%= link_to Supplier.model_name.human(count: 2), suppliers_path %>
-        <%= link_to Product.model_name.human(count: 2), product_entries_path %>
-        <%= link_to t('users.edit.title'), edit_user_path(current_user) %>
-        <%= link_to t('reserved_items.nav_link'), reserved_items_path %>
-        <% if current_user.admin? %>
-          <%= link_to t('users.nav_link'), users_path %>
-          <%= link_to t('warehouses.nav_link.all'), warehouses_path %>
-        <% else %>
-          <%= link_to t('warehouses.nav_link.mine'), warehouse_path(current_user.warehouse) %>
-        <% end %>
-        <%= link_to t('devise.sessions.log_out'), destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to t('devise.sessions.log_in'), new_user_session_path %>
-      <% end %>
-    </nav>
+    <div class="main">
+      <nav class="navbar navbar-expand-lg navbar-primary bg-primary">
+        <div class="container-fluid px-5 ">
+          <a class="navbar-brand" href="/">
+            <%= image_tag("logo.png", size: "70") %>
+          </a>
+          <div class="d-inline-block">
+            <% if user_signed_in? %>
+              <h6 class="align-text-right text-secondary"> <%= current_user.name %> </h6>
+              <h6 class="btn btn-secondary btn-sm">
+                <%= link_to Supplier.model_name.human(count: 2), suppliers_path, class:"fw-bold link-primary text-decoration-none" %>
+              </h6>
+              <h6 class="btn btn-secondary btn-sm">
+                <%= link_to Product.model_name.human(count: 2), product_entries_path, class:"fw-bold link-primary text-decoration-none" %>
+              </h6>
+              <h6 class="btn btn-secondary btn-sm">
+                <%= link_to t('users.edit.title'), edit_user_path(current_user), class:"fw-bold link-primary text-decoration-none" %>
+              </h6>
+              <h6 class="btn btn-secondary btn-sm">
+                <%= link_to t('reserved_items.nav_link'), reserved_items_path, class:"fw-bold link-primary text-decoration-none" %>
+              </h6>
+              <% if current_user.admin? %>
+                <h6 class="btn btn-secondary btn-sm">
+                  <%= link_to t('users.nav_link'), users_path, class:"fw-bold link-primary text-decoration-none" %>
+                </h6>
+                <h6 class="btn btn-secondary btn-sm">
+                  <%= link_to t('warehouses.nav_link.all'), warehouses_path, class:"fw-bold link-primary text-decoration-none" %>
+                </h6>
+              <% else %>
+                <h6 class="btn btn-secondary btn-sm">
+                <%= link_to ReturnEntry.model_name.human(count: 2), return_entries_path, class:"fw-bold link-primary text-decoration-none" %>
+                </h6>
+                <h6 class="btn btn-secondary btn-sm">
+                  <%= link_to t('warehouses.nav_link.mine'), warehouse_path(current_user.warehouse), class:"fw-bold link-primary text-decoration-none" %>
+                </h6>
+              <% end %>
+              <h6 class="btn btn-secondary btn-sm">
+                <%= link_to t('devise.sessions.log_out'), destroy_user_session_path, method: :delete, class:"fw-bold link-primary text-decoration-none" %>
+              </h6>
+            <% else %>
+              <h6 class="btn btn-secondary">
+                <%= link_to t('devise.sessions.log_in'), new_user_session_path, class:"fw-bold link-primary text-decoration-none" %>
+              </h6>
+            <% end %>
+          </div>
+        </div>
+      </nav>
 
-    <% if notice %>
-      <div>
-        <%= notice %>
+      <% if notice %>
+        <div class="alert alert-success">
+          <%= notice %>
+        </div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-warning">
+          <%= alert %>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <footer class="bg-primary mt-2">
+      <div class="container mb-2">
+        <h6 class="mt-2 mb-0">Desenvolvido por:</h6>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/ericdaher">Eric </a>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/glmsilva">Guilherme </a>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/Laryssa-lfa">Laryssa </a>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/cohako">Murilo </a>
+        <a class="navbar-brand link-secondary" target="_blank" href="https://github.com/rog404">Rogerio </a>
       </div>
-    <% end %>
-    <% if alert %>
-      <div>
-        <%= alert %>
-      </div>
-    <% end %>
-    <%= yield %>
+    </footer>
+
   </body>
 </html>

@@ -1,3 +1,16 @@
-<% @return_entries.each do |entry|%>
-    <%= link_to entry.request_number, return_entry_path(entry) %>
-<% end %>
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
+
+  <div class="container-sm py-3 w-75">
+    <div class="row border bg-light py-1">
+      <div class="col col-lg-4 mt-2"><h5> <%= t('.subtitle') %> </h5></div>
+    </div>
+    <% @return_entries.each do |entry|%>
+      <div class="row border bg-light py-1">
+        <div class="col col-lg-4 mt-2">
+          <p> <%= link_to entry.request_number, return_entry_path(entry), class: "fw-bold text-decoration-none btn btn-outline-primary" %> </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

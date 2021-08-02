@@ -62,6 +62,8 @@ ActiveRecord::Schema.define(version: 2021_07_29_225215) do
     t.string "authorized_person"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "item"
+    t.index ["item"], name: "index_dispatch_logs_on_item", unique: true
     t.index ["item_id"], name: "index_dispatch_logs_on_item_id"
     t.index ["user_id"], name: "index_dispatch_logs_on_user_id"
   end

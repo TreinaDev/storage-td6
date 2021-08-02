@@ -55,6 +55,7 @@ pt-BR:
         title: "Entrar"
         button: "Entrar"
         remember_me: "Lembrar-me"
+        log_in: 'Entrar'
     unlocks:
       send_instructions: "Dentro de minutos, você receberá um email com instruções para o desbloqueio da sua conta."
       send_paranoid_instructions: "Se sua conta existir, você receberá um e-mail com instruções para desbloqueá-la em alguns minutos."

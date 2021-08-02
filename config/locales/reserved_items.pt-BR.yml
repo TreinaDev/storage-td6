@@ -5,3 +5,4 @@ pt-BR:
     index:
       title: 'Itens Reservados'
       button: 'Despachar'
+      code: 'Código do Item'

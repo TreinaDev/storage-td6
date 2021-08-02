@@ -1,20 +1,31 @@
-<h1><%= t('.title') %></h1>
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
 
-<% @user.errors.each do |error| %>
-    <span><%= error.full_message %></span><br>
-<% end %>
+  <% @user.errors.each do |error| %>
+      <span><%= error.full_message %></span><br>
+  <% end %>
 
-<%= form_with model: @user do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), root_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-
-  <%= f.submit %>
-<% end %>
-
-<%= link_to t('.back'), root_path %>
+  <div class="py-2 w-50">
+    <%= form_with model: @user, html: { class: 'form-control' } do |f| %>
+      <div class="field">
+        <%= f.label :name, class: "form-label mt-2" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :password, class: "form-label mt-2" %>
+        <%= f.password_field :password, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, class: "form-label mt-2" %>
+        <%= f.password_field :password_confirmation, class: "form-control" %>
+      </div>
+      <%= f.submit class: "btn btn-primary text-secondary mt-3" %>
+    <% end %>
+  </div>
+</div>

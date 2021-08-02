@@ -1,14 +1,33 @@
-<h1><%= t('.title') %></h1>
-<% if @suppliers.empty? %>
-    <p><h4><%= t('.empty') %></h4></p>
-<% else %>
-  <% @suppliers.each do |supplier| %>
-    <p><%= Supplier.human_attribute_name(:name) %>: <%= link_to supplier.name, supplier_path(supplier) %></p>
-    <p><%= Supplier.human_attribute_name(:trade_name) %>: <%= supplier.trade_name %></p>
-    <p><%= Supplier.human_attribute_name(:cnpj) %>: <%= supplier.cnpj %></p>
+<div class="container py-3">
+  <h1><%= t('.title') %></h1>
+
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <h6 class="btn btn-primary">
+      <%= link_to t('.add_new'), new_supplier_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+    <h6 class="btn btn-primary">
+      <%= link_to t('.back'), root_path, class:"link-secondary text-decoration-none" %>
+    </h6>
+  </div>
+
+  <% if @suppliers.empty? %>
+      <p><h4><%= t('.empty') %></h4></p>
+  <% else %>
+    <div class="container-sm py-3 w-75">
+      <div class="row border bg-light py-1">
+        <div class="col col-lg-4 mt-2"><h5> <%= Supplier.human_attribute_name(:name) %> </h5></div>
+        <div class="col col-lg-4 mt-2"><h5> <%= Supplier.human_attribute_name(:trade_name) %> </h5></div>
+        <div class="col col-lg-4 mt-2"><h5> <%= Supplier.human_attribute_name(:cnpj) %> </h5></div>
+      </div>
+      <% @suppliers.each do |supplier| %>
+        <div class="row border">
+          <div class="col col-lg-4 mt-2">
+            <p> <%= link_to supplier.name, supplier_path(supplier), class: "fw-bold text-decoration-none btn btn-outline-primary" %> </p>
+          </div>
+          <div class="col col-lg-4 mt-3"> <p><%= supplier.trade_name %></p> </div>
+          <div class="col col-lg-4 mt-3"> <p><%= supplier.cnpj %></p> </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
-
-<%= link_to t('.add_new'), new_supplier_path %>
-
-<%= link_to t('.back'), root_path %>
+</div>

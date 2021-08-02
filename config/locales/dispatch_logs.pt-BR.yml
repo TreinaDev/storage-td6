@@ -6,9 +6,12 @@ pt-BR:
       button: 'Confirmar'
     show:
       title: 'Log de despacho'
+      subtitle: 'Despachos'
   activerecord:
     models:
       dispatch_logs: 'Log de despacho'
     attributes:
       dispatch_log:
         authorized_person: 'Pessoa autorizada para retirada'
+        item: 'Código do Item'
+        user: 'E-mail do Usuário'

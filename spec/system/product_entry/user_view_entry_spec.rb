@@ -14,9 +14,12 @@ describe 'User View Products Entry' do
     click_on 'Produtos'
 
     expect(page).to have_content('Entrada de Produtos')
-    expect(page).to have_content('SKU: abc1234')
-    expect(page).to have_content('Quantidade: 7')
-    expect(page).to have_content("Data de Entrada: #{product.created_at.strftime('%d/%m/%Y')}")
+    expect(page).to have_content('SKU')
+    expect(page).to have_content('abc1234')
+    expect(page).to have_content('Quantidade')
+    expect(page).to have_content('7')
+    expect(page).to have_content('Data de Entrada')
+    expect(page).to have_content(product.created_at.strftime('%d/%m/%Y').to_s)
     expect(page).to have_link('Voltar', href: root_path)
   end
 

@@ -1,17 +1,23 @@
-<h1><%= t('.title') %> <%= @item.code %></h1>
+<div class="container py-3">
+  <h1><%= t('.title') %> <%= @item.code %></h1>
 
-<% if @dispatch_log.errors.any? %>
-  <p><%= t('.errors', count: @dispatch_log.errors.count) %>:</p>
-  <ul>
-    <% @dispatch_log.errors.full_messages.each do |error| %>
-      <li><%= error %></li>
+  <% if @dispatch_log.errors.any? %>
+    <p><%= t('.errors', count: @dispatch_log.errors.count) %>:</p>
+    <ul>
+      <% @dispatch_log.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="py-2 w-50">
+    <%= form_with model: @dispatch_log, html: { class: 'form-control' } do |form| %>
+      <div class="field">
+        <%= form.label :authorized_person, class: "form-label mt-2" %>
+        <%= form.text_field :authorized_person, class: "form-control" %>
+      </div>
+      <%= hidden_field_tag(:item_code, @item.code) %>
+      <%= form.submit t('.button'), class: "btn btn-primary text-secondary mt-3" %>
     <% end %>
-  </ul>
-<% end %>
-
-<%= form_with model: @dispatch_log do |form| %>
-  <%= form.label :authorized_person %>
-  <%= form.text_field :authorized_person %>
-  <%= hidden_field_tag(:item_code, @item.code) %>
-  <%= form.submit t('.button') %>
-<% end %>
+  </div>
+</div>
