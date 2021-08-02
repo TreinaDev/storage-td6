@@ -20,7 +20,10 @@
         <%= "#{ProductEntry.human_attribute_name("invoice")}: #{@product_entry.invoice }" %>
       </p>
       <p class="card-text">
-        <%= "#{ProductEntry.human_attribute_name("supplier_id")}: #{@product_entry.supplier_id}" %>
+        <%= "#{ProductEntry.human_attribute_name("supplier_id")}: #{@product_entry.supplier.name}" %>
+      </p>
+      <p class="card-text">
+        <%= "#{ProductEntry.human_attribute_name("warehouse_id")}: #{@product_entry.warehouse.name}" %>
       </p>
     </div>
   </div>
@@ -29,7 +32,7 @@
     <h6 class="card-header"> <%= t('.subtitle2') %> </h6>
     <div class="card-body">
       <div class="card-text">
-        <% @product_entry.items.each do |item| %>
+        <% @product_entry.items.available.each do |item| %>
           <p> <%= "#{ProductEntry.human_attribute_name("item_code")}: #{item.code}" %> </p>
         <% end %>
       </div>

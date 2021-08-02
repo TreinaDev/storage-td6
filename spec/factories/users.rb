@@ -6,5 +6,6 @@ FactoryBot.define do
     registration_code { '123456' }
     role { 'user' }
     warehouse { nil }
+    password { '123456' }
   end
 end

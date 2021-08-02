@@ -5,6 +5,5 @@ FactoryBot.define do
     sequence(:quantity) { |n| n }
     supplier
     warehouse
-    product
   end
 end

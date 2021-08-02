@@ -12,6 +12,10 @@ class ProductEntry < ApplicationRecord
   before_validation :find_or_create_product
   after_create :create_items
 
+  def quantity
+    items.available.count
+  end
+
   def self.import_from_csv(file, warehouse)
     csv = CSV.parse(File.read(file), headers: true)
 
@@ -38,7 +42,7 @@ class ProductEntry < ApplicationRecord
   end
 
   def find_or_create_product
-    self.product = Product.create_with(sku: sku).find_or_create_by(sku: sku)
+    self.product = Product.find_or_create_by(sku: sku)
   end
 
   def generate_last_code(last_code)

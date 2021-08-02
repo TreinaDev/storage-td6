@@ -14,7 +14,10 @@ class User < ApplicationRecord
   validate :domain_check
 
   enum role: { user: 0, admin: 1 }
-  before_validation :set_default_password, on: :create
+
+  def my_warehouse
+    admin? ? Warehouse.all : warehouse
+  end
 
   private
 
