@@ -214,9 +214,9 @@ Resposta:
         }
   }
   ```
-  | Parametro        | Tipo      | Descrição                        |
-	| :--------------- | :-------- | :------------------------------- |
-	| `resquest_number`| `integer` | **Obrigatório**. Código da venda |
+ | Parametro | Tipo     | Descrição                       |
+| :-------- | :------- | :-------------------------------- |
+| `request_number`      | `integer` | **Obrigatório**. Código da venda |
 
 Resposta: 
 
