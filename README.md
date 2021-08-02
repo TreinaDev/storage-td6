@@ -232,9 +232,9 @@ Resposta:
 	Um arquivo csv válido deve ser parecer com:
 
 	```
-	sku,invoice,quantity,supplier_id
-	abc123,1034,7,1
-	abc124,1036,3,1
+		sku,invoice,quantity,supplier_id
+		abc123,1034,7,1
+		abc124,1036,3,1
 	```
 ## Autores
 
