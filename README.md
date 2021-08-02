@@ -202,6 +202,40 @@ Resposta:
 }
 ```
 
+#### Criar uma devolução de item
+  ```http
+  POST '/api/v1/freightage/return_entries'
+  ```
+  - Cria uma devolução de item em um determinado galpão, com os seguintes parametros:
+  ```json
+  {
+    "return_entry": {
+          "request_number": "123456"
+        }
+  }
+  ```
+ | Parametro | Tipo     | Descrição                       |
+| :-------- | :------- | :-------------------------------- |
+| `request_number`      | `integer` | **Obrigatório**. Código da venda |
+
+Resposta: 
+
+- HTTP Status: 201 
+
+```json
+{
+   "message":"Ordem de retorno criada com sucesso!",
+}
+```
+
+## Entrada de produtos por csv
+
+Um arquivo csv válido deve ser parecer com:
+
+```csv
+	sku,invoice,quantity,supplier_id
+	abc123,1034,7,1
+```
 ## Autores
 
 * [@cohako](https://www.github.com/cohako)
